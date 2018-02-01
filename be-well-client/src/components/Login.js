@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../actions';
 
+
 class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      error: false,
       fields: {
         email: '',
         password: ''
@@ -26,11 +26,22 @@ class Login extends React.Component {
     this.props.loginUser(email, password, this.props.history);
   };
 
+    
+
   render() {
+  const error = 
+    <div class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header">
+      Your Log in information is incorrect.
+      </div>
+      <p>Please try again.</p>
+    </div>
+
     const { fields } = this.state;
     return (
       <div>
-        {this.state.error ? <h1>Try Again</h1> : null}
+        {this.props.auth.login_error ? error : null}
         <div className="ui form">
           <form onSubmit={this.handleSubmit}>
             <div className="ui field">
@@ -62,4 +73,10 @@ class Login extends React.Component {
   }
 }
 
-export default withRouter(connect(null, actions)(Login));
+const mapStateToProps = ({ auth }) => {
+  return {
+    auth: auth
+  }
+}
+
+export default withRouter(connect(mapStateToProps, actions)(Login));

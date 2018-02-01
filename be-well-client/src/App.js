@@ -1,44 +1,42 @@
 import React, { Component } from 'react';
 import './App.css';
 import Navbar from './components/Navbar'
-import MainContainer from './components/MainContainer'
 import * as actions from './actions'
 import { connect } from 'react-redux';
 import Login from './components/Login'
-
+import withAuth from './hocs/withAuth'
+import { Switch, Route, withRouter } from 'react-router-dom';
+import MainContainer from './components/MainContainer'
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchUser(1);
+    if (localStorage.getItem('token')) {
+      this.props.fetchUser()
+      this.props.history.push('/profile');
+    } else {
+      this.setState({ authCompleted: true})
+    }
   }
 
   render() {
     console.log('APP', this.props)
     return (
       <div className="App">
-        <Navbar />
-        {this.props.loggedIn? (<div className="ui fluid container">
-          <MainContainer />
-          </div>) : (
-          <div className="main">
-          <Login /></div>
-        )}
-          
+      <div className="main">
+        <Switch>
+          <Route exact path="/login" component={Login}/>
+          <Route exact path="/profile" component={MainContainer} />
+        </Switch>
+      </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ user, goals, thoughts, updates, auth}) => {
-  console.log('USER', user, goals)
+const mapStateToProps = (state) => {
   return {
-    auth: auth,
-    loading: user.loading,
-    profile: user.profile,
-    goals: goals,
-    thoughts: thoughts,
-    updates: updates
+    loggedIn: !!state.auth.currentUser.id,
   }
 }
 
-export default connect(mapStateToProps, actions)(App);
+export default withRouter(connect(mapStateToProps, actions)(App));

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO } from './actions/types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR } from './actions/types';
 
 const defaultState = { profile: {}, loading: false}
 const initialState = { currentUser: {} };
@@ -7,11 +7,12 @@ const initialState = { currentUser: {} };
 const authReducer = (state = initialState, action) => {
   switch(action.type) {
     case SET_CURRENT_USER:
-      console.log('in auth reducer', action)
       const { id, email } = action.user;
       return {...state, currentUser: { id, email }}
     case LOGOUT_USER:
-      return {...state, currentUser: {} }
+      return {...state, currentUser: {}, login_error: false }
+    case LOGIN_ERROR:
+      return {...state, currentUser: {}, login_error: true}
     default:
       return state;
   }
@@ -22,7 +23,7 @@ const userReducer = (state = defaultState, action) => {
     case ASYNC_START:
       return {...state, profile: {}, loading: true}
     case FETCH_USER_INFO:
-      // console.log(action)
+      console.log('FETCHING USER', action)
       // console.log(state)
       return {
         ...state,

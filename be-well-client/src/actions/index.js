@@ -1,4 +1,4 @@
-import { FETCH_USER, ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO } from './types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR } from './types';
 import { adapter } from '../services';
 
 export const fetchUser = () => dispatch => {
@@ -13,9 +13,13 @@ export const loginUser = (email, password, history) => dispatch => {
   dispatch({ type: ASYNC_START})
 
   adapter.auth.login({ email, password }).then(user => {
+    if (user.error) {
+      dispatch({type: LOGIN_ERROR})
+    } else {
     localStorage.setItem('token', user.jwt)
     dispatch({ type: SET_CURRENT_USER, user})
     history.push('/profile')
+    }
   })
 }
 

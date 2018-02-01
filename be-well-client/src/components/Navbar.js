@@ -16,7 +16,9 @@ class Navbar extends React.Component {
         <div className="right menu">
           <div className="item">Welcome, {this.props.name}</div>
           <div className="right aligned item">
-            <div className="ui floated button">
+            <div 
+            className="ui floated button"
+            onClick={() => this.props.logoutUser()}>
               Log Out
             </div>
           </div>
