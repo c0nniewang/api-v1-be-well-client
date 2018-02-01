@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  energy_level: MyString
+  description: MyString
+  grateful1: MyString
+  grateful2: MyString
+  grateful3: MyString
+  sleep: MyString
+
+two:
+  energy_level: MyString
+  description: MyString
+  grateful1: MyString
+  grateful2: MyString
+  grateful3: MyString
+  sleep: MyString
