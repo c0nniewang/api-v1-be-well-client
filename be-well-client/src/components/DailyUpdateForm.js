@@ -13,7 +13,8 @@ export default class DailyUpdateForm extends React.Component {
       dayDesc: '',
       grateful1: '',
       grateful2: '',
-      grateful3: ''
+      grateful3: '',
+      sleep: ''
     }
   }
 
@@ -67,6 +68,15 @@ export default class DailyUpdateForm extends React.Component {
           onChange={this.handleChange}
           value={this.state.dayDesc}
           name="dayDesc"></textarea>
+        </div>
+        <div className="field">
+          <label>How many hours did you sleep last night?</label>
+          <Dropdown 
+          placeholder="Select Number" 
+          fluid selection options={numberOptions}
+          onChange={(e, {value}) => {this.handleDropChange(value, 'sleep')}}
+          value={this.state.sleep}
+          />
         </div>
         <h4 className="ui dividing header">And lastly, please list three things that you are grateful for today.</h4>
         <div className="inline field">
