@@ -40,7 +40,7 @@ class Login extends React.Component {
 
     const { fields } = this.state;
     return (
-      <div>
+      <div className="ui middle aligned center aligned grid">
         {this.props.auth.login_error ? error : null}
         <div className="ui form">
           <form onSubmit={this.handleSubmit}>
