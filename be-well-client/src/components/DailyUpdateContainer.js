@@ -1,13 +1,15 @@
 import React from 'react'
 import DailyUpdateForm from './DailyUpdateForm'
 import { connect } from 'react-redux'
+import { Message } from 'semantic-ui-react'
 
 class DailyUpdateContainer extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      display: true
+      visible: true,
+      formDisplay: false
     }
   }
 
@@ -19,30 +21,46 @@ class DailyUpdateContainer extends React.Component {
     const value = nextProps.mostRecentUpdate.created_at.slice(0, 10) < currentDateTime.toISOString().slice(0, 10)
     console.log(value)
     this.setState({
-      display: value
+      visible: value
     })
   }
 
+  displayForm = () => {
+    this.handleDismiss()
+    this.setState({
+      formDisplay: true
+    })
+  }
+
+  handleDismiss = () => {
+    this.setState({ visible: false})
+  }
+
+  formClick = () => {
+    this.setState({ formDisplay: true})
+  }
+
   render() {
-    // debugger
-
-    const checkIn =
-      <div className="ui visible message">Would you like to complete your daily check-in now?
-        <p></p>
-        <button className="ui positive basic button">Let's Do it!</button>
-        <button className="ui negative basic button">Not Now</button>
-      </div>
-
+      if (this.state.visible) {
+        return (
+          <Message 
+          onDismiss={this.handleDismiss}>
+          {<h3>Welcome Back!</h3>}
+          Would you like to complete your daily check-in now?
+          {<p></p>}
+          {<button
+            onClick={this.formClick}
+            className="ui positive basic button">Let's Do it!</button>}
+          </Message>
+        )
+      } else if (this.state.formDisplay) {
+        return <DailyUpdateForm />
+      }
     return (
-      <div>
-        {this.state.display ? <div className="ui visible message">Would you like to complete your daily check-in now?
-        <p></p>
-        <button className="ui positive basic button">Let's Do it!</button>
-        <button className="ui negative basic button">Not Now</button>
-      </div> : <div className="ui visible message">You have already checked in for today. Good work!</div>}
-        <DailyUpdateForm />
-        </div>
+      <button className="ui positive basic button">Check In Now</button>
     )
+
+
   }
 }
 
