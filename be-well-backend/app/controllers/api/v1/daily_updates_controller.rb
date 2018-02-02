@@ -24,6 +24,12 @@ class Api::V1::DailyUpdatesController < ApplicationController
     end
   end
 
+  def destroy
+    daily_update = DailyUpdate.find(params[:id])
+    daily_update.destroy
+    render json: {message: 'successfully deleted', updateId: daily_update.id}
+  end
+
   private
   def daily_update_params
     params.permit(:energy_level, :mood_desc, :mood_num, :day_desc, :grateful1, :grateful2, :grateful3, :sleep, :user_id)

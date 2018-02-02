@@ -9,7 +9,9 @@ import rootReducer from './reducers'
 import 'semantic-ui-css/semantic.min.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer, 
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), 
+  applyMiddleware(thunk))
 
 ReactDOM.render(
   <Router>
