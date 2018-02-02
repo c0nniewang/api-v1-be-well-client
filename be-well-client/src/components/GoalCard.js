@@ -8,7 +8,7 @@ class GoalCard extends React.Component {
         </div>
         <div className="content">
           <h4 className="ui sub header">Target Date: {this.props.goal.target_date}</h4>
-          <div className="meta">Date Created: {this.props.goal.created_at.slice(0, 11)}</div>
+          <div className="meta">Date Created: {this.props.goal.created_at.slice(0, 10)}</div>
           <div className="description">
             <b>What are your action steps to reaching this goal?</b>
             <br/>
@@ -25,6 +25,10 @@ class GoalCard extends React.Component {
         </div>
         <div className="extra content">
           <button className="ui button">Edit Goal</button>
+          <span class="right floated">
+            <button className="ui button positive">Completed? <i class="check icon"></i>
+            </button>
+          </span>
         </div>
       </div>)
   }
