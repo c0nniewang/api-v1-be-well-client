@@ -22,7 +22,7 @@ class App extends Component {
       <div className="main">
         <Switch>
           <Route exact path="/login" component={Login}/>
-          <Route exact path="/profile" component={MainContainer} />
+          <Route path="/profile" component={MainContainer} />
         </Switch>
       </div>
       </div>

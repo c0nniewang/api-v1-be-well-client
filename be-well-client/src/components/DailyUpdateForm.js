@@ -2,6 +2,8 @@ import React from 'react'
 import { Dropdown } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import * as actions from '../actions'
+import { withRouter } from 'react-router-dom';
+
 
 
 class DailyUpdateForm extends React.Component {
@@ -49,6 +51,7 @@ class DailyUpdateForm extends React.Component {
       grateful3: '',
       sleep: ''
     })
+    this.props.history.push('/profile')
   }
 
   render() {
@@ -56,6 +59,7 @@ class DailyUpdateForm extends React.Component {
     const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
     return (
       <form className="ui form" onSubmit={this.handleSubmit}>
+        <p></p>
         <h3 className="ui dividing header">Daily Update</h3>
         <div className="field">
           <label>On a scale of 1-10, with 1 being the lowest and 10 being the highest, how would you rate your current energy level?</label>
@@ -140,4 +144,4 @@ const mapStateToProps = ({ auth }) => {
   }
 }
 
-export default connect(mapStateToProps, actions)(DailyUpdateForm);
+export default withRouter(connect(mapStateToProps, actions)(DailyUpdateForm));

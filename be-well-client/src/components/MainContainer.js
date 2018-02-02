@@ -4,6 +4,9 @@ import * as actions from '../actions'
 import Navbar from './Navbar'
 import withAuth from '../hocs/withAuth'
 import DailyUpdateContainer from './DailyUpdateContainer'
+import { Switch, Route, withRouter } from 'react-router-dom';
+import DailyUpdateForm from './DailyUpdateForm'
+
 
 
 class MainContainer extends React.Component {
@@ -18,7 +21,16 @@ class MainContainer extends React.Component {
       <Navbar />
       <div className="ui raised very padded text container segment">
         <h2 className="ui header">Hi, {this.props.user.profile.name}.</h2>
-        <DailyUpdateContainer />
+
+        <Switch>
+          <Route exact path="/profile" render={() => {
+            return <DailyUpdateContainer />
+          }}/>
+          <Route exact path="/profile/newUpdate" render={() => {
+            return <DailyUpdateForm />
+          }} />
+
+        </Switch>
       </div>
       </div>
     </div>)
