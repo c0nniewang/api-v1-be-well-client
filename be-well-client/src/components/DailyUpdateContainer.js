@@ -14,10 +14,7 @@ class DailyUpdateContainer extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("CDM", nextProps)
-
     const currentDateTime = new Date()
-
     const value = nextProps.mostRecentUpdate.created_at.slice(0, 10) < currentDateTime.toISOString().slice(0, 10)
     console.log(value)
     this.setState({
@@ -26,7 +23,6 @@ class DailyUpdateContainer extends React.Component {
   }
 
   displayForm = () => {
-    this.handleDismiss()
     this.setState({
       formDisplay: true
     })
@@ -41,9 +37,9 @@ class DailyUpdateContainer extends React.Component {
   }
 
   render() {
-      if (this.state.visible) {
-        return (
-          <Message 
+    return (
+      <div>
+        {this.state.visible ? <Message 
           onDismiss={this.handleDismiss}>
           {<h3>Welcome Back!</h3>}
           Would you like to complete your daily check-in now?
@@ -51,17 +47,12 @@ class DailyUpdateContainer extends React.Component {
           {<button
             onClick={this.formClick}
             className="ui positive basic button">Let's Do it!</button>}
-          </Message>
-        )
-      } else if (this.state.formDisplay) {
-        return <DailyUpdateForm />
-      }
-    return (
-      <button className="ui positive basic button">Check In Now</button>
+          </Message> : <button className="ui positive basic button">Check In Now</button>}
+        {this.state.formDisplay ? <div><p></p><DailyUpdateForm /></div>: null}
+      </div>
     )
-
-
   }
+  
 }
 
 const mapStateToProps = ({ updates }) => {
@@ -71,3 +62,21 @@ const mapStateToProps = ({ updates }) => {
 }
 
 export default connect(mapStateToProps)(DailyUpdateContainer);
+    //   if (this.state.visible) {
+    //     return (
+    //       <Message 
+    //       onDismiss={this.handleDismiss}>
+    //       {<h3>Welcome Back!</h3>}
+    //       Would you like to complete your daily check-in now?
+    //       {<p></p>}
+    //       {<button
+    //         onClick={this.formClick}
+    //         className="ui positive basic button">Let's Do it!</button>}
+    //       </Message>
+    //     )
+    //   } else if (this.state.formDisplay) {
+    //     return <DailyUpdateForm />
+    //   }
+    // return (
+    //   <button className="ui positive basic button">Check In Now</button>
+    // )
