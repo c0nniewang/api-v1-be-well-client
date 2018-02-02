@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import * as actions from '../actions'
 import Navbar from './Navbar'
 import withAuth from '../hocs/withAuth'
-import DailyUpdateForm from './DailyUpdateForm'
+import DailyUpdateContainer from './DailyUpdateContainer'
 
 
 class MainContainer extends React.Component {
@@ -18,8 +18,7 @@ class MainContainer extends React.Component {
       <Navbar />
       <div className="ui raised very padded text container segment">
         <h2 className="ui header">Hi, {this.props.user.profile.name}.</h2>
-        <h3>Would you like to complete your daily check-in now?</h3>
-        <DailyUpdateForm />
+        <DailyUpdateContainer />
       </div>
       </div>
     </div>)

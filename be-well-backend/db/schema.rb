@@ -24,7 +24,9 @@ ActiveRecord::Schema.define(version: 20180131182458) do
 
   create_table "daily_updates", force: :cascade do |t|
     t.integer "energy_level"
-    t.string "description"
+    t.string "mood_desc"
+    t.integer "mood_num"
+    t.string "day_desc"
     t.string "grateful1"
     t.string "grateful2"
     t.string "grateful3"

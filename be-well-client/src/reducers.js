@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR } from './actions/types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE} from './actions/types';
 
 const defaultState = { profile: {}, loading: false}
 const initialState = { currentUser: {} };
@@ -61,6 +61,8 @@ const updatesReducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_USER_INFO:
       return [...action.user.daily_updates]
+    case ADD_DAILY_UPDATE:
+      return [...state, action.update]
     default:
       return state
   }

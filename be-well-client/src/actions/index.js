@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR } from './types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE } from './types';
 import { adapter } from '../services';
 
 export const fetchUser = () => dispatch => {
@@ -35,4 +35,13 @@ export function fetchUserInfo(id) {
     .then(resp => resp.json())
     .then(user => dispatch({ type: FETCH_USER_INFO, user}))
   }
+}
+
+export const newDailyUpdate = (data) => dispatch => {
+  dispatch({ type: ASYNC_START});
+
+  adapter.daily_updates.createDailyUpdate(data)
+  .then(update => {
+    dispatch({ type: ADD_DAILY_UPDATE, update})
+  })
 }

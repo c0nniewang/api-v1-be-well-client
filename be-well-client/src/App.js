@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Navbar from './components/Navbar'
 import * as actions from './actions'
 import { connect } from 'react-redux';
 import Login from './components/Login'
-import withAuth from './hocs/withAuth'
 import { Switch, Route, withRouter } from 'react-router-dom';
 import MainContainer from './components/MainContainer'
 

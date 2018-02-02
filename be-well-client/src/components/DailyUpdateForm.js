@@ -1,14 +1,17 @@
 import React from 'react'
 import { Dropdown } from 'semantic-ui-react'
+import { connect } from 'react-redux';
+import * as actions from '../actions'
 
-export default class DailyUpdateForm extends React.Component {
+
+class DailyUpdateForm extends React.Component {
 
   constructor() {
     super();
 
     this.state={
-      energy: '',
-      moodDesc: '',
+      energy_level: '',
+      mood_desc: '',
       moodNum: '',
       dayDesc: '',
       grateful1: '',
@@ -25,22 +28,41 @@ export default class DailyUpdateForm extends React.Component {
   }
 
   handleDropChange = (value, key) => {
+    console.log(value, key)
     this.setState({
       [key]: value
     })
   }
+
+  handleSubmit = (ev) => {
+    ev.preventDefault()
+    console.log(this.state)
+    this.props.newDailyUpdate({...this.state, user_id: this.props.id})
+
+    this.setState({
+      energy_level: '',
+      mood_desc: '',
+      mood_num: '',
+      day_desc: '',
+      grateful1: '',
+      grateful2: '',
+      grateful3: '',
+      sleep: ''
+    })
+  }
+
   render() {
     const numArray = [...Array(11).keys()]
     const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
     return (
-      <form className="ui form">
+      <form className="ui form" onSubmit={this.handleSubmit}>
         <h3 className="ui dividing header">Daily Update</h3>
         <div className="field">
           <label>On a scale of 1-10, with 1 being the lowest and 10 being the highest, how would you rate your current energy level?</label>
           <Dropdown placeholder="Select Number" 
           fluid selection options={numberOptions}
-          value={this.state.energy}
-          onChange={(e, {value}) => {this.handleDropChange(value, 'energy')}}
+          value={this.state.energy_level}
+          onChange={(e, {value}) => {this.handleDropChange(value, 'energy_level')}}
           />
         </div>
         <div className="field">
@@ -48,8 +70,8 @@ export default class DailyUpdateForm extends React.Component {
           <input 
           type="text" 
           onChange={this.handleChange}
-          value={this.state.moodDesc}
-          name="moodDesc"
+          value={this.state.mood_desc}
+          name="mood_desc"
           />
         </div>
         <div className="field">
@@ -57,8 +79,8 @@ export default class DailyUpdateForm extends React.Component {
           <Dropdown 
           placeholder="Select Number" 
           fluid selection options={numberOptions}
-          onChange={(e, {value}) => {this.handleDropChange(value, 'moodNum')}}
-          value={this.state.moodNum}
+          onChange={(e, {value}) => {this.handleDropChange(value, 'mood_num')}}
+          value={this.state.mood_num}
           />
         </div>
         <div className="field">
@@ -66,8 +88,8 @@ export default class DailyUpdateForm extends React.Component {
           <textarea 
           rows="3"
           onChange={this.handleChange}
-          value={this.state.dayDesc}
-          name="dayDesc"></textarea>
+          value={this.state.day_desc}
+          name="day_desc"></textarea>
         </div>
         <div className="field">
           <label>How many hours did you sleep last night?</label>
@@ -111,3 +133,11 @@ export default class DailyUpdateForm extends React.Component {
     )
   }
 }
+
+const mapStateToProps = ({ auth }) => {
+  return {
+    id: auth.currentUser.id
+  }
+}
+
+export default connect(mapStateToProps, actions)(DailyUpdateForm);

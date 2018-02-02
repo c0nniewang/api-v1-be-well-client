@@ -24,9 +24,21 @@ const login = data => {
   }).then(res => res.json())
 }
 
+const createDailyUpdate = data => {
+  return fetch(`${API_ROOT}/daily_updates`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+}
+
 export const adapter = {
   auth: {
     login,
     getCurrentUser
+  },
+
+  daily_updates: {
+    createDailyUpdate
   }
 }

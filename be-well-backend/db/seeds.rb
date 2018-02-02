@@ -15,7 +15,7 @@ CognitiveDistortion.create(title: "Discounting the Positive", description: "You 
 CognitiveDistortion.create(title: "Mind Reading", description: "Without checking it out, you arbitrarily conclude that someone is reacting negatively to you.")
 CognitiveDistortion.create(title: "Fortune-telling", description: "You predict that things will turn out badly.")
 
-DailyUpdate.create(energy_level: 5, description: "start this project nao", grateful1: "surviving", grateful2: "sleep", grateful3: "people", sleep: 6, user_id: 1)
+DailyUpdate.create(energy_level: 5, mood_desc: "slightly stressed", mood_num: 6, day_desc: "start this project nao", grateful1: "surviving", grateful2: "sleep", grateful3: "people", sleep: 6, user_id: 1)
 
 
 ThoughtEntry.create(current_mood: 4, emotions: "tired, sleepy, stressed", situation: "starting this project", negative_thoughts: "avoidance of stress", user_id: 1)
