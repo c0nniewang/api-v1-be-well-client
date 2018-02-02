@@ -36,7 +36,6 @@ class DailyUpdateContainer extends React.Component {
   }
 
   render() {
-    console.log("DAILY UPDATE", this.state)
     return (
       <div>
         {this.state.visible ? <Message 
@@ -62,21 +61,3 @@ const mapStateToProps = ({ updates }) => {
 }
 
 export default withRouter(connect(mapStateToProps)(DailyUpdateContainer));
-    //   if (this.state.visible) {
-    //     return (
-    //       <Message 
-    //       onDismiss={this.handleDismiss}>
-    //       {<h3>Welcome Back!</h3>}
-    //       Would you like to complete your daily check-in now?
-    //       {<p></p>}
-    //       {<button
-    //         onClick={this.formClick}
-    //         className="ui positive basic button">Let's Do it!</button>}
-    //       </Message>
-    //     )
-    //   } else if (this.state.formDisplay) {
-    //     return <DailyUpdateForm />
-    //   }
-    // return (
-    //   <button className="ui positive basic button">Check In Now</button>
-    // )
