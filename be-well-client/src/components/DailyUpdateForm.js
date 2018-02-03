@@ -132,7 +132,8 @@ class DailyUpdateForm extends React.Component {
           name="grateful3"
           />
         </div><br />
-        <button className="ui button" type="submit">Submit</button>
+        <button className="ui button left floated positive" type="submit">Submit</button>
+        <button className="ui button right floated">Back</button>
       </form>
     )
   }

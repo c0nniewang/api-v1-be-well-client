@@ -16,10 +16,11 @@ class DailyUpdateContainer extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const currentDateTime = new Date()
+    // ISO time is 5 hours ahead of EST - should account for local time
     
     if (nextProps.mostRecentUpdate) {
       const value = nextProps.mostRecentUpdate.created_at.slice(0, 10) < currentDateTime.toISOString().slice(0, 10)
-      console.log(value)
+      console.log('updatez', value, currentDateTime.toISOString().slice(0, 10), nextProps.mostRecentUpdate.created_at.slice(0, 10))
       this.setState({
         visible: value,
         completed: !value

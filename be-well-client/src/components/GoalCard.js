@@ -25,8 +25,8 @@ class GoalCard extends React.Component {
         </div>
         <div className="extra content">
           <button className="ui button">Edit Goal</button>
-          <span class="right floated">
-            <button className="ui button positive">Completed? <i class="check icon"></i>
+          <span className="right floated">
+            <button className="ui button positive">Completed? <i className="check icon"></i>
             </button>
           </span>
         </div>
