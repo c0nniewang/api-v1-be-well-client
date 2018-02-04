@@ -7,7 +7,12 @@ class GoalsContainer extends React.Component {
   console.log(this.props)
       return (
       <div>
-        <h3 className="ui header">Your Current Goals</h3>
+        <p></p>
+        <h4 class="ui horizontal divider header">
+          <i class="star icon"></i>
+          Your Ongoing Goals
+        </h4>
+        <p></p>
         {this.props.goals ? <GoalsList goals={this.props.goals} /> : null}
         
       </div>

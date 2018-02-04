@@ -54,87 +54,93 @@ class DailyUpdateForm extends React.Component {
     this.props.history.push('/profile')
   }
 
+  handleClick = () => {
+    this.props.history.push('/profile')
+  }
+
   render() {
     const numArray = [...Array(11).keys()]
     const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
     return (
-      <form className="ui form" onSubmit={this.handleSubmit}>
-        <p></p>
-        <h3 className="ui dividing header">Daily Update</h3>
-        <div className="field">
-          <label>On a scale of 1-10, with 1 being the lowest and 10 being the highest, how would you rate your current energy level?</label>
-          <Dropdown placeholder="Select Number" 
-          fluid selection options={numberOptions}
-          value={this.state.energy_level}
-          onChange={(e, {value}) => {this.handleDropChange(value, 'energy_level')}}
-          />
-        </div>
-        <div className="field">
-          <label>How would you describe your current mood in a couple key words?</label>
-          <input 
-          type="text" 
-          onChange={this.handleChange}
-          value={this.state.mood_desc}
-          name="mood_desc"
-          />
-        </div>
-        <div className="field">
-          <label>Again on a scale from 1-10, with 1 being the least positive, and 10 being the most positive, how would you rate your current mood?</label>
-          <Dropdown 
-          placeholder="Select Number" 
-          fluid selection options={numberOptions}
-          onChange={(e, {value}) => {this.handleDropChange(value, 'mood_num')}}
-          value={this.state.mood_num}
-          />
-        </div>
-        <div className="field">
-          <label>How would you briefly describe your overall day?</label>
-          <textarea 
-          rows="3"
-          onChange={this.handleChange}
-          value={this.state.day_desc}
-          name="day_desc"></textarea>
-        </div>
-        <div className="field">
-          <label>How many hours did you sleep last night?</label>
-          <Dropdown 
-          placeholder="Select Number" 
-          fluid selection options={numberOptions}
-          onChange={(e, {value}) => {this.handleDropChange(value, 'sleep')}}
-          value={this.state.sleep}
-          />
-        </div>
-        <h4 className="ui dividing header">And lastly, please list three things that you are grateful for today.</h4>
-        <div className="inline field">
-          <label>1.</label>
-          <input 
-          type="text"
-          onChange={this.handleChange}
-          value={this.state.grateful1}
-          name="grateful1"
-          />
-        </div>
-        <div className="inline field">
-          <label>2.</label>
-          <input 
-          type="text"
-          onChange={this.handleChange}
-          value={this.state.grateful2}
-          name="grateful2"
-          />
-        </div>
-        <div className="inline field">
-          <label>3.</label>
-          <input 
-          type="text"
-          onChange={this.handleChange}
-          value={this.state.grateful3}
-          name="grateful3"
-          />
-        </div><br />
-        <button className="ui button left floated positive" type="submit">Submit</button>
-        <button className="ui button right floated">Back</button>
-      </form>
+      <div>
+        <form className="ui form" onSubmit={this.handleSubmit}>
+          <p></p>
+          <h3 className="ui dividing header">Daily Update</h3>
+          <div className="field">
+            <label>On a scale of 1-10, with 1 being the lowest and 10 being the highest, how would you rate your current energy level?</label>
+            <Dropdown placeholder="Select Number" 
+            fluid selection options={numberOptions}
+            value={this.state.energy_level}
+            onChange={(e, {value}) => {this.handleDropChange(value, 'energy_level')}}
+            />
+          </div>
+          <div className="field">
+            <label>How would you describe your current mood in a couple key words?</label>
+            <input 
+            type="text" 
+            onChange={this.handleChange}
+            value={this.state.mood_desc}
+            name="mood_desc"
+            />
+          </div>
+          <div className="field">
+            <label>Again on a scale from 1-10, with 1 being the least positive, and 10 being the most positive, how would you rate your current mood?</label>
+            <Dropdown 
+            placeholder="Select Number" 
+            fluid selection options={numberOptions}
+            onChange={(e, {value}) => {this.handleDropChange(value, 'mood_num')}}
+            value={this.state.mood_num}
+            />
+          </div>
+          <div className="field">
+            <label>How would you briefly describe your overall day?</label>
+            <textarea 
+            rows="3"
+            onChange={this.handleChange}
+            value={this.state.day_desc}
+            name="day_desc"></textarea>
+          </div>
+          <div className="field">
+            <label>How many hours did you sleep last night?</label>
+            <Dropdown 
+            placeholder="Select Number" 
+            fluid selection options={numberOptions}
+            onChange={(e, {value}) => {this.handleDropChange(value, 'sleep')}}
+            value={this.state.sleep}
+            />
+          </div>
+          <h4 className="ui dividing header">And lastly, please list three things that you are grateful for today.</h4>
+          <div className="inline field">
+            <label>1.</label>
+            <input 
+            type="text"
+            onChange={this.handleChange}
+            value={this.state.grateful1}
+            name="grateful1"
+            />
+          </div>
+          <div className="inline field">
+            <label>2.</label>
+            <input 
+            type="text"
+            onChange={this.handleChange}
+            value={this.state.grateful2}
+            name="grateful2"
+            />
+          </div>
+          <div className="inline field">
+            <label>3.</label>
+            <input 
+            type="text"
+            onChange={this.handleChange}
+            value={this.state.grateful3}
+            name="grateful3"
+            />
+          </div><br />
+          <button className="ui button left floated positive" type="submit">Submit</button>
+        </form>
+        <button onClick={this.handleClick} className="ui button right floated">Back</button>
+      </div>
     )
   }
 }
