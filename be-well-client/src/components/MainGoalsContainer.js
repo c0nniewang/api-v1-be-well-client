@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import MainGoalCard from './MainGoalCard'
 import { Menu } from 'semantic-ui-react'
+import NewGoalForm from './NewGoalForm'
 
 class MainGoalsContainer extends React.Component {
   constructor() {
@@ -35,15 +36,15 @@ class MainGoalsContainer extends React.Component {
           <Menu.Item name='completed' active={activeItem === 'completed'} onClick={this.handleItemClick} />
           <Menu.Menu position='right'>
             <Menu.Item  name="new-goal" active={activeItem === 'new-goal'} onClick={this.handleItemClick}>
-              New Goal
               <i className="write icon" />
+              New Goal
             </Menu.Item>
           </Menu.Menu>
         </Menu>
 
         {activeItem === 'current' ? (<div className="ui divided items">
           {goals}
-        </div>) : 'build out completed feature'}
+        </div>) : <NewGoalForm />}
         
 
       </div>

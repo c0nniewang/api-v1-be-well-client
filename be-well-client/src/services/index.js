@@ -32,6 +32,14 @@ const createDailyUpdate = data => {
   }).then(res => res.json())
 }
 
+const createGoal = data => {
+  return fetch(`${API_ROOT}/goals`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+}
+
 export const adapter = {
   auth: {
     login,
@@ -40,5 +48,9 @@ export const adapter = {
 
   daily_updates: {
     createDailyUpdate
+  },
+
+  goals: {
+    createGoal
   }
 }

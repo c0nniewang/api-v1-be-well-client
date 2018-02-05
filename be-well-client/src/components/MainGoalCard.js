@@ -18,10 +18,10 @@ class MainGoalCard extends React.Component {
   const totalDays = Math.round((targetMinutes - createdMin) / (24*60*60*1000))
   const daysLeft = totalDays - days
 
-  const percent = Math.round((daysLeft / totalDays))
+  const percent = (100 - (daysLeft / (totalDays + 1))* 100)
 
   // console.log(formattedDate, new Date(formattedDate), target)
-
+  console.log(totalDays, daysLeft, percent)
     return (
       <div className="item">
         <div className="content">
@@ -42,7 +42,7 @@ class MainGoalCard extends React.Component {
             <b>Your target date for achieving this goal:</b><br />
             {new Date(formattedDate).toDateString()}<br />
             <p></p>
-            <Progress color='olive' percent={percent} label={`${daysLeft} days until your target date for goal completion!`}/>
+            <Progress color='olive' percent={percent} label={`${daysLeft} ${daysLeft === 1 ? "day" : "days"} until your target date for goal completion!`}/>
           </div>
         </div>
       </div>

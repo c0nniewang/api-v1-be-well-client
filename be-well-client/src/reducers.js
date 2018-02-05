@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE} from './actions/types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE, ADD_GOAL} from './actions/types';
 
 const defaultState = { profile: {}, loading: false}
 const initialState = { currentUser: {} };
@@ -42,6 +42,8 @@ const goalsReducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_USER_INFO:
       return [...action.user.goals]
+    case ADD_GOAL:
+      return [...state, action.goal]
   default:
     return state
   }
