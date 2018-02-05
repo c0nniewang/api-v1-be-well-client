@@ -5,6 +5,9 @@ import Navbar from './Navbar'
 import withAuth from '../hocs/withAuth'
 import { Switch, Route, withRouter } from 'react-router-dom';
 import HomeContainer from './HomeContainer'
+import GoalsContainer from './GoalsContainer'
+import DailyUpdateForm from './DailyUpdateForm';
+
 
 
 
@@ -15,14 +18,21 @@ class MainContainer extends React.Component {
 
   render() {
     console.log('MAIN', this.props)
-    return (<div className="ui fluid container">
-      <div className="main">
-      <Navbar />
-      <Switch>
-        <HomeContainer />
-      </Switch>
-    </div>
-    </div>)
+    return (
+      <div className="ui fluid container">
+        <div className="main">
+        <Navbar />
+        <Switch>
+          <Route exact path="/profile" render={() => {
+            return <HomeContainer />
+          }} />
+          <Route exact path="/profile/goals" render={() => {
+                return <GoalsContainer />
+              }}/>
+          
+        </Switch>
+        </div>
+      </div>)
   }
 }
 

@@ -5,7 +5,6 @@ import DailyUpdateContainer from './DailyUpdateContainer'
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 
-
 class HomeContainer extends React.Component {
   render() {
     return (
@@ -14,12 +13,14 @@ class HomeContainer extends React.Component {
         <div className="ui raised very padded text container segment">
           <h2 className="ui header">Hi, {this.props.user.profile.name}.</h2>
             <Switch>
-              <Route exact path="/profile" render={() => {
-                return <DailyUpdateContainer />
-              }}/>
+
               <Route exact path="/profile/newUpdate" render={() => {
                 return <DailyUpdateForm />
               }} />
+
+              <Route exact path="/profile" render={() => {
+                return <DailyUpdateContainer />
+              }}/>
             </Switch>
           </div>
         </div>
@@ -33,10 +34,11 @@ class HomeContainer extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user, auth, goals, thoughts, updates}) => {
+const mapStateToProps = ({ user }) => {
   return {
     user: user
   }
 }
 
 export default connect(mapStateToProps)(HomeContainer)
+

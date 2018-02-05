@@ -59,6 +59,7 @@ class DailyUpdateForm extends React.Component {
   }
 
   render() {
+    console.log('in daily update form')
     const numArray = [...Array(11).keys()]
     const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
     return (

@@ -8,8 +8,8 @@ class GoalsContainer extends React.Component {
       return (
       <div>
         <p></p>
-        <h4 class="ui horizontal divider header">
-          <i class="star icon"></i>
+        <h4 className="ui horizontal divider header">
+          <i className="star icon"></i>
           Your Ongoing Goals
         </h4>
         <p></p>
