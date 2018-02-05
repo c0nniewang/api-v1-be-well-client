@@ -5,8 +5,9 @@ import Navbar from './Navbar'
 import withAuth from '../hocs/withAuth'
 import { Switch, Route, withRouter } from 'react-router-dom';
 import HomeContainer from './HomeContainer'
-import GoalsContainer from './GoalsContainer'
+// import GoalsContainer from './GoalsContainer'
 import DailyUpdateForm from './DailyUpdateForm';
+import MainGoalsContainer from './MainGoalsContainer'
 
 
 
@@ -17,7 +18,7 @@ class MainContainer extends React.Component {
   }
 
   render() {
-    console.log('MAIN', this.props)
+    console.log('MAIN')
     return (
       <div className="ui fluid container">
         <div className="main">
@@ -26,8 +27,8 @@ class MainContainer extends React.Component {
           <Route exact path="/profile" render={() => {
             return <HomeContainer />
           }} />
-          <Route exact path="/profile/goals" render={() => {
-                return <GoalsContainer />
+          <Route path="/profile/goals" render={() => {
+                return <MainGoalsContainer />
               }}/>
           
         </Switch>
@@ -46,4 +47,4 @@ const mapStateToProps = ({ user, auth, goals, thoughts, updates}) => {
   }
 }
 
-export default withAuth(connect(mapStateToProps, actions)(MainContainer))
+export default withRouter(withAuth(connect(mapStateToProps, actions)(MainContainer)))

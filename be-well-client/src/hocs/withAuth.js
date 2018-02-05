@@ -24,7 +24,7 @@ const withAuth = WrappedComponent => {
     }
 
     render() {
-      console.log(this.props)
+      console.log('in auth', this.props)
       if (this.state.authCompleted) {
         return this.props.loggedIn ? (
           <WrappedComponent {...this.props} />

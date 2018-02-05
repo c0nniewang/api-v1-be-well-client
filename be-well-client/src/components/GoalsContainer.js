@@ -4,7 +4,7 @@ import GoalsList from './GoalsList'
 
 class GoalsContainer extends React.Component {
     render() { 
-  console.log(this.props)
+  console.log('GOALS', this.props)
       return (
       <div>
         <p></p>
@@ -20,7 +20,7 @@ class GoalsContainer extends React.Component {
   }
 }
 
-const mapStateToProps = ({ goals}) => {
+const mapStateToProps = ({ goals }) => {
   return {
     goals
   }
