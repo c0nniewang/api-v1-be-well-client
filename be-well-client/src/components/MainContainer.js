@@ -24,6 +24,7 @@ class MainContainer extends React.Component {
       <div className="ui fluid container">
         <div className="main">
         <Navbar />
+
         <Switch>
           <Route exact path="/profile" render={() => {
             return <HomeContainer />

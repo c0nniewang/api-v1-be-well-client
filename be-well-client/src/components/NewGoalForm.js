@@ -51,7 +51,7 @@ class NewGoalForm extends React.Component {
       target_date: ''
     })
   }
-
+ 
   render() {
     return (
       <div>

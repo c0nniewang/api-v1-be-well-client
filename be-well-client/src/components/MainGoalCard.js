@@ -11,6 +11,8 @@ class MainGoalCard extends React.Component {
 
   const targetDate = this.props.goal.target_date
   const formattedDate = `${targetDate.slice(0, 4)}, ${targetDate.slice(5, 7)}, ${targetDate.slice(8, 10)}`
+
+  
   const target = new Date(formattedDate) //WHY DOESN"T THIS WORK????
   const targetMinutes = target.setMinutes(target.getMinutes() - target.getTimezoneOffset())
 
