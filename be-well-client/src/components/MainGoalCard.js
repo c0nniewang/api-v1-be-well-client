@@ -21,7 +21,7 @@ class MainGoalCard extends React.Component {
   const percent = (100 - (daysLeft / (totalDays + 1))* 100)
 
   // console.log(formattedDate, new Date(formattedDate), target)
-  console.log(totalDays, daysLeft, percent)
+  // console.log(totalDays, daysLeft, percent)
     return (
       <div className="item">
         <div className="content">

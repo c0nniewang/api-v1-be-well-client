@@ -8,6 +8,7 @@ import HomeContainer from './HomeContainer'
 // import GoalsContainer from './GoalsContainer'
 import DailyUpdateForm from './DailyUpdateForm';
 import MainGoalsContainer from './MainGoalsContainer'
+import ThoughtEntriesContainer from './ThoughtEntriesContainer'
 
 
 
@@ -28,8 +29,11 @@ class MainContainer extends React.Component {
             return <HomeContainer />
           }} />
           <Route path="/profile/goals" render={() => {
-                return <MainGoalsContainer />
-              }}/>
+              return <MainGoalsContainer />
+            }}/>
+          <Route path="/profile/thought-entries" render={() => {
+            return <ThoughtEntriesContainer />
+          }} />
           
         </Switch>
         </div>

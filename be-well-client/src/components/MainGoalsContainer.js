@@ -20,10 +20,25 @@ class MainGoalsContainer extends React.Component {
 
   render() {
     const { activeItem } = this.state
-    console.log("MAIN GOALS CONTAINER")
+
     const goals = this.props.goals.map( (goal, index) => <MainGoalCard key={index} goal={goal} />)
+    
+    let display;
+    if (this.state.activeItem === 'current') {
+      display = (<div className="ui divided items">
+          {goals}
+        </div>
+      )
+    } else if (this.state.activeItem === 'completed') {
+      display = (<div>placeholder</div>)
+    } else if (this.state.activeItem === 'new-goal') {
+      display = <NewGoalForm />
+    }
+  
     return (
-      <div className="container">
+      <div className="row">
+      <div className="three wide column"><p></p></div>
+      <div className="ten wide column">
         <h2 className="ui header">
           <i className="star icon"></i>
           <div className="content">
@@ -41,12 +56,9 @@ class MainGoalsContainer extends React.Component {
             </Menu.Item>
           </Menu.Menu>
         </Menu>
-
-        {activeItem === 'current' ? (<div className="ui divided items">
-          {goals}
-        </div>) : <NewGoalForm />}
-        
-
+        {display}
+      </div>
+      <div className="three wide column"><p></p></div>
       </div>
     )
   }
@@ -58,3 +70,6 @@ const mapStateToProps = ({ goals }) => {
 }
 
 export default connect(mapStateToProps)(MainGoalsContainer)
+        // {activeItem === 'current' ? (<div className="ui divided items">
+        //   {goals}
+        // </div>) : <NewGoalForm />}

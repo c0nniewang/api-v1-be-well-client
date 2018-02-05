@@ -13,8 +13,7 @@ class GoalsContainer extends React.Component {
           Your Ongoing Goals
         </h4>
         <p></p>
-        {this.props.goals ? <GoalsList goals={this.props.goals} /> : null}
-        
+        {this.props.goals ? <GoalsList goals={this.props.goals} /> : 'You do not have any goals at this time.'}
       </div>
     )
   }
