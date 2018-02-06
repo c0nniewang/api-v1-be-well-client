@@ -9,13 +9,14 @@ import GoalsContainer from './GoalsContainer'
 import DailyUpdateForm from './DailyUpdateForm';
 import MainGoalsContainer from './MainGoalsContainer'
 import ThoughtEntriesContainer from './ThoughtEntriesContainer'
+import ActivitiesContainer from './ActivitiesContainer'
 
 
 
 
 class MainContainer extends React.Component {
   componentDidMount() {
-   this.props.fetchUserInfo(1);
+   this.props.fetchUserInfo(this.props.id);
    this.props.fetchCognitiveDistortions();
   }
 
@@ -35,9 +36,12 @@ class MainContainer extends React.Component {
           <Route path="/profile/thought-entries" render={() => {
             return <ThoughtEntriesContainer />
           }} />
-           <Route exact path="/profile/newUpdate" render={() => {
+           <Route path="/profile/newUpdate" render={() => {
                 return <DailyUpdateForm />
               }} />
+          <Route path="/profile/your-activity" render={() => {
+            return <ActivitiesContainer />
+          }} />
         </Switch>
 
         </div>
@@ -45,26 +49,10 @@ class MainContainer extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user, auth, goals, thoughts, updates}) => {
+const mapStateToProps = ({ auth }) => {
   return {
-    user: user,
-    auth: auth,
-    goals: goals,
-    thoughts: thoughts,
-    updates: updates
+    id: auth.currentUser.id
   }
 }
 
 export default withRouter(withAuth(connect(mapStateToProps, actions)(MainContainer)))
-        // <Switch>
-        //   <Route exact path="/profile" render={() => {
-        //     return <HomeContainer />
-        //   }} />
-        //   <Route path="/profile/goals" render={() => {
-        //       return <MainGoalsContainer />
-        //     }}/>
-        //   <Route path="/profile/thought-entries" render={() => {
-        //     return <ThoughtEntriesContainer />
-        //   }} />
-          
-        // </Switch>
