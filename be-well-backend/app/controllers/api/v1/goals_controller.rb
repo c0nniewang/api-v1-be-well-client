@@ -25,13 +25,16 @@ class Api::V1::GoalsController < ApplicationController
   end
 
   def completed_goal
-    @goal = Goal.find(params[:id])
+    goal = Goal.find(params[:id])
 
-    @goal.completed = true
-    @goal.date_completed = Date.today
-    @goal.save
+    goal.completed = true
+    goal.date_completed = Date.today
 
-    render json: {message: "Success!", goalId: @goal.id}
+    if goal.save
+      render json: {message: "Success!", goalId: goal.id}
+    else
+      render json: {errors: goal.errors.full_messages}, status: 422
+    end
   end
 
   private

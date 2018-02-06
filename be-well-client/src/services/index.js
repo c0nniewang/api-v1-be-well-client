@@ -50,7 +50,15 @@ const newThoughtEntry = data => {
     method: 'POST',
     headers,
     body: JSON.stringify(data)
-  })
+  }).then(res => res.json())
+}
+
+const completedGoal = data => {
+  return fetch(`${API_ROOT}/completed`, {
+    method: 'PATCH',
+    headers,
+    body: JSON.stringify({id: data})
+  }).then(res => res.json())
 }
 
 export const adapter = {
@@ -64,7 +72,8 @@ export const adapter = {
   },
 
   goals: {
-    createGoal
+    createGoal,
+    completedGoal
   },
 
   cogDistortions: {

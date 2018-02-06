@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE, ADD_GOAL, ADD_COG_DIST} from './actions/types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE, ADD_GOAL, ADD_COG_DIST, ADD_THOT} from './actions/types';
 
 const defaultState = { profile: {}, loading: false}
 const initialState = { currentUser: {} };
+const goalsState = { active: [], completed: [] };
 
 const authReducer = (state = initialState, action) => {
   switch(action.type) {
@@ -38,10 +39,13 @@ const userReducer = (state = defaultState, action) => {
   }
 }
 
-const goalsReducer = (state = [], action) => {
+const goalsReducer = (state = goalsState, action) => {
   switch (action.type) {
     case FETCH_USER_INFO:
-      return [...action.user.goals]
+      debugger
+      const completed = action.user.goals.filter(goal => goal.completed === true)
+      const active = action.user.goals.filter(goal => goal.completed === false)
+      return {...state, active: active, completed: completed}
     case ADD_GOAL:
       return [...state, action.goal]
   default:
@@ -53,12 +57,14 @@ const thoughtsReducer = (state = [], action) => {
   switch(action.type) {
     case FETCH_USER_INFO:
       return [...action.user.thought_entries]
+    case ADD_THOT:
+      return [...state, action.thot]
     default:
       return state
   }
 }
 
-const updatesReducer = (state = [], action) => {
+const updatesReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_USER_INFO:
       return [...action.user.daily_updates]

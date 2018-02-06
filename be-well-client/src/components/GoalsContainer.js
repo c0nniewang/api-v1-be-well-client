@@ -6,7 +6,6 @@ import withAuth from '../hocs/withAuth'
 
 class GoalsContainer extends React.Component {
     render() { 
-  console.log('GOALS', this.props)
       return (
       <div>
         <p></p>

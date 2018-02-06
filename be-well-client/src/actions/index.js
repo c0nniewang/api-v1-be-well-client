@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE , ADD_GOAL, ADD_COG_DIST } from './types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE , ADD_GOAL, ADD_COG_DIST, ADD_THOT } from './types';
 import { adapter } from '../services';
 
 export const fetchUser = () => dispatch => {
@@ -70,4 +70,17 @@ export const newThoughtEntry = (data) => dispatch => {
   dispatch({ type: ASYNC_START });
 
   adapter.thoughts.newThoughtEntry(data)
+  .then(thought => {
+    dispatch({ type: ADD_THOT, thought})
+  })
+}
+
+export const completedGoal = (data) => dispatch => {
+  dispatch({ type: ASYNC_START });
+
+  adapter.goals.completedGoal(data)
+  .then(goal => {
+    debugger
+    // dispatch({ type: COMPLETE_GOAL, goal})
+  })
 }
