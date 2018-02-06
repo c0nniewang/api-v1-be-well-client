@@ -23,10 +23,10 @@ class MainContainer extends React.Component {
     console.log('MAIN')
     return (
       <div className="ui fluid container">
-        <div className="main">
         <Navbar />
+        <div className="main">
         <Switch>
-        <Route exact path="/profile" render={() => {
+        <Route exact path="/profile/home" render={() => {
           return <HomeContainer />
         }} />
         <Route path="/profile/goals" render={() => {

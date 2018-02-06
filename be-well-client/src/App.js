@@ -28,7 +28,6 @@ class App extends Component {
     return (
       <div className="App">
         <div className="main">
-        <Navbar />
         <Switch>
           <Route exact path="/login" render={() => {
             return <Login />

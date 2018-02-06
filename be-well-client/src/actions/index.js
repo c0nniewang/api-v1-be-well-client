@@ -18,7 +18,7 @@ export const loginUser = (email, password, history) => dispatch => {
     } else {
     localStorage.setItem('token', user.jwt)
     dispatch({ type: SET_CURRENT_USER, user})
-    history.push('/profile')
+    history.push('/profile/home')
     }
   })
 }
