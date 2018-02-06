@@ -19,9 +19,7 @@ class ThoughtEntriesContainer extends React.Component {
         </h2>
         <div className="ui stacked segment">
           <h3 className="ui header center aligned">
-          
             <ThoughtEntryForm />
-
           </h3>
         </div>
         {thots}

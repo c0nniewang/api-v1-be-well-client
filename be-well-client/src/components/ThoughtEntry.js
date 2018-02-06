@@ -15,7 +15,7 @@ class ThoughtEntry extends React.Component {
       smiley = (<i className="frown icon"></i>)
     } else if (thot.current_mood < 7) {
       smiley = (<i className="meh icon"></i>)
-    } else if (thot.current_mood < 10) {
+    } else if (thot.current_mood < 11) {
       smiley = (<i className="smile icon"></i>)
     }
     
