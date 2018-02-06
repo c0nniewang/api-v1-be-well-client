@@ -18,11 +18,11 @@ class MainGoalCard extends React.Component {
 
   const days = Math.round((today - createdMin) / (24*60*60*1000))
   const totalDays = Math.round((targetMinutes - createdMin) / (24*60*60*1000))
-  const daysLeft = totalDays - days
+  const daysLeft = (totalDays - days) + 1
 
-  const percent = (100 - (daysLeft / (totalDays + 1))* 100)
+  const percent = (100 - (daysLeft / (totalDays + 2))* 100)
 
-  console.log(formattedDate, new Date(formattedDate), target);
+  // console.log(formattedDate, new Date(formattedDate), target);
   // console.log(totalDays, daysLeft, percent)
     return (
       <div className="item">

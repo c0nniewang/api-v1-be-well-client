@@ -5,12 +5,15 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react'
 import * as actions from '../actions'
+import withAuth from '../hocs/withAuth'
+
 
 
 class HomeContainer extends React.Component {
 
   componentDidMount() {
    this.props.fetchUserInfo(1);
+   this.props.fetchCognitiveDistortions()
   }
 
   render() {
@@ -48,5 +51,5 @@ const mapStateToProps = ({ user }) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, actions)(HomeContainer))
+export default withAuth(withRouter(connect(mapStateToProps, actions)(HomeContainer)))
 

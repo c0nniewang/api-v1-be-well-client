@@ -52,15 +52,18 @@ ActiveRecord::Schema.define(version: 20180131182458) do
     t.string "relevance"
     t.date "target_date"
     t.integer "user_id"
+    t.boolean "completed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "thought_entries", force: :cascade do |t|
+    t.string "title"
     t.integer "current_mood"
     t.string "emotions"
     t.string "situation"
     t.string "negative_thoughts"
+    t.string "outcome"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

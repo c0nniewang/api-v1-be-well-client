@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import GoalsList from './GoalsList'
+import withAuth from '../hocs/withAuth'
+
 
 class GoalsContainer extends React.Component {
     render() { 
@@ -25,4 +27,4 @@ const mapStateToProps = ({ goals }) => {
   }
 }
 
-export default connect(mapStateToProps)(GoalsContainer)
+export default withAuth(connect(mapStateToProps)(GoalsContainer))

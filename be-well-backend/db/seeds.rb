@@ -18,7 +18,7 @@ CognitiveDistortion.create(title: "Fortune-telling", description: "You predict t
 DailyUpdate.create(energy_level: 5, mood_desc: "slightly stressed", mood_num: 6, day_desc: "start this project nao", grateful1: "surviving", grateful2: "sleep", grateful3: "people", sleep: 6, user_id: 1)
 
 
-ThoughtEntry.create(current_mood: 4, emotions: "tired, sleepy, stressed", situation: "starting this project", negative_thoughts: "avoidance of stress", user_id: 1)
+ThoughtEntry.create(current_mood: 4, emotions: "tired, sleepy, stressed", title: "asdfasdf", situation: "starting this project", negative_thoughts: "avoidance of stress", outcome: "^_^", user_id: 1)
 
 EntryDistortionJoin.create(cognitive_distortion_id: 1, thought_entry_id: 1)
 

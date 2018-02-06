@@ -9,6 +9,7 @@ class CreateGoals < ActiveRecord::Migration[5.1]
       t.string :relevance
       t.date :target_date
       t.integer :user_id
+      t.boolean :completed, default: false
 
       t.timestamps
     end

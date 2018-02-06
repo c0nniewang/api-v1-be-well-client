@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE, ADD_GOAL} from './actions/types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE, ADD_GOAL, ADD_COG_DIST} from './actions/types';
 
 const defaultState = { profile: {}, loading: false}
 const initialState = { currentUser: {} };
@@ -69,13 +69,22 @@ const updatesReducer = (state = [], action) => {
   }
 }
 
+const cogsReducer = (state = [], action) => {
+  switch (action.type) {
+    case ADD_COG_DIST:
+      return [...action.cog]
+    default:
+      return state
+  }
+}
 
 const rootReducer = combineReducers({
   auth: authReducer,
   user: userReducer,
   goals: goalsReducer,
   thoughts: thoughtsReducer,
-  updates: updatesReducer
+  updates: updatesReducer,
+  cogDistortions: cogsReducer,
 });
 
 export default rootReducer;

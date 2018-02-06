@@ -40,6 +40,11 @@ const createGoal = data => {
   }).then(res => res.json())
 }
 
+const fetchCognitiveDistortions = () => {
+  return fetch(`${API_ROOT}/cognitive_distortions`)
+  .then(res => res.json())
+}
+
 export const adapter = {
   auth: {
     login,
@@ -52,5 +57,9 @@ export const adapter = {
 
   goals: {
     createGoal
+  },
+
+  cogDistortions: {
+    fetchCognitiveDistortions
   }
 }

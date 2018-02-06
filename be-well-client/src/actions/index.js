@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE , ADD_GOAL} from './types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE , ADD_GOAL, ADD_COG_DIST } from './types';
 import { adapter } from '../services';
 
 export const fetchUser = () => dispatch => {
@@ -53,4 +53,15 @@ export const newGoal = (data) => dispatch => {
   .then(goal => {
     dispatch({ type: ADD_GOAL, goal})
   })
+}
+
+export const fetchCognitiveDistortions = () => {
+  return (dispatch) => {
+    dispatch({ type: 'ASYNC_START' });
+
+    adapter.cogDistortions.fetchCognitiveDistortions()
+    .then(cog => {
+      dispatch({ type: ADD_COG_DIST, cog})
+    })
+  }
 }
