@@ -14,6 +14,9 @@ CognitiveDistortion.create(title: "Mental Filter", description: " You pick out a
 CognitiveDistortion.create(title: "Discounting the Positive", description: "You reject positive experiences by insisting they 'don't count.' If you do a good job, you may tell yourself that it wasn’t good enough or that anyone could have done as well. Discounting the positive takes the joy out of life and makes you feel inadequate and unrewarded.")
 CognitiveDistortion.create(title: "Mind Reading", description: "Without checking it out, you arbitrarily conclude that someone is reacting negatively to you.")
 CognitiveDistortion.create(title: "Fortune-telling", description: "You predict that things will turn out badly.")
+CognitiveDistortion.create(title: "Magnification", description: " You exaggerate the importance of your problems and shortcomings, or you minimize the importance of your desirable qualities. This is also called the “binocular trick.")
+CognitiveDistortion.create(title: "Emotional Reasoning", description: "You assume that your negative emotions necessarily reflect the way things really are: 'I feel guilty. I must be a terrible person.'")
+
 
 DailyUpdate.create(energy_level: 5, mood_desc: "slightly stressed", mood_num: 6, day_desc: "start this project nao", grateful1: "surviving", grateful2: "sleep", grateful3: "people", sleep: 6, user_id: 1)
 

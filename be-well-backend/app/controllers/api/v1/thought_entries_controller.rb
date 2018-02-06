@@ -5,8 +5,15 @@ class Api::V1::ThoughtEntriesController < ApplicationController
   end
 
   def create
-    thought_entry = ThoughtEntry.new(thought_entry_params)
+    debugger
+    thought_entry = ThoughtEntry.new(thought_entry_params["thought_entry"])
     if thought_entry.save
+      cogDistortions = thought_entry_params["cognitive_distortions"]
+
+      cogDistortions.each do |cog|
+        thought_entry.cognitive_distortions << CognitiveDistortion.find(cog)
+      end
+
       render json: thought_entry, status: 201
     else
       render json: {message: "Please try again"}, status: 400
@@ -26,6 +33,6 @@ class Api::V1::ThoughtEntriesController < ApplicationController
 
   private
   def thought_entry_params
-    params.permit(:name, :phone, :email, :password)
+    params.permit(thought_entry: [:title, :current_mood, :emotions, :situation, :negative_thoughts, :outcome, :user_id], cognitive_distortions: [])
   end
 end

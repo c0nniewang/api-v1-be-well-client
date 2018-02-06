@@ -45,6 +45,14 @@ const fetchCognitiveDistortions = () => {
   .then(res => res.json())
 }
 
+const newThoughtEntry = data => {
+  return fetch(`${API_ROOT}/thought_entries`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(data)
+  })
+}
+
 export const adapter = {
   auth: {
     login,
@@ -61,5 +69,9 @@ export const adapter = {
 
   cogDistortions: {
     fetchCognitiveDistortions
+  },
+
+  thoughts: {
+    newThoughtEntry
   }
 }

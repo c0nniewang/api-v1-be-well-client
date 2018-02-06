@@ -14,7 +14,8 @@ class ThoughtEntryForm extends React.Component {
       emotions: '',
       negative_thoughts: '',
       outcome: '',
-      cognitive_distortions: []
+      cognitive_distortions: [],
+      current_mood: ''
     }
   }
 
@@ -25,16 +26,23 @@ class ThoughtEntryForm extends React.Component {
   }
 
   handleDropChange = (value, key) => {
-    console.log("value", value, "key", key)
     this.setState({
       [key]: value
     })
   }
 
-  render() {
-    console.log(this.state)
+  handleSubmit = (ev) => {
+    ev.preventDefault()
 
+    console.log(this.state)
+    this.props.newThoughtEntry({...this.state, user_id: this.props.id})
+  }
+
+  render() {
     const cogOptions= this.props.cogDistortions.map( cog => ({key: cog.id, text: cog.title, value: cog.id}))
+
+    const numArray = [...Array(11).keys()]
+    const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
 
     return (
     <Modal trigger={<Button>
@@ -43,7 +51,7 @@ class ThoughtEntryForm extends React.Component {
       </Button>}>
       <Modal.Header><Icon name="cloud" /> New Thought Entry</Modal.Header>
       <Modal.Content >
-        <form className="ui form" onSubmit={this.handleSubmit}>
+        <form className="ui form">
           <div className="field">
             <label>Title</label>
             <input 
@@ -69,6 +77,15 @@ class ThoughtEntryForm extends React.Component {
             onChange={this.handleChange}
             value={this.state.emotions}
             name="emotions"
+            />
+          </div>
+          <div className="field">
+            <label>On a scale from 1-10, with 1 being the least positive, and 10 being the most positive, how would you rate your current mood?</label>
+            <Dropdown 
+            placeholder="Select Number" 
+            fluid selection options={numberOptions}
+            onChange={(e, {value}) => {this.handleDropChange(value, 'current_mood')}}
+            value={this.state.current_mood}
             />
           </div>
           <div className="field">
@@ -98,12 +115,10 @@ class ThoughtEntryForm extends React.Component {
             name="outcome"
             />
           </div>
-
         </form>
-
       </Modal.Content>
       <Modal.Actions>
-        <Button positive>
+        <Button positive onClick={this.handleSubmit}>
           Submit <Icon name="right chevron" />
         </Button>
       </Modal.Actions>

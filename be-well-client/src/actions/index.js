@@ -65,3 +65,9 @@ export const fetchCognitiveDistortions = () => {
     })
   }
 }
+
+export const newThoughtEntry = (data) => dispatch => {
+  dispatch({ type: ASYNC_START });
+
+  adapter.thoughts.newThoughtEntry(data)
+}
