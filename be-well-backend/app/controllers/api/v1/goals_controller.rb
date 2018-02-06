@@ -24,6 +24,16 @@ class Api::V1::GoalsController < ApplicationController
     end
   end
 
+  def completed_goal
+    @goal = Goal.find(params[:id])
+
+    @goal.completed = true
+    @goal.date_completed = Date.today
+    @goal.save
+
+    render json: {message: "Success!", goalId: @goal.id}
+  end
+
   private
   def goal_params
     params.permit(:title, :action1, :action2, :action3, :attainable, :relevance, :target_date, :user_id)

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :cognitive_distortions, only: [:index]
       post '/login', to: 'auth#create'
       get '/current_user', to: 'auth#show'
+      patch 'completed', to: 'goals#completed_goal'
     end
   end
 end
