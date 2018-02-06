@@ -7,11 +7,29 @@ class ThoughtEntry extends React.Component {
           <i className="comments"></i>{cog.title}
         </div>)
     })
+
+    const thot = this.props.thot
+
+    let smiley
+    if (thot.current_mood < 4) {
+      smiley = (<i className="frown icon"></i>)
+    } else if (thot.current_mood < 7) {
+      smiley = (<i className="meh icon"></i>)
+    } else if (thot.current_mood < 10) {
+      smiley = (<i className="smile icon"></i>)
+    }
     return (
       <div className="ui stacked segment">
-      <h3>{new Date(this.props.thot.created_at).toDateString()}</h3>
+      <h2 className="ui header">
+        {smiley}
+        <div className="content">
+        {new Date(this.props.thot.created_at).toDateString()}
+        </div></h2>
       <div className="ui divider"></div>
-        {this.props.thot.situation}<br />
+        {thot.situation}<br />
+        {thot.emotions}<br />
+        {thot.negative_thoughts}<br />
+        {smiley}
         <div className="ui divider"></div>
         {labels}
         </div>

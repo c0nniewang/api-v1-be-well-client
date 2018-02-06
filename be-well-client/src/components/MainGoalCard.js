@@ -12,7 +12,7 @@ class MainGoalCard extends React.Component {
   const targetDate = this.props.goal.target_date
   const formattedDate = `${targetDate.slice(0, 4)}, ${targetDate.slice(5, 7)}, ${targetDate.slice(8, 10)}`
 
-  
+
   const target = new Date(formattedDate) //WHY DOESN"T THIS WORK????
   const targetMinutes = target.setMinutes(target.getMinutes() - target.getTimezoneOffset())
 
@@ -27,7 +27,7 @@ class MainGoalCard extends React.Component {
     return (
       <div className="item">
         <div className="content">
-          <div className="header">Title: {this.props.goal.title}</div>
+          <div className="header">Goal: {this.props.goal.title}</div>
           <div className="meta">Date created: {created.toDateString()}</div>
           <div className="description">
             <b>Your 3 action steps you'll take to reaching this goal: </b><br />
