@@ -11,6 +11,8 @@ import MainGoalsContainer from './components/MainGoalsContainer'
 import ThoughtEntriesContainer from './components/ThoughtEntriesContainer'
 import Login from './components/Login'
 import HomeContainer from './components/HomeContainer'
+import DailyUpdateForm from './components/DailyUpdateForm'
+
 
 class App extends Component {
   componentDidMount() {
@@ -40,7 +42,9 @@ class App extends Component {
           <Route path="/profile/thought-entries" render={() => {
             return <ThoughtEntriesContainer />
           }} />
-          
+           <Route exact path="/profile/newUpdate" render={() => {
+                return <DailyUpdateForm />
+              }} />
         </Switch>
         </div>
       </div>

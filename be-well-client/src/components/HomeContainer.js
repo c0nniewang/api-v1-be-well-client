@@ -1,8 +1,7 @@
 import React from 'react';
-import DailyUpdateForm from './DailyUpdateForm';
 import GoalsContainer from './GoalsContainer';
 import DailyUpdateContainer from './DailyUpdateContainer'
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react'
 import * as actions from '../actions'
@@ -31,11 +30,6 @@ class HomeContainer extends React.Component {
         <div className="ui raised very padded text container segment">
           <h2 className="ui header">Hi, {this.props.user.profile.name}.</h2>
           <DailyUpdateContainer />
-            <Switch>
-              <Route exact path="/profile/newUpdate" render={() => {
-                return <DailyUpdateForm />
-              }} />
-            </Switch>
           </div>
         </div>
         <div className="row">
