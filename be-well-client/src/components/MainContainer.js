@@ -4,11 +4,11 @@ import * as actions from '../actions'
 import Navbar from './Navbar'
 import withAuth from '../hocs/withAuth'
 import { Switch, Route, withRouter } from 'react-router-dom';
-// import HomeContainer from './HomeContainer'
-// import GoalsContainer from './GoalsContainer'
-// import DailyUpdateForm from './DailyUpdateForm';
-// import MainGoalsContainer from './MainGoalsContainer'
-// import ThoughtEntriesContainer from './ThoughtEntriesContainer'
+import HomeContainer from './HomeContainer'
+import GoalsContainer from './GoalsContainer'
+import DailyUpdateForm from './DailyUpdateForm';
+import MainGoalsContainer from './MainGoalsContainer'
+import ThoughtEntriesContainer from './ThoughtEntriesContainer'
 
 
 
@@ -16,6 +16,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 class MainContainer extends React.Component {
   componentDidMount() {
    this.props.fetchUserInfo(1);
+   this.props.fetchCognitiveDistortions();
   }
 
   render() {
@@ -24,6 +25,20 @@ class MainContainer extends React.Component {
       <div className="ui fluid container">
         <div className="main">
         <Navbar />
+        <Switch>
+        <Route exact path="/profile" render={() => {
+          return <HomeContainer />
+        }} />
+        <Route path="/profile/goals" render={() => {
+              return <MainGoalsContainer />
+            }}/>
+          <Route path="/profile/thought-entries" render={() => {
+            return <ThoughtEntriesContainer />
+          }} />
+           <Route exact path="/profile/newUpdate" render={() => {
+                return <DailyUpdateForm />
+              }} />
+        </Switch>
 
         </div>
       </div>)

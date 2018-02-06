@@ -11,12 +11,13 @@ import withAuth from '../hocs/withAuth'
 
 class HomeContainer extends React.Component {
 
-  componentDidMount() {
-   this.props.fetchUserInfo(1);
-   this.props.fetchCognitiveDistortions()
-  }
+  // componentDidMount() {
+  //  this.props.fetchUserInfo(1);
+  //  this.props.fetchCognitiveDistortions()
+  // }
 
   render() {
+    console.log(this.props)
     return (
     <div className="ui middle aligned stackable grid container">
       <div className="row">
@@ -51,5 +52,5 @@ const mapStateToProps = ({ user }) => {
   }
 }
 
-export default withAuth(withRouter(connect(mapStateToProps, actions)(HomeContainer)))
+export default (connect(mapStateToProps, actions)(HomeContainer))
 

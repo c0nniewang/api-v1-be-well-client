@@ -33,18 +33,10 @@ class App extends Component {
           <Route exact path="/login" render={() => {
             return <Login />
           }} />
-          <Route exact path="/profile" render={() => {
-            return <HomeContainer />
+          <Route path="/profile" render={() => {
+            return <MainContainer />
           }} />
-          <Route path="/profile/goals" render={() => {
-              return <MainGoalsContainer />
-            }}/>
-          <Route path="/profile/thought-entries" render={() => {
-            return <ThoughtEntriesContainer />
-          }} />
-           <Route exact path="/profile/newUpdate" render={() => {
-                return <DailyUpdateForm />
-              }} />
+          
         </Switch>
         </div>
       </div>

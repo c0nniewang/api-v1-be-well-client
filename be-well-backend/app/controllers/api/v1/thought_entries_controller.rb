@@ -5,7 +5,6 @@ class Api::V1::ThoughtEntriesController < ApplicationController
   end
 
   def create
-    debugger
     thought_entry = ThoughtEntry.new(thought_entry_params["thought_entry"])
     if thought_entry.save
       cogDistortions = thought_entry_params["cognitive_distortions"]

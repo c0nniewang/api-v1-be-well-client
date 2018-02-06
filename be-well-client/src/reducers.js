@@ -69,7 +69,7 @@ const thoughtsReducer = (state = [], action) => {
     case FETCH_USER_INFO:
       return [...action.user.thought_entries]
     case ADD_THOT:
-      return [...state, action.thot]
+      return [...state, action.thought]
     default:
       return state
   }

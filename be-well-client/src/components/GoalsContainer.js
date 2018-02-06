@@ -10,11 +10,12 @@ class GoalsContainer extends React.Component {
       <div>
         <p></p>
         <h4 className="ui horizontal divider header">
-          <i className="star icon"></i>
+          <i className="star icon" color="olive"></i>
           Your Ongoing Goals
         </h4>
         <p></p>
-        {this.props.goals ? <GoalsList goals={this.props.goals} /> : 'You do not have any goals at this time.'}
+        {this.props.goals ? <GoalsList goals={this.props.goals} /> 
+        : 'You do not have any goals at this time.'}
       </div>
     )
   }
@@ -26,4 +27,4 @@ const mapStateToProps = ({ goals }) => {
   }
 }
 
-export default withAuth(connect(mapStateToProps)(GoalsContainer))
+export default (connect(mapStateToProps)(GoalsContainer))
