@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import MainGoalCard from './MainGoalCard'
 import { Menu } from 'semantic-ui-react'
 import NewGoalForm from './NewGoalForm'
+import CompletedGoalCard from './CompletedGoalCard'
 
 class MainGoalsContainer extends React.Component {
   constructor() {
@@ -20,8 +21,8 @@ class MainGoalsContainer extends React.Component {
 
   render() {
     const { activeItem } = this.state
-
-    const goals = this.props.goals.map( (goal, index) => <MainGoalCard key={index} goal={goal} />)
+    const goals = this.props.goals.active.map( (goal, index) => <MainGoalCard key={index} goal={goal} />)
+    const completedGoals = this.props.goals.completed.map((goal, index) => <CompletedGoalCard key={index} goal={goal} />)
     
     let display;
     if (this.state.activeItem === 'current') {
@@ -30,7 +31,10 @@ class MainGoalsContainer extends React.Component {
         </div>
       )
     } else if (this.state.activeItem === 'completed') {
-      display = (<div>placeholder</div>)
+      display = (<div className="ui divided items">
+        {completedGoals}
+        </div>
+      )
     } else if (this.state.activeItem === 'new-goal') {
       display = <NewGoalForm />
     }
