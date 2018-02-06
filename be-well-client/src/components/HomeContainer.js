@@ -1,20 +1,13 @@
 import React from 'react';
 import GoalsContainer from './GoalsContainer';
 import DailyUpdateContainer from './DailyUpdateContainer'
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react'
 import * as actions from '../actions'
-import withAuth from '../hocs/withAuth'
 
 
 
 class HomeContainer extends React.Component {
-
-  // componentDidMount() {
-  //  this.props.fetchUserInfo(1);
-  //  this.props.fetchCognitiveDistortions()
-  // }
 
   render() {
     console.log(this.props)

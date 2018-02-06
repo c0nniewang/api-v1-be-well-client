@@ -3,8 +3,6 @@ import React from 'react'
 import { connect } from 'react-redux';
 import * as actions from '../actions'
 import { withRouter } from 'react-router-dom';
-import DayPickerInput from 'react-day-picker/DayPickerInput'
-import DayPicker from 'react-day-picker'
 
 
 
@@ -110,9 +108,12 @@ class NewGoalForm extends React.Component {
           <div className="field">
             <label>Set a deadline for yourself to achieve this goal. When do you aim to reach your goal by?</label>
               <div>
-                {this.state.target_date && <p>Day: {this.state.target_date.toLocaleDateString()}</p>}
-                {!this.state.target_date && <p>Choose a day:</p>}
-                <DayPickerInput onDayChange={this.handleDayChange} />
+                <input type="date"
+                onChange={this.handleChange}
+                value={this.state.target_date}
+                name="target_date"
+                >
+                </input>
               </div>
           </div><br />
           <button className="ui button left floated positive" type="submit">Submit</button>

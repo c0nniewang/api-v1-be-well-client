@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, Icon, Header, Dropdown } from 'semantic-ui-react';
+import { Modal, Button, Icon, Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 

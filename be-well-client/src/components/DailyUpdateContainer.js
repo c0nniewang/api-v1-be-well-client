@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Message } from 'semantic-ui-react'
-import { Route, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 
 class DailyUpdateContainer extends React.Component {

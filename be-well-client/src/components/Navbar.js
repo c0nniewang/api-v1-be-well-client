@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import * as actions from '../actions'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
 
 class Navbar extends React.Component {
@@ -51,24 +51,3 @@ const mapStateToProps = ({ user }) => {
 }
 
 export default withRouter(connect(mapStateToProps, actions)(Navbar))
-        // <Link to="/profile" className="active item">
-        //     <div className="content">Home</div>
-        // </Link>
-        // <Link to="/profile/activity">
-        //   <div className="item">Your Activity</div>
-        // </Link>
-        // <Link to="/profile/goals">
-        //   <div className="item">Goals</div>
-        // </Link>
-        // <Link to="/profile/thought-entries">
-        //   <div className="item">Thoughts</div>
-        // </Link>
-        // <div className="right menu">
-        //   <div className="item">Welcome, {this.props.name}</div>
-        //   <div className="right aligned item">
-        //     <div 
-        //     className="ui floated button"
-        //     onClick={() => this.props.logoutUser()}>
-        //       Log Out
-        //     </div>
-        //   </div>

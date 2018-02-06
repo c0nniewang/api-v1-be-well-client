@@ -1,5 +1,5 @@
 import React from 'react'
-import { Progress, Button } from 'semantic-ui-react'
+import { Progress } from 'semantic-ui-react'
 
 class MainGoalCard extends React.Component {
   handleDoneClick = (id) => {
