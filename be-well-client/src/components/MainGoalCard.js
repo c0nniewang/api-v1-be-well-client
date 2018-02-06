@@ -1,7 +1,11 @@
 import React from 'react'
-import { Progress } from 'semantic-ui-react'
+import { Progress, Button } from 'semantic-ui-react'
 
 class MainGoalCard extends React.Component {
+  handleDoneClick = (id) => {
+    this.props.completedGoal(id)
+  }
+  
   render() {
   let today = new Date()
   today = today.setMinutes(today.getMinutes() - today.getTimezoneOffset())
@@ -45,6 +49,14 @@ class MainGoalCard extends React.Component {
             {new Date(formattedDate).toDateString()}<br />
             <p></p>
             <Progress color='olive' percent={percent} label={`${daysLeft} ${daysLeft === 1 ? "day" : "days"} until your target date for goal completion!`}/>
+          </div>
+          <div className="extra content">
+            <button className="ui button">Edit Goal</button>
+            <span className="right floated">
+              <button className="ui icon button positive" onClick={() => this.handleDoneClick(this.props.goal.id)}>
+                <i className="check icon"></i>
+              </button>
+            </span>
           </div>
         </div>
       </div>

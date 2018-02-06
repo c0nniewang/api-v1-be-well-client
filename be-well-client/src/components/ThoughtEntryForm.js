@@ -63,8 +63,8 @@ class ThoughtEntryForm extends React.Component {
           </div>
           <div className="field">
             <label>What happened?</label>
-            <input 
-            type="text" 
+            <textarea 
+            rows="3" 
             onChange={this.handleChange}
             value={this.state.situation}
             name="situation"
@@ -90,8 +90,8 @@ class ThoughtEntryForm extends React.Component {
           </div>
           <div className="field">
             <label>Were there any negative thoughts that immediately came to mind? If so, what were they?</label>
-            <input 
-            type="text" 
+            <textarea 
+            rows="3" 
             onChange={this.handleChange}
             value={this.state.negative_thoughts}
             name="negative_thoughts"
@@ -108,8 +108,8 @@ class ThoughtEntryForm extends React.Component {
           </div>
           <div className="field">
             <label>What was the outcome of the situation? Is there anything you wish you could have handled differently?</label>
-            <input 
-            type="text" 
+            <textarea 
+            rows="3" 
             onChange={this.handleChange}
             value={this.state.outcome}
             name="outcome"
