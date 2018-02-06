@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 import * as actions from './actions'
 import { connect } from 'react-redux';
-// import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import Navbar from './components/Navbar'
+
 import MainContainer from './components/MainContainer'
+// import DailyUpdateForm from './DailyUpdateForm';
+import MainGoalsContainer from './components/MainGoalsContainer'
+import ThoughtEntriesContainer from './components/ThoughtEntriesContainer'
+import Login from './components/Login'
+import HomeContainer from './components/HomeContainer'
 
 class App extends Component {
   componentDidMount() {
@@ -19,7 +26,22 @@ class App extends Component {
     return (
       <div className="App">
         <div className="main">
-        <MainContainer />
+        <Navbar />
+        <Switch>
+          <Route exact path="/login" render={() => {
+            return <Login />
+          }} />
+          <Route exact path="/profile" render={() => {
+            return <HomeContainer />
+          }} />
+          <Route path="/profile/goals" render={() => {
+              return <MainGoalsContainer />
+            }}/>
+          <Route path="/profile/thought-entries" render={() => {
+            return <ThoughtEntriesContainer />
+          }} />
+          
+        </Switch>
         </div>
       </div>
     );
@@ -32,4 +54,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, actions)(App);
+export default withRouter(connect(mapStateToProps, actions)(App));

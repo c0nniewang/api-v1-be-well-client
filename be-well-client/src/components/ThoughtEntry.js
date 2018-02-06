@@ -18,6 +18,7 @@ class ThoughtEntry extends React.Component {
     } else if (thot.current_mood < 10) {
       smiley = (<i className="smile icon"></i>)
     }
+    
     return (
       <div className="ui stacked segment">
       <h2 className="ui header">
@@ -29,7 +30,6 @@ class ThoughtEntry extends React.Component {
         {thot.situation}<br />
         {thot.emotions}<br />
         {thot.negative_thoughts}<br />
-        {smiley}
         <div className="ui divider"></div>
         {labels}
         </div>

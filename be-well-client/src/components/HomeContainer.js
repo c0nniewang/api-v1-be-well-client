@@ -5,9 +5,15 @@ import DailyUpdateContainer from './DailyUpdateContainer'
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react'
+import * as actions from '../actions'
 
 
 class HomeContainer extends React.Component {
+
+  componentDidMount() {
+   this.props.fetchUserInfo(1);
+  }
+
   render() {
     return (
     <div className="ui middle aligned stackable grid container">
@@ -48,5 +54,5 @@ const mapStateToProps = ({ user }) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(HomeContainer))
+export default withRouter(connect(mapStateToProps, actions)(HomeContainer))
 
