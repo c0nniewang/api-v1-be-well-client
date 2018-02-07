@@ -1,5 +1,5 @@
 import React from 'react'
-import { VictoryGroup, VictoryChart, VictoryScatter, VictoryAxis, VictoryLine, VictoryPie, VictoryLabel} from 'victory'
+import { VictoryGroup, VictoryChart, VictoryScatter, VictoryAxis, VictoryLine, VictoryPie, VictoryLabel, VictoryArea, VictoryTooltip} from 'victory'
 import { connect } from 'react-redux'
 
 class Chart extends React.Component {
@@ -33,11 +33,16 @@ class Chart extends React.Component {
       return ({ x: date, y: update.sleep})
     })
 
+    const completedGoals = this.props.goals.completed.map(goal => {
+      const date = new Date(goal.date_completed)
+      return ({ x: date, y: 10, symbol: "star"})
+    })
+
     // console.log(thoughtData, dailyEnergy, dailyMood, sleep)
-    console.log(completed, totalGoals)
+
     return (
     <div className="ui two column stackable grid container">
-      <div className="column center aligned">
+      <div className="six wide column center aligned">
         <h3>Goals Progress</h3>
         <svg viewBox="0 0 400 400">
         <VictoryPie
@@ -59,49 +64,81 @@ class Chart extends React.Component {
         />
         </svg>
       </div>
-      <div className="column center aligned">
+      <div className="ten wide column column center aligned">
         <h3>Your Activity</h3>
         <VictoryChart>
           <VictoryGroup
             scale={{x: 'time', y: 'linear'}}
+            style={{
+              data: { strokeWidth: 2}
+            }}
             >
-            <VictoryLine 
-              style={{data: { stroke: "#c43a31"}}}
-              data={dailyEnergy} />
-            <VictoryScatter 
-              style={{data: { stroke: "#c43a31" }}}
+            <VictoryArea 
+              style={{data: { stroke: "orange", fill: "orange", fillOpacity: 0.4 }}}
               data={dailyEnergy}
               />
-            <VictoryLine 
-              style={{data: { stroke: "#CB5599"}}}
-              data={dailyMood} />
             <VictoryScatter 
-              style={{data: { stroke: "#CB5599" }}}
-              data={dailyMood}
+              style={{data: { stroke: "orange" }}}
+              data={dailyEnergy}
+              size={(datum, active) => active ? 5 : 3}
+              labels={(d) => `energy level: ${d.y}`}
+              labelComponent={<VictoryTooltip />}
               />
-            <VictoryLine 
-              style={{data: { stroke: "#5E6063"}}}
+            <VictoryArea 
+              style={{data: { stroke: "cyan", fill: "cyan", fillOpacity: 0.4 }}}
+              data={dailyMood} />
+            <VictoryScatter
+              style={{
+                data: { stroke: "cyan" }
+              }}
+              data={dailyMood}
+              size={(datum, active) => active ? 5 : 3}
+              labels={(d) => `mood: ${d.y}`}
+              labelComponent={<VictoryTooltip />}
+              />
+            <VictoryArea 
+              style={{data: { stroke: "gold", fill: "gold", fillOpacity: 0.4 }}}
               data={sleep} />
             <VictoryScatter 
-              style={{data: { stroke: "#5E6063" }}}
+              style={{data: { stroke: "gold" }}}
               data={sleep}
+              size={(datum, active) => active ? 5 : 3}
+              labels={(d) => `sleep: ${d.y}`}
+              labelComponent={<VictoryTooltip />}
               />
             <VictoryScatter 
               data={thoughtData}
               style={{
-                data: { stroke: "#5E6063" },
-                labels: { fill: "white", fontSize: 10}}
+                data: { stroke: "tomato", fill: "tomato" },
+                labels: { fill: "tomato" }}
                 }
               labels={ (datum) => datum.y}
               labelComponent={<VictoryLabel dy={14} />}
-              size={7}
+              size={3}
+              // size={(datum, active) => active ? 5 : 7}
+              labels={(d) => `thought entry mood: ${d.y}`}
+              labelComponent={<VictoryTooltip />}
+              />
+            <VictoryScatter 
+              data={completedGoals}
+              style={{
+                data: { stroke: "magenta", fill: "magenta" },
+                labels: { fill: "tomato" }}
+                }
+              labels={ (datum) => datum.y}
+              labelComponent={<VictoryLabel dy={14} />}
+              size={3}
+              // size={(datum, active) => active ? 5 : 7}
+              labels={(d) => `Goal Completed!`}
+              labelComponent={<VictoryTooltip />}
               />
           </VictoryGroup>
           {/* Shared axis (time) */}
           <VictoryAxis
             fixLabelOverlap
             scale="time"
-            tickFormat={(x) => new Date(x).toLocaleDateString()}
+            tickFormat={(x) => new Date(x).toDateString()}
+            // tickValues={(x) => new Date(x).toDateString()}
             // label="Date"
             />
           <VictoryAxis 
