@@ -100,10 +100,13 @@ class Chart extends React.Component {
               style={{data: { stroke: "gold", fill: "gold", fillOpacity: 0.4 }}}
               data={sleep} />
             <VictoryScatter 
-              style={{data: { stroke: "gold" }}}
+              style={{
+                data: { stroke: "gold" },
+                labels: { size: 11 }
+              }}
               data={sleep}
               size={(datum, active) => active ? 5 : 3}
-              labels={(d) => `sleep: ${d.y}`}
+              labels={(d) => `sleep: ${d.y} hours`}
               labelComponent={<VictoryTooltip />}
               />
             <VictoryScatter 

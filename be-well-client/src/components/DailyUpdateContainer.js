@@ -10,6 +10,7 @@ class DailyUpdateContainer extends React.Component {
 
     const currentDateTime = new Date()
     // ISO time is 5 hours ahead of EST - should account for local time
+    // on first load - state is not being updated
     if (props.mostRecentUpdate) {
       const value = props.mostRecentUpdate.created_at.slice(0, 10) < currentDateTime.toISOString().slice(0, 10)
       this.state = {

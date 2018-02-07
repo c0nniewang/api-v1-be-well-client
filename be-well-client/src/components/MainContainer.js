@@ -39,7 +39,7 @@ class MainContainer extends React.Component {
            <Route path="/profile/newUpdate" render={() => {
                 return <DailyUpdateForm />
               }} />
-          <Route path="/profile/your-activity" render={() => {
+          <Route path="/profile/dashboard" render={() => {
             return <ActivitiesContainer />
           }} />
         </Switch>

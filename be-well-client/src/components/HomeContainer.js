@@ -30,7 +30,7 @@ class HomeContainer extends React.Component {
           </div>
         </div>
         <div className="row">
-        <div className="fourteen wide column">
+        <div className="fourteen wide column center">
           <GoalsContainer />
         </div>
       </div>
