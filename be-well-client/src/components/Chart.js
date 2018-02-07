@@ -5,13 +5,6 @@ import { connect } from 'react-redux'
 class Chart extends React.Component {
   render() {
     console.log("CHART", this.props)
-    // formatting data for chart data
-    const completed = this.props.goals.completed.length
-    const totalGoals = this.props.goals.active.length + completed
-    const compRatio = completed / totalGoals * 100
-    const totalRatio = 100 - compRatio
-
-    const goalsData = [{x: "Goals Completed", y: compRatio}, {x: "Total Goals", y: totalRatio}]
 
     const thoughtData = this.props.thoughts.map(thought => {
       const date = new Date(thought.created_at)
@@ -41,29 +34,6 @@ class Chart extends React.Component {
     // console.log(thoughtData, dailyEnergy, dailyMood, sleep)
 
     return (
-    <div className="ui two column stackable grid container">
-      <div className="six wide column center aligned">
-        <h3>Goals Progress</h3>
-        <svg viewBox="0 0 400 400">
-        <VictoryPie
-          // width={400} height={400}
-          standalone={false}
-          height={300} height={300}
-          data={goalsData}
-          colorScale={["#49C6B7", "#5E6063"]}
-          innerRadius={115} 
-          style={{
-           labels: {fontSize: 0}
-          }}
-        />
-        <VictoryLabel
-          textAnchor="middle"
-          style={{ fontSize: 20 }}
-          x={200} y ={150}
-          text={`${completed} of ${totalGoals} completed`}
-        />
-        </svg>
-      </div>
       <div className="ten wide column column center aligned">
         <h3>Your Activity</h3>
         <VictoryChart>
@@ -150,7 +120,6 @@ class Chart extends React.Component {
           />
         </VictoryChart>
       </div>
-    </div>
     )
   }
 }
