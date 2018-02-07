@@ -1,10 +1,10 @@
 import React from 'react'
-import { VictoryGroup, VictoryChart, VictoryScatter, VictoryAxis, VictoryLine, VictoryPie, VictoryLabel, VictoryArea, VictoryTooltip} from 'victory'
+import { VictoryGroup, VictoryChart, VictoryScatter, VictoryAxis, VictoryArea, VictoryTooltip} from 'victory'
 import { connect } from 'react-redux'
 
 class Chart extends React.Component {
   render() {
-    console.log("CHART", this.props)
+    // console.log("CHART", this.props)
 
     const thoughtData = this.props.thoughts.map(thought => {
       const date = new Date(thought.created_at)
@@ -85,8 +85,8 @@ class Chart extends React.Component {
                 data: { stroke: "tomato", fill: "tomato" },
                 labels: { fill: "tomato" }}
                 }
-              labels={ (datum) => datum.y}
-              labelComponent={<VictoryLabel dy={14} />}
+              // labels={ (datum) => datum.y}
+              // labelComponent={<VictoryLabel dy={14} />}
               size={3}
               // size={(datum, active) => active ? 5 : 7}
               labels={(d) => `thought entry mood: ${d.y}`}
@@ -98,8 +98,8 @@ class Chart extends React.Component {
                 data: { stroke: "magenta", fill: "magenta" },
                 labels: { fill: "tomato" }}
                 }
-              labels={ (datum) => datum.y}
-              labelComponent={<VictoryLabel dy={14} />}
+              // labels={ (datum) => datum.y}
+              // labelComponent={<VictoryLabel dy={14} />}
               size={3}
               // size={(datum, active) => active ? 5 : 7}
               labels={(d) => `Goal Completed!`}

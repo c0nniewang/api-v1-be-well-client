@@ -14,14 +14,23 @@ const data = [
   { value: "Flow", count: 30 }, { value: "NPM", count: 11 },
 ];
 
+
 class WordCloud extends React.Component {
   render() {
-    return (
-        <TagCloud minSize={12}
-            maxSize={35}
-            tags={data}
-            className="simple-cloud"
-            onClick={tag => alert(`'${tag.value}' was selected!`)} />
+  console.log("-------")
+
+  const thoughtArr = []
+  const thoughtEmotions = this.props.thoughts.map(thought => thoughtArr.push(thought.emotions))
+  console.log(thoughtArr)
+  const thoughtObj = {}
+  // const thoughtData = thoughtArr.map(thought => thoughtObj[thought])
+
+  return (
+    <TagCloud minSize={12}
+      maxSize={35}
+      tags={data}
+      className="simple-cloud"
+      onClick={tag => alert(`'${tag.value}' was selected!`)} />
     )
   }
 }

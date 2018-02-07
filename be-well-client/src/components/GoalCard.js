@@ -22,7 +22,7 @@ class GoalCard extends React.Component {
             2. {this.props.goal.action2} <br />
             3. {this.props.goal.action3} <br />
             <b>How are you tracking your progress in reaching your goal?</b><br />
-            //need to add to backend<br />
+            need to add to backend<br />
             <b>What do you need to do to reach this goal?</b><br />
             {this.props.goal.attainable}<br />
             <b>Why is this goal important to you?</b><br />

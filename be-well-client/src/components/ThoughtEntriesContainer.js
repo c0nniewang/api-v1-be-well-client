@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import ThoughtEntry from './ThoughtEntry'
-import { Button, Modal } from 'semantic-ui-react'
 import ThoughtEntryForm from './ThoughtEntryForm'
 
 class ThoughtEntriesContainer extends React.Component {

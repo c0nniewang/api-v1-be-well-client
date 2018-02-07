@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import GoalsList from './GoalsList'
-import withAuth from '../hocs/withAuth'
 
 
 class GoalsContainer extends React.Component {

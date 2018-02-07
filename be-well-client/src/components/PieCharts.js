@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { VictoryGroup, VictoryChart, VictoryScatter, VictoryAxis, VictoryLine, VictoryPie, VictoryLabel, VictoryArea, VictoryTooltip} from 'victory'
+import { VictoryPie, VictoryLabel } from 'victory'
 
 const PieCharts = (props) => {
   const completed = props.goals.completed.length
@@ -16,7 +16,7 @@ const PieCharts = (props) => {
         <VictoryPie
           // width={400} height={400}
           standalone={false}
-          height={300} height={300}
+          height={300}
           data={goalsData}
           colorScale={["#49C6B7", "#5E6063"]}
           innerRadius={115} 
