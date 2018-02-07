@@ -75,7 +75,7 @@ const thoughtsReducer = (state = [], action) => {
   }
 }
 
-const updatesReducer = (state = {}, action) => {
+const updatesReducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_USER_INFO:
       return [...action.user.daily_updates]

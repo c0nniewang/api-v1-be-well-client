@@ -1,76 +1,98 @@
 import React from 'react'
-import { VictoryGroup, VictoryChart, VictoryTooltip, VictoryScatter, VictoryTheme, VictoryAxis, VictoryLine, VictoryPie } from 'victory'
+import { VictoryGroup, VictoryChart, VictoryScatter, VictoryAxis, VictoryLine, VictoryPie, VictoryLabel} from 'victory'
 import { connect } from 'react-redux'
 
 class Chart extends React.Component {
   render() {
     console.log("CHART", this.props)
-    // debugger
-    // const dates = this.props.thoughts.map(thought => {
-    //   const date = new Date(thought.created_at).toLocaleDateString()
-    //   return date
-    // })
+    const completed = this.props.goals.completed.length
+    const totalGoals = this.props.goals.active.length + completed
+    const compRatio = completed / totalGoals * 100
+    const totalRatio = 100 - compRatio
+
+    const goalsData = [{x: "Goals Completed", y: compRatio}, {x: "Total Goals", y: totalRatio}]
 
     const thoughtData = this.props.thoughts.map(thought => {
       const date = new Date(thought.created_at)
-      return ({x: date, y: thought.current_mood})
+      return ({x: date, y: thought.current_mood, symbol: "square"})
     })
-    console.log(thoughtData)
-      // domain={{x: [0, 7], y: [0, 10] }}
-      // theme={VictoryTheme.material}>
 
-    // const labelSelector = p => parseFloat(p[1]) * 100;  
-    // const xSelector = p => new Date(p[0]);  
-    // const ySelector = p => parseFloat(p[1]) * 100;
+    const dailyEnergy = this.props.updates.map(update => {
+      const date = new Date(update.created_at)
+      return ({x: date, y: update.energy_level})
+    })
 
-    // const data = [{dataPoints: [
-    //   { x: "2/6/2018", y: 2 },
-    //   { x: "2/7/2018", y: 3 },
-    //   { x: "2/8/2018", y: 5 },
-    //   { x: "2/9/2018", y: 4 },
-    //   { x: "2/6/2018", y: 7 }
-    // ]}]
-    //radial bar chart
-    // const colors = {
-    //    pink: ["#CB5599", "#5E6063"],
-    //    teal: ["#49C6B7", "#5E6063"]
-    // };
+    const dailyMood = this.props.updates.map(update => {
+      const date = new Date(update.created_at)
+      return ({ x: date, y: update.mood_num})
+    })
+
+    const sleep = this.props.updates.map(update => {
+      const date = new Date(update.created_at)
+      return ({ x: date, y: update.sleep})
+    })
+
+    // console.log(thoughtData, dailyEnergy, dailyMood, sleep)
+
     return (
-    <div>
-
-
-
+    <div className="ui attached stackable menu">
+      <VictoryPie
+        data={goalsData}
+        colorScale={["#49C6B7", "#5E6063"]}
+        innerRadius={130} 
+      />
     <VictoryChart>
         <VictoryGroup
-          // data={chart.dataPoints}
-          // x={xSelector}
-          // y={ySelector}
-          // labels={labelSelector}
-          labelComponent={<VictoryTooltip />}
           scale={{x: 'time', y: 'linear'}}
           >
+          
           <VictoryLine 
-            style={{data: { stroke: "#49C6B7" }}}
-            data={[
-              { x: new Date("2018-02-5"), y: 2 },
-              { x: new Date("2018-02-6"), y: 3 },
-              { x: new Date("2018-02-7"), y: 5 },
-              { x: new Date("2018-02-8"), y: 4 },
-              { x: new Date("2018-02-9"), y: 7 }
-            ]} />
+            style={{data: { stroke: "#c43a31"}}}
+            data={dailyEnergy} />
           <VictoryScatter 
-            style={{data: { fill: "#5E6063" }}}
-            data={thoughtData} />
+            style={{data: { stroke: "#c43a31" }}}
+            data={dailyEnergy}
+            />
+          <VictoryLine 
+            style={{data: { stroke: "#CB5599"}}}
+            data={dailyMood} />
+          <VictoryScatter 
+            style={{data: { stroke: "#CB5599" }}}
+            data={dailyMood}
+            />
+          <VictoryLine 
+            style={{data: { stroke: "#5E6063"}}}
+            data={sleep} />
+          <VictoryScatter 
+            style={{data: { stroke: "#5E6063" }}}
+            data={sleep}
+            />
+
+
+          <VictoryScatter 
+            data={thoughtData}
+            style={{
+              data: { stroke: "#49C6B7" },
+              labels: { fill: "white", fontSize: 10}}
+              }
+            labels={ (datum) => datum.y}
+            labelComponent={<VictoryLabel dy={14} />}
+            size={7}
+            />
         </VictoryGroup>
 
       {/* Shared axis (time) */}
       <VictoryAxis
         fixLabelOverlap
         scale="time"
-        // tickValues={["2/5/2018", "2/6/2018", "2/7/2018", "2/8/2018", "2/9/2018"]}
-        tickFormat={(x) => new Date(x).toLocaleDateString()} />
+        tickFormat={(x) => new Date(x).toLocaleDateString()}
+        // label="Date"
+        />
 
-      <VictoryAxis dependentAxis />
+      <VictoryAxis 
+        dependentAxis
+        tickValues={[0, 2, 4, 6, 8, 10]}
+      />
     </VictoryChart>
     </div>
     )
@@ -86,4 +108,3 @@ const mapStateToProps = ({ thoughts, updates, goals }) => {
 }
 
 export default connect(mapStateToProps)(Chart);
-
