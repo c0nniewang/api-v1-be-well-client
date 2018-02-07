@@ -55,7 +55,7 @@ class DailyUpdateForm extends React.Component {
   }
 
   handleClick = () => {
-    this.props.history.push('/profile')
+    this.props.history.push('/profile/home')
   }
 
   render() {

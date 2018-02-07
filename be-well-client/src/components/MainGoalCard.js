@@ -1,5 +1,7 @@
 import React from 'react'
 import { Progress } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import * as actions from '../actions'
 
 class MainGoalCard extends React.Component {
   handleDoneClick = (id) => {
@@ -42,7 +44,7 @@ class MainGoalCard extends React.Component {
             <b>How will you track your goal? When will you know you've reached your goal?</b><br />
             {this.props.goal.attainable}<br />
             <p></p>
-            <b>Why do you want to reach this goal?</b><br />
+            <b>Why is this goal important to you?</b><br />
             {this.props.goal.relevance}<br />
             <p></p>
             <b>Your target date for achieving this goal:</b><br />
@@ -64,4 +66,4 @@ class MainGoalCard extends React.Component {
   }
 }
 
-export default MainGoalCard;
+export default connect(null, actions)(MainGoalCard);
