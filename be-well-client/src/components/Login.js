@@ -26,8 +26,6 @@ class Login extends React.Component {
     this.props.loginUser(email, password, this.props.history);
   };
 
-    
-
   render() {
   const error = 
     <div class="ui negative message">

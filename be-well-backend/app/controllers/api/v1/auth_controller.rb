@@ -1,6 +1,7 @@
 class Api::V1::AuthController < ApplicationController
 
   def create
+    debugger
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       render json: {
