@@ -1,11 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import * as actions from '../actions'
+import GoalReflection from './GoalReflection'
 
 class GoalCard extends React.Component {
-  handleDoneClick = (id) => {
-    this.props.completedGoal(id)
-  }
 
   render() {
     return (<div className="ui card">
@@ -32,9 +30,7 @@ class GoalCard extends React.Component {
         <div className="extra content">
           <button className="ui button">Edit Goal</button>
           <span className="right floated">
-            <button className="ui icon button positive" onClick={() => this.handleDoneClick(this.props.goal.id)}>
-              <i className="check icon"></i>
-            </button>
+            <GoalReflection goal={this.props.goal}/>
           </span>
         </div>
       </div>)

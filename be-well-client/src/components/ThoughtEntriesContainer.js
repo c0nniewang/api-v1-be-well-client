@@ -7,7 +7,7 @@ class ThoughtEntriesContainer extends React.Component {
   render() {
     console.log('THOTS', this.props)
 
-    const thots = this.props.thoughts.map((thot, index) => <ThoughtEntry key={index} thot={thot} />)
+    const thots = this.props.thoughts.reverse().map((thot, index) => <ThoughtEntry key={index} thot={thot} />)
     return (
       <div className="container">
         <h2 className="ui header">

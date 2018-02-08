@@ -2,11 +2,9 @@ import React from 'react'
 import { Progress } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
+import GoalReflection from './GoalReflection'
 
 class MainGoalCard extends React.Component {
-  handleDoneClick = (id) => {
-    this.props.completedGoal(id)
-  }
   
   render() {
   let today = new Date()
@@ -55,9 +53,7 @@ class MainGoalCard extends React.Component {
           <div className="extra content">
             <button className="ui button">Edit Goal</button>
             <span className="right floated">
-              <button className="ui icon button positive" onClick={() => this.handleDoneClick(this.props.goal.id)}>
-                <i className="check icon"></i>
-              </button>
+              <GoalReflection goal={this.props.goal} />
             </span>
           </div>
         </div>
