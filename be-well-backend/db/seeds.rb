@@ -26,3 +26,5 @@ ThoughtEntry.create(current_mood: 4, emotions: "tired, sleepy, stressed", title:
 EntryDistortionJoin.create(cognitive_distortion_id: 1, thought_entry_id: 1)
 
 Goal.create(title: "employment", action1: "finishing this bootcamp", action2: "sleeping", action3: "hauling ass", attainable: "$$$", relevance: "pls", target_date: "March 1, 2018", user_id: 1)
+
+# Meditation.create()

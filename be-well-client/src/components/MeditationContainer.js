@@ -10,7 +10,7 @@ const MeditationContainer = () => {
         Guided Meditation Sessions
         </div>
       </h2>
-      <div className="ui four cards">
+      <div className="ui cards">
         <MeditationCardDescription />
       </div>
     </div>
