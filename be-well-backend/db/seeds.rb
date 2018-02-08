@@ -27,4 +27,11 @@ EntryDistortionJoin.create(cognitive_distortion_id: 1, thought_entry_id: 1)
 
 Goal.create(title: "employment", action1: "finishing this bootcamp", action2: "sleeping", action3: "hauling ass", attainable: "$$$", relevance: "pls", target_date: "March 1, 2018", user_id: 1)
 
-# Meditation.create()
+Meditation.create(title: "Breathing Meditation", description: "", length: "5:31")
+Meditation.create(title: "Breath Sound Body Meditation", description: "", length: "12:00")
+Meditation.create(title: "Complete Meditation Instructions", description: "", length: "19:00")
+Meditation.create(title: "Meditation for Working with Difficulties", description: "", length: "6:55")
+Meditation.create(title: "Loving Kindness Meditation", description: "", length: "9:31")
+Meditation.create(title: "Body and Sound Meditation", description: "", length: "3:06")
+Meditation.create(title: "Body Scan Meditation", description: "", length: "2:44")
+Meditation.create(title: "Body Scan for Sleep", description: "", length: "13:50")
