@@ -75,6 +75,19 @@ const deleteGoal = id => {
   }).then(resp => resp.json())
 }
 
+const fetchMeditations = () => {
+  return fetch(`${API_ROOT}/meditations`)
+  .then(resp => resp.json())
+}
+
+const newSession = data => {
+  return fetch(`${API_ROOT}/meditation_sessions`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(data)
+  }).then(resp => resp.json())
+}
+
 export const adapter = {
   auth: {
     login,
@@ -98,5 +111,10 @@ export const adapter = {
 
   thoughts: {
     newThoughtEntry
+  },
+
+  meditation: {
+    fetchMeditations,
+    newSession
   }
 }

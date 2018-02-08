@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE, ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL, ADD_REFLECTION, DELETE_GOAL} from './actions/types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE, ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL, ADD_REFLECTION, DELETE_GOAL, ADD_SESSION, FETCH_MEDITATIONS} from './actions/types';
 
 const defaultState = { profile: {}, loading: false}
 const initialState = { currentUser: {} };
@@ -109,6 +109,17 @@ const cogsReducer = (state = [], action) => {
       return [...action.cog]
     default:
       return state
+  }
+}
+
+const meditationReducer = (state = [], action) => {
+  switch (action.type) {
+    case FETCH_MEDITATIONS:
+    // check action obj key
+      return [...action.sessions]
+    case ADD_SESSION:
+    // check action obj key
+      return [...state, action.session]
   }
 }
 

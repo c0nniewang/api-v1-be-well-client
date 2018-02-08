@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE , ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL, ADD_REFLECTION, DELETE_GOAL } from './types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE , ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL, ADD_REFLECTION, DELETE_GOAL, ADD_SESSION, FETCH_MEDITATIONS } from './types';
 import { adapter } from '../services';
 
 export const fetchUser = () => dispatch => {
@@ -97,5 +97,19 @@ export const deleteGoal= (id) => dispatch => {
   adapter.goals.deleteGoal(id)
   .then(json => {
     dispatch({ type: DELETE_GOAL, json})
+  })
+}
+/// check these
+export const fetchMeditations = () => dispatch => {
+  adapter.meditation.fetchMeditations
+  .then(json => {
+    dispatch({ type: FETCH_MEDITATIONS, json})
+  })
+}
+
+export const newSession = (data) => dispatch => {
+  adapter.meditation.newSession(data)
+  .then(json => {
+    dispatch({ type: ADD_SESSION, json})
   })
 }

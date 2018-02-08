@@ -20,7 +20,8 @@ class MeditationCard extends React.Component {
   handleClose = (ev) => {
     console.log(ev.target.name)
     if (ev.target.name === "done") {
-      // this.props.newSessionCompleted(meditationId)
+      // this.props.newSessionCompleted(meditationId, userId)
+      // create function and resources for meditation session on backend
     }
     this.setState({
       modalOpen: false
