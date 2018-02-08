@@ -23,11 +23,6 @@ class Navbar extends React.Component {
         onClick={this.handleItemClick}
         />
         <Menu.Item 
-        name='dashboard' 
-        active={activeItem === 'dashboard'} 
-        onClick={this.handleItemClick} 
-        />
-        <Menu.Item 
         name='goals' 
         active={activeItem === 'goals'} 
         onClick={this.handleItemClick} 
@@ -43,6 +38,11 @@ class Navbar extends React.Component {
         onClick={this.handleItemClick} 
         />
         <Menu.Menu position='right'>
+          <Menu.Item 
+          name='dashboard' 
+          active={activeItem === 'dashboard'} 
+          onClick={this.handleItemClick} 
+          />
           <Menu.Item name='logout' active={activeItem === 'logout'} onClick={() => this.props.logoutUser()} />
         </Menu.Menu>
       </Menu>
