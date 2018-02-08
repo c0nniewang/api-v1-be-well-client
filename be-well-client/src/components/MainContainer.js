@@ -9,6 +9,7 @@ import DailyUpdateForm from './DailyUpdateForm';
 import MainGoalsContainer from './MainGoalsContainer'
 import ThoughtEntriesContainer from './ThoughtEntriesContainer'
 import ActivitiesContainer from './ActivitiesContainer'
+import MeditationContainer from './MeditationContainer'
 
 
 
@@ -41,8 +42,10 @@ class MainContainer extends React.Component {
           <Route path="/profile/dashboard" render={() => {
             return <ActivitiesContainer />
           }} />
+          <Route path="/profile/meditation" render={() => {
+            return <MeditationContainer />
+          }} />
         </Switch>
-
         </div>
       </div>)
   }

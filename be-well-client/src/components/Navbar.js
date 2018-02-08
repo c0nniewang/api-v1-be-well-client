@@ -35,7 +35,13 @@ class Navbar extends React.Component {
         <Menu.Item 
         name='thought-entries' 
         active={activeItem === 'thought-entries'} 
-        onClick={this.handleItemClick} />
+        onClick={this.handleItemClick} 
+        />
+        <Menu.Item 
+        name='meditation' 
+        active={activeItem === 'meditation'} 
+        onClick={this.handleItemClick} 
+        />
         <Menu.Menu position='right'>
           <Menu.Item name='logout' active={activeItem === 'logout'} onClick={() => this.props.logoutUser()} />
         </Menu.Menu>
