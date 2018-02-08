@@ -11,8 +11,26 @@ class GoalReflection extends React.Component {
     this.state = {
       success: '',
       emotions: '',
-      current_mood: ''
+      mood_num: '',
+      modalOpen: false
     }
+  }
+
+  handleOpen = () => {
+    this.setState({
+      modalOpen: true
+    })
+  }
+
+  handleClose = () => {
+    this.setState({
+      modalOpen: false
+    })
+    const id = this.props.goal.id
+
+    this.props.completedGoal(id)
+    this.props.newGoalReflection({ ...this.state, goal_id: id})
+    console.log('GOAL REF', id)
   }
 
   handleChange = (ev) => {
@@ -27,23 +45,19 @@ class GoalReflection extends React.Component {
     })
   }
 
-  handleSubmit = (ev) => {
-    ev.preventDefault()
-    const id = this.props.goal.id
-    console.log('GOAL REF', id)
-    // this.props.completedGoal(id)
-    // this.props.newGoalReflection( ...this.state, goal_id: id)
-  }
-
   render() {
 
     const numArray = [...Array(11).keys()]
     const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
 
     return (
-    <Modal trigger={<button className="ui icon button positive">
+    <Modal 
+    trigger={<button onClick={this.handleOpen} className="ui icon button positive">
         <i className="check icon"></i>
-      </button>}>
+      </button>}
+      open={this.state.modalOpen}
+      onClose={this.handleClose}
+    >
       <Modal.Header><Icon name="star" /> Great Job on Achieving Your Goal!</Modal.Header>
       <Modal.Content >
         <form className="ui form">
@@ -71,14 +85,14 @@ class GoalReflection extends React.Component {
             <Dropdown 
             placeholder="Select Number" 
             fluid selection options={numberOptions}
-            onChange={(e, {value}) => {this.handleDropChange(value, 'current_mood')}}
-            value={this.state.current_mood}
+            onChange={(e, {value}) => {this.handleDropChange(value, 'mood_num')}}
+            value={this.state.mood_num}
             />
           </div>
         </form>
       </Modal.Content>
       <Modal.Actions>
-        <Button positive onClick={this.handleSubmit}>
+        <Button positive onClick={this.handleClose}>
           Submit <Icon name="right chevron" />
         </Button>
       </Modal.Actions>

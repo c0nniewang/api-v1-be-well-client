@@ -37,6 +37,13 @@ class Api::V1::GoalsController < ApplicationController
     end
   end
 
+  def destroy
+    goal = Goal.find(params[:id])
+
+    goal.destroy
+    render json: {message: 'successfully deleted', id: goal.id}
+  end
+
   private
   def goal_params
     params.permit(:title, :action1, :action2, :action3, :attainable, :relevance, :target_date, :user_id)

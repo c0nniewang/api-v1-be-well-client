@@ -1,24 +1,28 @@
 import React from 'react';
-import { Icon } from 'semantic-ui-react'
+import { Icon, Button } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import * as actions from '../actions'
 
 class CompletedGoalCard extends React.Component {
   render() {
+    console.log('completed', this.props)
   return (<div className="item">
         <div className="content">
           <div className="header"><Icon name="star" 
           color="olive"/>Goal: {this.props.goal.title} <Icon name="check" color="green"/></div>
           <div className="meta">Date completed: {new Date(this.props.goal.date_completed).toDateString()} </div>
           <div className="description">
-            <b>Your 3 action steps you took to reach this goal: </b><br />
-            1. {this.props.goal.action1} <br />
-            2. {this.props.goal.action2} <br />
-            3. {this.props.goal.action3} <br />
-            <p></p>
-            <b>How did you know you reached your goal?</b><br />
-            {this.props.goal.attainable}<br />
-            <p></p>
-            <b>Why did you want to reach this goal?</b><br />
+            <b>Why was this goal important to you?</b><br />
             {this.props.goal.relevance}<br />
+            <p></p>
+            <b>How did you feel upon completion of this goal?</b><br />
+            {this.props.reflection[0].emotions} <br />
+            <p></p>
+            <b>Did you feel like you were successful in your completion of this goal?</b><br />
+            {this.props.reflection[0].success}<br />
+            <button
+            onClick={(id) => this.props.deleteGoal(this.props.goal.id)}
+            className="ui button negative"><Icon name="trash"/></button>
             <p></p>
           </div>
         </div>
@@ -27,4 +31,4 @@ class CompletedGoalCard extends React.Component {
   }
 }
 
-export default CompletedGoalCard;
+export default connect(null, actions)(CompletedGoalCard);

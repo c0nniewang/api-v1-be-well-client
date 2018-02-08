@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE, ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL} from './actions/types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE, ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL, ADD_REFLECTION, DELETE_GOAL} from './actions/types';
 
 const defaultState = { profile: {}, loading: false}
 const initialState = { currentUser: {} };
@@ -22,7 +22,7 @@ const authReducer = (state = initialState, action) => {
 const userReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ASYNC_START:
-      return {...state, profile: {}, loading: true}
+      return {...state, loading: true}
     case FETCH_USER_INFO:
       console.log('FETCHING USER', action)
       return {
@@ -59,8 +59,25 @@ const goalsReducer = (state = goalsState, action) => {
         active: state.active.filter(el => el.id !== id),
         completed: [...state.completed, goal]
       }
-  default:
-    return state
+    case ADD_REFLECTION:
+      const goalid = action.json.goal_id
+      const completedGoal = state.completed.find(el => el.id === goalid)
+      completedGoal.goal_reflection = [...action.json]
+
+      const arr = state.completed.slice(0, state.completed.length - 1)
+      return {
+        ...state,
+        active: state.active,
+        completed: [...arr, completedGoal]
+      }
+    case DELETE_GOAL:
+      return {
+        ...state,
+        active: state.active,
+        completed: state.completed.filter(el => el.id !== action.json.id)
+      }
+    default:
+      return state
   }
 }
 

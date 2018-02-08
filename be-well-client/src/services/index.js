@@ -61,6 +61,20 @@ const completedGoal = data => {
   }).then(res => res.json())
 }
 
+const newReflection = data => {
+  return fetch(`${API_ROOT}/goal_reflections`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+}
+
+const deleteGoal = id => {
+  return fetch(`${API_ROOT}/goals/${id}`, {
+    method: 'DELETE'
+  }).then(resp => resp.json())
+}
+
 export const adapter = {
   auth: {
     login,
@@ -73,7 +87,9 @@ export const adapter = {
 
   goals: {
     createGoal,
-    completedGoal
+    completedGoal,
+    newReflection,
+    deleteGoal
   },
 
   cogDistortions: {

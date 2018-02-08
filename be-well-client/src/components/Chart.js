@@ -3,6 +3,13 @@ import { VictoryGroup, VictoryChart, VictoryScatter, VictoryAxis, VictoryArea, V
 import { connect } from 'react-redux'
 
 class Chart extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      
+    }
+  }
   render() {
     // console.log("CHART", this.props)
 
@@ -111,7 +118,7 @@ class Chart extends React.Component {
             fixLabelOverlap
             scale="time"
             tickFormat={(x) => new Date(x).toDateString()}
-            // tickValues={(x) => new Date(x).toDateString()}
+            tickValues={[new Date("2018-02-06"), new Date("2018-02-07"), new Date("2018-02-08")]}
             // label="Date"
             />
           <VictoryAxis 

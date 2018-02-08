@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE , ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL } from './types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE , ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL, ADD_REFLECTION, DELETE_GOAL } from './types';
 import { adapter } from '../services';
 
 export const fetchUser = () => dispatch => {
@@ -81,5 +81,21 @@ export const completedGoal = (data) => dispatch => {
   adapter.goals.completedGoal(data)
   .then(json => {
     dispatch({ type: COMPLETE_GOAL, json})
+  })
+}
+
+export const newGoalReflection = ({success, emotions, mood_num, goal_id}) => dispatch => {
+  dispatch({ type: ASYNC_START });
+
+  adapter.goals.newReflection({ success, emotions, mood_num, goal_id})
+  .then(json => {
+    dispatch({ type: ADD_REFLECTION, json})
+  })
+}
+
+export const deleteGoal= (id) => dispatch => {
+  adapter.goals.deleteGoal(id)
+  .then(json => {
+    dispatch({ type: DELETE_GOAL, json})
   })
 }

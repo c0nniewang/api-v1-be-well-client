@@ -48,9 +48,12 @@ class MainContainer extends React.Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, goals, thoughts, updates }) => {
   return {
-    id: auth.currentUser.id
+    id: auth.currentUser.id,
+    goals,
+    thoughts,
+    updates
   }
 }
 
