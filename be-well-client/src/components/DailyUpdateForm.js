@@ -51,7 +51,7 @@ class DailyUpdateForm extends React.Component {
       grateful3: '',
       sleep: ''
     })
-    this.props.history.push('/profile')
+    this.props.history.push('/profile/home')
   }
 
   handleClick = () => {

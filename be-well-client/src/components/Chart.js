@@ -65,6 +65,11 @@ class Chart extends React.Component {
             style={{
               data: { strokeWidth: 2}
             }}
+            animate={{
+              onExit: {
+                duration: 200,
+              },
+            }}
             >
             {this.state.dailyEnergy ? <VictoryArea 
               style={{data: { stroke: "orange", fill: "orange", fillOpacity: 0.4 }}}
@@ -129,7 +134,7 @@ class Chart extends React.Component {
             fixLabelOverlap
             scale="time"
             tickFormat={(x) => new Date(x).toDateString()}
-            tickValues={[new Date("2018-02-06"), new Date("2018-02-07"), new Date("2018-02-08")]}
+            tickValues={[new Date("2018-02-06"), new Date("2018-02-07"), new Date("2018-02-08"), new Date("2018-02-09")]}
             // label="Date"
             />
           <VictoryAxis 

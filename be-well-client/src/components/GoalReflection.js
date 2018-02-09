@@ -22,15 +22,18 @@ class GoalReflection extends React.Component {
     })
   }
 
-  handleClose = () => {
+  handleClose = (ev) => {
     this.setState({
       modalOpen: false
     })
-    const id = this.props.goal.id
 
-    this.props.completedGoal(id)
-    this.props.newGoalReflection({ ...this.state, goal_id: id})
-    console.log('GOAL REF', id)
+    if (ev.target.name === "submit") {
+      const id = this.props.goal.id
+
+      this.props.completedGoal(id)
+      this.props.newGoalReflection({ ...this.state, goal_id: id})
+      console.log('GOAL REF', id)
+    }
   }
 
   handleChange = (ev) => {
@@ -92,7 +95,7 @@ class GoalReflection extends React.Component {
         </form>
       </Modal.Content>
       <Modal.Actions>
-        <Button positive onClick={this.handleClose}>
+        <Button name="submit" positive onClick={this.handleClose}>
           Submit <Icon name="right chevron" />
         </Button>
       </Modal.Actions>

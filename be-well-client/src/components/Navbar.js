@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 import { withRouter } from 'react-router-dom'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Dropdown, Icon } from 'semantic-ui-react'
+import ThoughtEntryForm from './ThoughtEntryForm'
 
 class Navbar extends React.Component {
   state = {activeItem: 'home'}
@@ -43,7 +44,14 @@ class Navbar extends React.Component {
           active={activeItem === 'dashboard'} 
           onClick={this.handleItemClick} 
           />
-          <Menu.Item name='logout' active={activeItem === 'logout'} onClick={() => this.props.logoutUser()} />
+          <Dropdown item icon="user circle">
+            <Dropdown.Menu>
+              <Dropdown.Item icon="cloud" text="New Thought Entry"/>
+              <Dropdown.Item icon="star" text="New Goal"/>
+              <Dropdown.Item icon="sound" text="New Meditation Session"/>
+              <Dropdown.Item name='logout' active={activeItem === 'logout'} onClick={() => this.props.logoutUser()} icon="power" text="Logout"/>
+            </Dropdown.Menu>
+          </Dropdown>
         </Menu.Menu>
       </Menu>
     </div>
