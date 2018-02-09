@@ -10,6 +10,7 @@ import MainGoalsContainer from './MainGoalsContainer'
 import ThoughtEntriesContainer from './ThoughtEntriesContainer'
 import ActivitiesContainer from './ActivitiesContainer'
 import MeditationContainer from './MeditationContainer'
+import ResourcesContainer from './ResourcesContainer'
 
 
 
@@ -18,10 +19,11 @@ class MainContainer extends React.Component {
   componentDidMount() {
    this.props.fetchUserInfo(this.props.id);
    this.props.fetchCognitiveDistortions();
+   this.props.fetchMeditations()
   }
 
   render() {
-    console.log('MAIN')
+    console.log('MAIN', this.props.meditations)
     return (
       <div className="ui fluid container">
         <Navbar />
@@ -44,6 +46,9 @@ class MainContainer extends React.Component {
           }} />
           <Route path="/profile/meditation" render={() => {
             return <MeditationContainer />
+          }} />
+          <Route path="/profile/resources" render={() => {
+            return <ResourcesContainer />
           }} />
         </Switch>
         </div>

@@ -115,11 +115,20 @@ const cogsReducer = (state = [], action) => {
 const meditationReducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_MEDITATIONS:
-    // check action obj key
-      return [...action.sessions]
+      return [...action.json]
+    default:
+      return state
+  }
+}
+
+const meditationSessionsReducer = (state = [], action) => {
+  switch (action.type) {
+    case FETCH_USER_INFO:
+      return [...action.user.meditation_sessions]
     case ADD_SESSION:
-    // check action obj key
-      return [...state, action.session]
+      return [...state, action.json]
+  default:
+    return state
   }
 }
 
@@ -130,6 +139,8 @@ const rootReducer = combineReducers({
   thoughts: thoughtsReducer,
   updates: updatesReducer,
   cogDistortions: cogsReducer,
+  meditations: meditationReducer,
+  sessions: meditationSessionsReducer
 });
 
 export default rootReducer;

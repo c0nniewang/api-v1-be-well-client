@@ -1,6 +1,7 @@
 import React from 'react';
-import mp3 from '../audio/01_Breathing_Meditation.mp3'
 import { Modal, Button, Icon } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import * as actions from '../actions'
 
 class MeditationCard extends React.Component {
   constructor() {
@@ -20,7 +21,10 @@ class MeditationCard extends React.Component {
   handleClose = (ev) => {
     console.log(ev.target.name)
     if (ev.target.name === "done") {
-      // this.props.newSessionCompleted(meditationId, userId)
+      const meditationId = this.props.id
+      const userId = this.props.userId
+      console.log(meditationId, userId)
+      this.props.newSession({meditation_id: meditationId, user_id: userId})
       // create function and resources for meditation session on backend
     }
     this.setState({
@@ -41,7 +45,7 @@ class MeditationCard extends React.Component {
           <h3 className="ui dividing header">Begin Meditation Session</h3>
           <p>Please find a quiet spot and relaxed position, press the play button when you are ready, and close your eyes. Earphones are recommended for a better quality of experience.</p>
           <audio controls>
-            <source src={mp3} type="audio/mpeg" />
+            <source src={this.props.audio_url} type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>
         </Modal.Content>
@@ -56,4 +60,8 @@ class MeditationCard extends React.Component {
   }
 }
 
-export default MeditationCard
+const mapStateToProps = ({ auth }) => {
+  return {userId: auth.currentUser.id}
+}
+
+export default connect(mapStateToProps, actions)(MeditationCard)

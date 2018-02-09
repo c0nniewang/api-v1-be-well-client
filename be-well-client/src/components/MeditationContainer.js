@@ -1,7 +1,16 @@
 import React from 'react'
 import MeditationCardDescription from './MeditationCardDescription'
+import { connect } from 'react-redux'
 
-const MeditationContainer = () => {
+
+class MeditationContainer extends React.Component{
+  render() {
+
+  console.log(this.props.meditations)
+
+  const sessions = this.props.meditations.map(session => {
+    return <MeditationCardDescription key={session.id} session={session} />
+  })
   return (
     <div>
       <h2 className="ui header">
@@ -10,11 +19,17 @@ const MeditationContainer = () => {
         Guided Meditation Sessions
         </div>
       </h2>
-      <div className="ui cards">
-        <MeditationCardDescription />
+      <div className="ui four cards">
+        {sessions}
       </div>
     </div>
-  );
+  )};
 }
 
-export default MeditationContainer
+const mapStateToProps = ({ meditations}) => {
+  return {
+    meditations
+  }
+}
+
+export default connect(mapStateToProps)(MeditationContainer)

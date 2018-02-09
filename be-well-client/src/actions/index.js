@@ -101,7 +101,7 @@ export const deleteGoal= (id) => dispatch => {
 }
 /// check these
 export const fetchMeditations = () => dispatch => {
-  adapter.meditation.fetchMeditations
+  adapter.meditation.fetchMeditations()
   .then(json => {
     dispatch({ type: FETCH_MEDITATIONS, json})
   })

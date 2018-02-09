@@ -1,11 +1,11 @@
-class Api::V1::MeditationsController < ApplicationController
+class Api::V1::MeditationSessionsController < ApplicationController
   def index
     @meditation_sessions = MeditationSession.all
     render json: @meditation_sessions
   end
 
   def create
-    meditation_session = MeditationSession.new(meditation_session_params["meditation_session"])
+    meditation_session = MeditationSession.new(meditation_session_params)
     if meditation_session.save
         render json: meditation_session, status: 201
     else

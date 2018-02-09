@@ -2,22 +2,22 @@ import React from 'react';
 import MeditationCard from './MeditationCard'
 
 
-const MeditationCardDescription = () => {
+const MeditationCardDescription = (props) => {
+  // console.log(props.audio)
   return (
     <div className="ui card">
       <div className="content">
-        <div className="header">Session Title here</div>
+        <div className="header">{props.session.name}</div>
       </div>
       <div className="content">
-        <h4 className="ui sub header">Session Length: </h4>
-        <div className="meta">Date Created:</div>
+        <h4 className="ui sub header">Session Length: {props.session.length}</h4>
         <div className="description">
-          <p>desc here</p>
+          <p>{props.session.description}</p>
         </div>
       </div>
       <div className="extra content">
         <span className="right floated">
-          <MeditationCard />
+          <MeditationCard audio_url={props.session.audio_url} id={props.session.id}/>
         </span>
       </div>
     </div>

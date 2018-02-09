@@ -7,6 +7,7 @@ import ThoughtEntryForm from './ThoughtEntryForm'
 
 class Navbar extends React.Component {
   state = {activeItem: 'home'}
+  //match URL from params
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name })
@@ -42,6 +43,11 @@ class Navbar extends React.Component {
           <Menu.Item 
           name='dashboard' 
           active={activeItem === 'dashboard'} 
+          onClick={this.handleItemClick} 
+          />
+          <Menu.Item 
+          name='resources' 
+          active={activeItem === 'resources'} 
           onClick={this.handleItemClick} 
           />
           <Dropdown item icon="user circle">
