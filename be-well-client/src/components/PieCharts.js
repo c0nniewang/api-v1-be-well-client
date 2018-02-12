@@ -10,7 +10,7 @@ const PieCharts = (props) => {
 
   const goalsData = [{x: "Goals Completed", y: compRatio}, {x: "Total Goals", y: totalRatio}]
 
-  return (<div className="six wide column center aligned">
+  return (<div className="five wide column center aligned">
         <h3>Goals Progress</h3>
         <svg viewBox="0 0 400 400">
         <VictoryPie

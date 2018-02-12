@@ -17,8 +17,7 @@ const data = [
 
 class WordCloud extends React.Component {
   render() {
-  console.log("-------")
-
+  // console.log("-------")
   const thoughtArr = []
 
   const formatData = (str) => {
@@ -42,7 +41,7 @@ class WordCloud extends React.Component {
     createWordArr(update.grateful3)
   })
 
-  console.log(thoughtArr)
+  // console.log(thoughtArr)
 
   let thoughtObj = {}
 
@@ -54,7 +53,7 @@ class WordCloud extends React.Component {
     }
   })
 
-  console.log(thoughtObj)
+  // console.log(thoughtObj)
   let thoughtData = []
 
   Object.keys(thoughtObj).map(key => {
@@ -62,13 +61,17 @@ class WordCloud extends React.Component {
     thoughtData.push(el)
   })
   
-  console.log(thoughtData)
+  // console.log(thoughtData)
   return (
-    <TagCloud minSize={14}
-      maxSize={35}
-      tags={thoughtData}
-      className="simple-cloud"
-      onClick={tag => alert(`'${tag.value}' was selected!`)} />
+    <div className="six wide column center aligned">
+    <h3>Most frequently used words</h3>
+
+      <TagCloud minSize={14}
+        maxSize={35}
+        tags={thoughtData}
+        className="simple-cloud"
+        onClick={tag => alert(`'${tag.value}' was selected!`)} />
+    </div>
     )
   }
 }

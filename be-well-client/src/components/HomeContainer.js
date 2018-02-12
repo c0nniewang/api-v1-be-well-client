@@ -1,5 +1,5 @@
 import React from 'react';
-import GoalsContainer from './GoalsContainer';
+import ActivitiesContainer from './ActivitiesContainer';
 import DailyUpdateContainer from './DailyUpdateContainer'
 import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react'
@@ -20,8 +20,9 @@ class HomeContainer extends React.Component {
           </div>
         </div>
         <div className="row">
-        <div className="fourteen wide column center">
-          <GoalsContainer />
+        <div className="sixteen wide column center">
+          <br />
+          <ActivitiesContainer />
         </div>
       </div>
     </div>

@@ -58,8 +58,8 @@ class Chart extends React.Component {
     const tickValues = this.getTickValues();
 
     return (
-      <div className="ten wide column column center aligned">
-        <h3>Your Activity</h3>
+      <div className="row">
+      <div className="ten wide column">
         <VictoryChart>
           <VictoryGroup
             scale={{x: 'time', y: 'linear'}}
@@ -143,20 +143,20 @@ class Chart extends React.Component {
             tickValues={[0, 2, 4, 6, 8, 10]}
           />
         </VictoryChart>
-        <div className="container">
-          <div className="row">
+      </div>
+      <div className="six wide column">
           {this.state.dailyEnergy ? <button
               onClick={(name) => this.handleClick("dailyEnergy")}
               className="ui button"><Icon name="circle"/> Energy Level</button>  :
             <button
               onClick={(name) => this.handleClick("dailyEnergy")}
-              className="ui button"><Icon name="circle thin"/> Energy Level</button>}
+              className="ui button"><Icon name="circle thin"/> Energy Level</button>}<br /><br />
           {this.state.dailyMood ? <button
               onClick={(name) => this.handleClick("dailyMood")}
               className="ui button"><Icon name="circle"/> Mood Level</button>  :
             <button
               onClick={(name) => this.handleClick("dailyMood")}
-              className="ui button"><Icon name="circle thin"/> Mood Level</button>}  
+              className="ui button"><Icon name="circle thin"/> Mood Level</button>}<br /><br /> 
           {this.state.sleep ? <button
               onClick={(name) => this.handleClick("sleep")}
               className="ui button"><Icon name="circle"/> Hours of Sleep</button>  :
@@ -168,7 +168,7 @@ class Chart extends React.Component {
               className="ui button"><Icon name="square"/> Thought Entry Mood</button>  :
             <button
               onClick={(name) => this.handleClick("thoughtData")}
-              className="ui button"><Icon name="square outline"/> Thought Entry Mood</button>}
+              className="ui button"><Icon name="square outline"/> Thought Entry Mood</button>}<br /><br />
           {this.state.completedGoals ? <button
               onClick={(name) => this.handleClick("completedGoals")}
               className="ui button"><Icon name="star"/> Completed Goals!</button>  :
@@ -177,16 +177,12 @@ class Chart extends React.Component {
               className="ui button"><Icon name="empty star"/> Completed Goals!</button>}   
           </div>
         </div>
-      </div>
     )
   }
-   // maybe iterate over updates here and grab
+
   getTickValues() {
-    return [
-      new Date("2018-02-08"),
-      new Date("2018-02-09"),
-      new Date("2018-02-10")
-    ]
+    const dates = this.props.updates.map(update => new Date(update.created_at))
+    return dates
   }
 }
 
