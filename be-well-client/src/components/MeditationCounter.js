@@ -3,9 +3,6 @@ import { Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 class MeditationCounter extends React.Component {
-
-  // const boxes
-
   render() {
   console.log("COUNTER", this.props)
   // grab current month, render boxes for each day, color box if meditated on that day
@@ -23,7 +20,7 @@ class MeditationCounter extends React.Component {
   const index = weekday[today.getDay()]
   const date = today.getDate()
 
-  weekday[today.getDay()] = "Today!"
+  weekday[today.getDay()] = <Icon name="child"></Icon>
 
   const format = today.toISOString().slice(0, 10)
 
@@ -51,10 +48,10 @@ class MeditationCounter extends React.Component {
 
   const buttons = week.map((day, index) => {
     if (sessionDates[day] !== undefined) {
-      return <div key={index} className="row"><div className="column right aligned">{weekday[index]}</div><div className="column left aligned"><Icon name="heart" color="purple"/></div></div>
+      return <div key={index} className="row"><div className="column right aligned">{weekday[index]}</div><div className="column left aligned"><Icon name="heart" color="green"/></div></div>
     }
     else {
-      return <div key={index} className="row"><div className="column right aligned">{weekday[index]}</div><div className="column left aligned"><Icon name="empty heart" color="purple"/></div></div>
+      return <div key={index} className="row"><div className="column right aligned">{weekday[index]}</div><div className="column left aligned"><Icon name="empty heart" color="green"/></div></div>
     }
   })
 
