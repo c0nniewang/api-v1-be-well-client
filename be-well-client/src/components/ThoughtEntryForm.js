@@ -45,10 +45,7 @@ class ThoughtEntryForm extends React.Component {
     const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
 
     return (
-    <Modal trigger={<Button>
-        <i className="plus icon"></i>
-        New Entry
-      </Button>}>
+    <Modal trigger={this.props.button}>
       <Modal.Header><Icon name="cloud" /> New Thought Entry</Modal.Header>
       <Modal.Content >
         <form className="ui form">

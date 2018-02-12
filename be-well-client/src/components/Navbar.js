@@ -41,20 +41,15 @@ class Navbar extends React.Component {
         />
         <Menu.Menu position='right'>
           <Menu.Item 
-          name='dashboard' 
-          active={activeItem === 'dashboard'} 
-          onClick={this.handleItemClick} 
-          />
-          <Menu.Item 
           name='resources' 
           active={activeItem === 'resources'} 
           onClick={this.handleItemClick} 
           />
           <Dropdown item icon="user circle">
             <Dropdown.Menu>
-              <Dropdown.Item icon="cloud" text="New Thought Entry"/>
+              <ThoughtEntryForm button={<Dropdown.Item icon="cloud" text="New Thought Entry" />}/>
               <Dropdown.Item icon="star" text="New Goal"/>
-              <Dropdown.Item icon="sound" text="New Meditation Session"/>
+              <Dropdown.Item icon="sound" text="New Meditation Session" onClick={() => this.props.history.push('/profile/meditation')}/>
               <Dropdown.Item name='logout' active={activeItem === 'logout'} onClick={() => this.props.logoutUser()} icon="power" text="Logout"/>
             </Dropdown.Menu>
           </Dropdown>

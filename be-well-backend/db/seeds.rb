@@ -18,7 +18,15 @@ CognitiveDistortion.create(title: "Magnification", description: " You exaggerate
 CognitiveDistortion.create(title: "Emotional Reasoning", description: "You assume that your negative emotions necessarily reflect the way things really are: 'I feel guilty. I must be a terrible person.'")
 
 
-DailyUpdate.create(energy_level: 5, mood_desc: "slightly stressed", mood_num: 6, day_desc: "start this project nao", grateful1: "surviving", grateful2: "sleep", grateful3: "people", sleep: 6, user_id: 1)
+DailyUpdate.create(energy_level: 5, mood_desc: "slightly stressed", mood_num: 6, day_desc: "start this project nao", grateful1: "surviving", grateful2: "sleep", grateful3: "people", sleep: 6, user_id: 1, created_at: "Fri, 09 Feb 2018 18:32:02 UTC +00:00")
+
+DailyUpdate.create(energy_level: 7, mood_desc: "tired, sleepy", mood_num: 7, day_desc: "some netflix & chill", grateful1: "the weekend", grateful2: "sleeping in", grateful3: "lazy mornings", sleep: 8, user_id: 1, created_at: "Sat, 10 Feb 2018 18:32:02 UTC +00:00")
+
+DailyUpdate.create(energy_level: 8, mood_desc: "sunday scaries", mood_num: 9, day_desc: "sunday mornings~", grateful1: "brunching", grateful2: "peking duck", grateful3: "friends", sleep: 6, user_id: 1, created_at: "Sun, 11 Feb 2018 18:32:02 UTC +00:00")
+
+DailyUpdate.create(energy_level: 9, mood_desc: "final stretch!!", mood_num: 9, day_desc: "ready for mod 5!!", grateful1: "BBHMM", grateful2: "backend warriors", grateful3: "frontend freaks", sleep: 7, user_id: 1, created_at: "Thu, 08 Feb 2018 18:32:02 UTC +00:00")
+
+DailyUpdate.create(energy_level: 5, mood_desc: "mondaze are so rough", mood_num: 6, day_desc: "detail work & stylingz", grateful1: "lunar new year", grateful2: "feasting", grateful3: "carbs", sleep: 6, user_id: 1)
 
 
 ThoughtEntry.create(current_mood: 4, emotions: "tired, sleepy, stressed", title: "asdfasdf", situation: "starting this project", negative_thoughts: "avoidance of stress", outcome: "^_^", user_id: 1)

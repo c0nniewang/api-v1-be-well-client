@@ -8,7 +8,6 @@ import HomeContainer from './HomeContainer'
 import DailyUpdateForm from './DailyUpdateForm';
 import MainGoalsContainer from './MainGoalsContainer'
 import ThoughtEntriesContainer from './ThoughtEntriesContainer'
-import ActivitiesContainer from './ActivitiesContainer'
 import MeditationContainer from './MeditationContainer'
 import ResourcesContainer from './ResourcesContainer'
 
@@ -40,9 +39,6 @@ class MainContainer extends React.Component {
            <Route path="/profile/newUpdate" render={() => {
                 return <DailyUpdateForm />
               }} />
-          <Route path="/profile/dashboard" render={() => {
-            return <ActivitiesContainer />
-          }} />
           <Route path="/profile/meditation" render={() => {
             return <MeditationContainer />
           }} />

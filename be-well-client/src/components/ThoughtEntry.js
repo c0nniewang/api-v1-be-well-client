@@ -1,11 +1,17 @@
 import React from 'react'
+import { Popup } from 'semantic-ui-react'
 
 class ThoughtEntry extends React.Component {
   render() {
     const labels = this.props.thot.cognitive_distortions.map((cog, index) => {
-      return (<div key={index} className="ui label">
-          <i className="comments"></i>{cog.title}
-        </div>)
+      return (<Popup
+                key={index}
+                trigger={<div key={index} className="ui label">
+                  <i className="comments"></i>{cog.title}
+                  </div>}
+                header={cog.title}
+                content={cog.description}
+                />)
     })
 
     const thot = this.props.thot

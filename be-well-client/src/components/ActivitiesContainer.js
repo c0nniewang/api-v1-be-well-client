@@ -9,8 +9,7 @@ const ActivitiesContainer = () => {
     <div>
       <p></p>
         <h4 className="ui horizontal divider header">
-          <i className="sun icon" color="olive"></i>
-          Your Recent Activity
+          <i className="sun icon"></i>
         </h4>
         <p></p>
       <div className="ui three column aligned stackable grid container">

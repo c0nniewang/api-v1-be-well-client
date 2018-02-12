@@ -2,22 +2,8 @@ import React from 'react'
 import { TagCloud } from 'react-tagcloud'
 import { connect } from 'react-redux'
 
-const data = [
-  { value: "jQuery", count: 25 }, { value: "MongoDB", count: 18 },
-  { value: "JavaScript", count: 38 }, { value: "React", count: 30 },
-  { value: "Nodejs", count: 28 }, { value: "Express.js", count: 25 },
-  { value: "HTML5", count: 33 }, { value: "CSS3", count: 20 },
-  { value: "Webpack", count: 22 }, { value: "Babel.js", count: 7 },
-  { value: "ECMAScript", count: 25 }, { value: "Jest", count: 15 },
-  { value: "Mocha", count: 17 }, { value: "React Native", count: 27 },
-  { value: "Angular.js", count: 30 }, { value: "TypeScript", count: 15 },
-  { value: "Flow", count: 30 }, { value: "NPM", count: 11 },
-];
-
-
 class WordCloud extends React.Component {
   render() {
-  // console.log("-------")
   const thoughtArr = []
 
   const formatData = (str) => {
@@ -41,8 +27,6 @@ class WordCloud extends React.Component {
     createWordArr(update.grateful3)
   })
 
-  // console.log(thoughtArr)
-
   let thoughtObj = {}
 
   thoughtArr.map(thought => {
@@ -53,7 +37,6 @@ class WordCloud extends React.Component {
     }
   })
 
-  // console.log(thoughtObj)
   let thoughtData = []
 
   Object.keys(thoughtObj).map(key => {
@@ -61,16 +44,15 @@ class WordCloud extends React.Component {
     thoughtData.push(el)
   })
   
-  // console.log(thoughtData)
+  // WORDCLOUD ONCLICK 
+  // onClick={tag => alert(`'${tag.value}' was selected!`)} />
   return (
     <div className="six wide column center aligned">
-    <h3>Most frequently used words</h3>
-
-      <TagCloud minSize={14}
+    <h3>Your Recent Activity</h3>
+      <TagCloud minSize={16}
         maxSize={35}
         tags={thoughtData}
-        className="simple-cloud"
-        onClick={tag => alert(`'${tag.value}' was selected!`)} />
+        className="simple-cloud" />
     </div>
     )
   }

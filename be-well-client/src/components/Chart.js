@@ -12,7 +12,7 @@ class Chart extends React.Component {
       dailyEnergy: true,
       dailyMood: true,
       sleep: true,
-      completedGoals: true
+      completedGoals: false
     }
   }
 
@@ -182,6 +182,7 @@ class Chart extends React.Component {
 
   getTickValues() {
     const dates = this.props.updates.map(update => new Date(update.created_at))
+    console.log("CHART", dates)
     return dates
   }
 }

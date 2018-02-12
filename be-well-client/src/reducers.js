@@ -60,10 +60,9 @@ const goalsReducer = (state = goalsState, action) => {
         completed: [...state.completed, goal]
       }
     case ADD_REFLECTION:
-      debugger
       const goalid = action.json.goal_id
       const completedGoal = state.completed.find(el => el.id === goalid)
-      completedGoal.goal_reflection = [...action.json]
+      completedGoal.goal_reflections.push(action.json)
 
       const arr = state.completed.slice(0, state.completed.length - 1)
       return {
