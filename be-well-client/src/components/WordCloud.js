@@ -11,16 +11,19 @@ class WordCloud extends React.Component {
   }
 
   const createWordArr = (arr) => {
-    formatData(arr).map(word => {
+    formatData(arr).forEach(word => {
       thoughtArr.push(word)
     })
   }
 
-  this.props.thoughts.map(thot => createWordArr(thot.emotions))
-  this.props.goals.completed.map(goal => {
+  this.props.thoughts.forEach(thot => {
+    createWordArr(thot.emotions)
+    thot.cognitive_distortions.forEach(el => thoughtArr.push(el.title))
+  })
+  this.props.goals.completed.forEach(goal => {
     createWordArr(goal.goal_reflections[0].emotions)
   })
-  this.props.updates.map(update => {
+  this.props.updates.forEach(update => {
     createWordArr(update.mood_desc)
     createWordArr(update.grateful1)
     createWordArr(update.grateful2)
@@ -29,7 +32,7 @@ class WordCloud extends React.Component {
 
   let thoughtObj = {}
 
-  thoughtArr.map(thought => {
+  thoughtArr.forEach(thought => {
     if (thoughtObj[thought] === undefined) {
       thoughtObj[thought] = 1
     } else {
@@ -39,7 +42,7 @@ class WordCloud extends React.Component {
 
   let thoughtData = []
 
-  Object.keys(thoughtObj).map(key => {
+  Object.keys(thoughtObj).forEach(key => {
     let el = {value: key, count: thoughtObj[key]}
     thoughtData.push(el)
   })

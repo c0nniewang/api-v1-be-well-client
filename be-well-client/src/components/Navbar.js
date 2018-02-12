@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 import { withRouter } from 'react-router-dom'
-import { Menu, Dropdown, Icon } from 'semantic-ui-react'
+import { Menu, Dropdown } from 'semantic-ui-react'
 import ThoughtEntryForm from './ThoughtEntryForm'
 
 class Navbar extends React.Component {

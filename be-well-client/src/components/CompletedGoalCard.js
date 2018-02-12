@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Button } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 

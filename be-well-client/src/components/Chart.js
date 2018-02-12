@@ -1,7 +1,7 @@
 import React from 'react'
-import { VictoryGroup, VictoryChart, VictoryScatter, VictoryAxis, VictoryArea, VictoryTooltip} from 'victory'
+import { VictoryGroup, VictoryChart, VictoryScatter, VictoryAxis, VictoryArea, VictoryTooltip, VictoryLabel } from 'victory'
 import { connect } from 'react-redux'
-import { Button, Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 
 class Chart extends React.Component {
   constructor() {
@@ -12,7 +12,7 @@ class Chart extends React.Component {
       dailyEnergy: true,
       dailyMood: true,
       sleep: true,
-      completedGoals: false
+      completedGoals: true
     }
   }
 
@@ -61,6 +61,9 @@ class Chart extends React.Component {
       <div className="row">
       <div className="ten wide column">
         <VictoryChart>
+          <VictoryLabel x={190} y={22}
+            text="Your Profile"
+          />
           <VictoryGroup
             scale={{x: 'time', y: 'linear'}}
             style={{
@@ -140,7 +143,7 @@ class Chart extends React.Component {
             />
           <VictoryAxis 
             dependentAxis
-            tickValues={[0, 2, 4, 6, 8, 10]}
+            tickValues={[2, 4, 6, 8, 10]}
           />
         </VictoryChart>
       </div>
@@ -182,7 +185,6 @@ class Chart extends React.Component {
 
   getTickValues() {
     const dates = this.props.updates.map(update => new Date(update.created_at))
-    console.log("CHART", dates)
     return dates
   }
 }

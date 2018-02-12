@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 
 class MeditationCounter extends React.Component {
   render() {
-  console.log("COUNTER", this.props)
   // grab current month, render boxes for each day, color box if meditated on that day
   const today = new Date()
 
@@ -17,7 +16,7 @@ class MeditationCounter extends React.Component {
   weekday[5] = "Friday"
   weekday[6] = "Saturday"
 
-  const index = weekday[today.getDay()]
+  // const index = weekday[today.getDay()]
   const date = today.getDate()
 
   weekday[today.getDay()] = <Icon name="child"></Icon>
@@ -32,13 +31,12 @@ class MeditationCounter extends React.Component {
   const week = offset.map(day => {
     const newDay = date + day
     const newDate = format.slice().substr(0, 8) + newDay
-    console.log(newDate)
     return newDate
   })
 
   const sessionDates = {}
 
-  this.props.sessions.map(session => {
+  this.props.sessions.forEach(session => {
     if (sessionDates[session.created_at.slice(0, 10)] === undefined) {
       sessionDates[session.created_at.slice(0, 10)] = 1
     } else {
@@ -54,8 +52,6 @@ class MeditationCounter extends React.Component {
       return <div key={index} className="row"><div className="column right aligned">{weekday[index]}</div><div className="column left aligned"><Icon name="empty heart" color="green"/></div></div>
     }
   })
-
-  console.log(sessionDates)
 
   return (
     <div className="five wide column center aligned">

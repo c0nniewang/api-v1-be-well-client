@@ -1,16 +1,19 @@
 import React from 'react'
 import MeditationCardDescription from './MeditationCardDescription'
 import { connect } from 'react-redux'
+import { Statistic } from 'semantic-ui-react'
 
 
 class MeditationContainer extends React.Component{
   render() {
 
-  console.log(this.props.meditations)
+  console.log(this.props.sessions)
 
   const sessions = this.props.meditations.map(session => {
     return <MeditationCardDescription key={session.id} session={session} />
   })
+
+
   return (
     <div>
       <h2 className="ui header">
@@ -19,6 +22,14 @@ class MeditationContainer extends React.Component{
         Guided Meditation Sessions
         </div>
       </h2>
+      <h3>This month: </h3>
+      <div className="ui container center aligned">
+        <Statistic>
+          <Statistic.Value>8</Statistic.Value>
+          <Statistic.Label>Sessions Completed</Statistic.Label>
+        </Statistic>
+      </div>
+
       <div className="ui four cards">
         {sessions}
       </div>
@@ -26,9 +37,10 @@ class MeditationContainer extends React.Component{
   )};
 }
 
-const mapStateToProps = ({ meditations}) => {
+const mapStateToProps = ({ meditations, sessions}) => {
   return {
-    meditations
+    meditations,
+    sessions
   }
 }
 

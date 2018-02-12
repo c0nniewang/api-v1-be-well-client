@@ -2,7 +2,6 @@ import React from 'react';
 import ActivitiesContainer from './ActivitiesContainer';
 import DailyUpdateContainer from './DailyUpdateContainer'
 import { connect } from 'react-redux'
-import { Button, Icon } from 'semantic-ui-react'
 import * as actions from '../actions'
 
 

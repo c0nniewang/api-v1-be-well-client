@@ -10,7 +10,6 @@ class DailyUpdateContainer extends React.Component {
   }
 
   render() {
-    console.log("DAILY", this.props.isCompleted)
     return (
       <div>
         {!this.props.isCompleted ? <Message>
