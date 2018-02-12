@@ -23,7 +23,6 @@ class MainContainer extends React.Component {
   }
 
   render() {
-    console.log('MAIN', this.props.meditations)
     return (
       <div className="ui fluid container">
         <Navbar />
