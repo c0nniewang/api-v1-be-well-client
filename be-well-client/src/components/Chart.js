@@ -55,6 +55,7 @@ class Chart extends React.Component {
     // const toggles = state.map(state => {
     //   return 
     // })
+    const tickValues = this.getTickValues();
 
     return (
       <div className="ten wide column column center aligned">
@@ -134,7 +135,7 @@ class Chart extends React.Component {
             fixLabelOverlap
             scale="time"
             tickFormat={(x) => new Date(x).toDateString()}
-            tickValues={[new Date("2018-02-06"), new Date("2018-02-07"), new Date("2018-02-08"), new Date("2018-02-09")]}
+            tickValues={tickValues}
             // label="Date"
             />
           <VictoryAxis 
@@ -178,6 +179,14 @@ class Chart extends React.Component {
         </div>
       </div>
     )
+  }
+   // maybe iterate over updates here and grab
+  getTickValues() {
+    return [
+      new Date("2018-02-08"),
+      new Date("2018-02-09"),
+      new Date("2018-02-10")
+    ]
   }
 }
 

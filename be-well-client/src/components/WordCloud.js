@@ -20,15 +20,44 @@ class WordCloud extends React.Component {
   console.log("-------")
 
   const thoughtArr = []
-  const thoughtEmotions = this.props.thoughts.map(thought => thoughtArr.push(thought.emotions))
-  console.log(thoughtArr)
-  const thoughtObj = {}
-  // const thoughtData = thoughtArr.map(thought => thoughtObj[thought])
 
+  const formatData = (str) => {
+    return str.replace(/[,.! ]+/g, " ").trim().split(" ")
+  }
+
+  const createWordArr = (arr) => {
+    formatData(arr).map(word => {
+      thoughtArr.push(word)
+    })
+  }
+
+  this.props.thoughts.map(thot => createWordArr(thot.emotions))
+
+  console.log(thoughtArr)
+
+  let thoughtObj = {}
+
+  thoughtArr.map(thought => {
+    if (thoughtObj[thought] === undefined) {
+      thoughtObj[thought] = 1
+    } else {
+      thoughtObj[thought] += 1
+    }
+  })
+
+  console.log(thoughtObj)
+  let thoughtData = []
+
+  Object.keys(thoughtObj).map(key => {
+    let el = {value: key, count: thoughtObj[key]}
+    thoughtData.push(el)
+  })
+  
+  console.log(thoughtData)
   return (
-    <TagCloud minSize={12}
+    <TagCloud minSize={14}
       maxSize={35}
-      tags={data}
+      tags={thoughtData}
       className="simple-cloud"
       onClick={tag => alert(`'${tag.value}' was selected!`)} />
     )

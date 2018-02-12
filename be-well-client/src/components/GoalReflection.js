@@ -32,6 +32,7 @@ class GoalReflection extends React.Component {
 
       this.props.completedGoal(id)
       this.props.newGoalReflection({ ...this.state, goal_id: id})
+      
       console.log('GOAL REF', id)
     }
   }

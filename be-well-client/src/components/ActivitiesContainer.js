@@ -13,9 +13,9 @@ const ActivitiesContainer = () => {
         </div>
       </h2>
       <div className="ui two column aligned stackable grid container">
+        <WordCloud />
         <PieCharts />
         <Chart />
-        
       </div>
     </div>
   )

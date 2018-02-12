@@ -85,10 +85,12 @@ export const completedGoal = (data) => dispatch => {
 }
 
 export const newGoalReflection = ({success, emotions, mood_num, goal_id}) => dispatch => {
+  // debugger
   dispatch({ type: ASYNC_START });
 
   adapter.goals.newReflection({ success, emotions, mood_num, goal_id})
   .then(json => {
+    // debugger
     dispatch({ type: ADD_REFLECTION, json})
   })
 }

@@ -16,10 +16,10 @@ class CompletedGoalCard extends React.Component {
             {this.props.goal.relevance}<br />
             <p></p>
             <b>How did you feel upon completion of this goal?</b><br />
-            {this.props.reflection[0].emotions} <br />
+            {this.props.reflection[0] ? this.props.reflection[0].emotions : null} <br />
             <p></p>
             <b>Did you feel like you were successful in your completion of this goal?</b><br />
-            {this.props.reflection[0].success}<br />
+            {this.props.reflection[0] ? this.props.reflection[0].success : null}<br />
             <button
             onClick={(id) => this.props.deleteGoal(this.props.goal.id)}
             className="ui button negative"><Icon name="trash"/></button>
