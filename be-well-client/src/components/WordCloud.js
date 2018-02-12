@@ -32,6 +32,15 @@ class WordCloud extends React.Component {
   }
 
   this.props.thoughts.map(thot => createWordArr(thot.emotions))
+  this.props.goals.completed.map(goal => {
+    createWordArr(goal.goal_reflections[0].emotions)
+  })
+  this.props.updates.map(update => {
+    createWordArr(update.mood_desc)
+    createWordArr(update.grateful1)
+    createWordArr(update.grateful2)
+    createWordArr(update.grateful3)
+  })
 
   console.log(thoughtArr)
 
