@@ -75,25 +75,19 @@ export const newThoughtEntry = (data) => dispatch => {
   })
 }
 
-export const completedGoal = (data) => dispatch => {
+export const completedGoal = ({success, emotions, mood_num, goal_id}) => dispatch => {
   dispatch({ type: ASYNC_START });
 
-  adapter.goals.completedGoal(data)
+  adapter.goals.completedGoal({ goal_id})
   .then(json => {
     dispatch({ type: COMPLETE_GOAL, json})
-  })
-}
-
-export const newGoalReflection = ({success, emotions, mood_num, goal_id}) => dispatch => {
-  dispatch({ type: ASYNC_START });
-
-  adapter.goals.newReflection({ success, emotions, mood_num, goal_id})
+  }).then(() => adapter.goals.newReflection({success, emotions, mood_num, goal_id}))
   .then(json => {
-    dispatch({ type: ADD_REFLECTION, json})
+      dispatch({ type: ADD_REFLECTION, json})
   })
 }
 
-export const deleteGoal= (id) => dispatch => {
+export const deleteGoal = (id) => dispatch => {
   adapter.goals.deleteGoal(id)
   .then(json => {
     dispatch({ type: DELETE_GOAL, json})

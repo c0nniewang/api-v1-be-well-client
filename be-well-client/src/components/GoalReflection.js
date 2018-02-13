@@ -30,8 +30,7 @@ class GoalReflection extends React.Component {
     if (ev.target.name === "submit") {
       const id = this.props.goal.id
 
-      this.props.completedGoal(id)
-      this.props.newGoalReflection({ ...this.state, goal_id: id})
+      this.props.completedGoal({ ...this.state, goal_id: id})
       
       console.log('GOAL REF', id)
     }

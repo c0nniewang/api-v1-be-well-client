@@ -57,7 +57,7 @@ const completedGoal = data => {
   return fetch(`${API_ROOT}/completed`, {
     method: 'PATCH',
     headers,
-    body: JSON.stringify({id: data})
+    body: JSON.stringify({id: data.goal_id})
   }).then(res => res.json())
 }
 
