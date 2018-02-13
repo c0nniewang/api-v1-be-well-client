@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :users, :goals, :daily_updates, :thought_entries, :goal_reflections, :meditation_sessions
+      resources :users, :goals, :daily_updates, :thought_entries, :goal_reflections, :meditation_sessions, :favorite_meditations
       resources :meditations, only: [:index]
       resources :cognitive_distortions, only: [:index]
       post '/login', to: 'auth#create'
