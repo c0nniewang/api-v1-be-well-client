@@ -1,5 +1,5 @@
 import React from 'react'
-// import { Dropdown } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import * as actions from '../actions'
 import { withRouter } from 'react-router-dom';
@@ -36,7 +36,6 @@ class NewGoalForm extends React.Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault()
-    console.log(this.state)
     this.props.newGoal({...this.state, user_id: this.props.id})
 
     this.setState({
@@ -53,7 +52,7 @@ class NewGoalForm extends React.Component {
   render() {
     return (
       <div>
-        <form className="ui form" onSubmit={this.handleSubmit}>
+        <form className="ui form">
           <p></p>
           <h3 className="ui dividing header">New Goal</h3>
           <div className="field">
@@ -116,7 +115,10 @@ class NewGoalForm extends React.Component {
                 </input>
               </div>
           </div><br />
-          <button className="ui button left floated positive" type="submit">Submit</button>
+          <span className="right floated">
+            <Button positive onClick={this.handleSubmit}> Submit <Icon name="right chevron" />
+            </Button>
+          </span>
         </form>
       </div>
     )

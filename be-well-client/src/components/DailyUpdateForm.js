@@ -2,9 +2,6 @@ import React from 'react'
 import { Dropdown, Modal, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import * as actions from '../actions'
-import { withRouter } from 'react-router-dom';
-
-
 
 class DailyUpdateForm extends React.Component {
 

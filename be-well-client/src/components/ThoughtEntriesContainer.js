@@ -22,7 +22,7 @@ class ThoughtEntriesContainer extends React.Component {
 
   render() {
     console.log('THOTS', this.props)
-    const pageButton = (<Button>
+    const pageButton = (<Button onClick={this.handleOpen}>
             <i className="plus icon"></i>
             New Entry
           </Button>)

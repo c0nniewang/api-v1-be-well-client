@@ -15,7 +15,8 @@ class ThoughtEntryForm extends React.Component {
       negative_thoughts: '',
       outcome: '',
       cognitive_distortions: [],
-      current_mood: ''
+      current_mood: '',
+      modalOpen: false
     }
   }
 
@@ -24,6 +25,22 @@ class ThoughtEntryForm extends React.Component {
       [ev.target.name]: ev.target.value
     })
   }
+
+  // handleOpen = () => {
+  //   this.setState({
+  //     modalOpen: true
+  //   })
+  // }
+
+  // handleClose = (ev) => {
+  //   this.setState({
+  //     modalOpen: false
+  //   })
+
+  //   if (ev.target.name === "submit") {
+  //     this.props.newThoughtEntry({...this.state, user_id: this.props.id})
+  //   }
+  // }
 
   handleDropChange = (value, key) => {
     this.setState({
@@ -45,7 +62,9 @@ class ThoughtEntryForm extends React.Component {
     const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
 
     return (
-    <Modal trigger={this.props.button}>
+    <Modal 
+    trigger={this.props.button}
+    >
       <Modal.Header><Icon name="cloud" /> New Thought Entry</Modal.Header>
       <Modal.Content >
         <form className="ui form">
@@ -115,7 +134,7 @@ class ThoughtEntryForm extends React.Component {
         </form>
       </Modal.Content>
       <Modal.Actions>
-        <Button positive onClick={this.handleSubmit}>
+        <Button positive onClick={this.handleSubmit} name="submit">
           Submit <Icon name="right chevron" />
         </Button>
       </Modal.Actions>

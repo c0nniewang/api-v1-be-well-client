@@ -5,14 +5,10 @@ import Navbar from './Navbar'
 import withAuth from '../hocs/withAuth'
 import { Switch, Route, withRouter } from 'react-router-dom';
 import HomeContainer from './HomeContainer'
-import DailyUpdateForm from './DailyUpdateForm';
 import MainGoalsContainer from './MainGoalsContainer'
 import ThoughtEntriesContainer from './ThoughtEntriesContainer'
 import MeditationContainer from './MeditationContainer'
 import ResourcesContainer from './ResourcesContainer'
-
-
-
 
 class MainContainer extends React.Component {
   componentDidMount() {
@@ -36,9 +32,6 @@ class MainContainer extends React.Component {
           <Route path="/profile/thought-entries" render={() => {
             return <ThoughtEntriesContainer />
           }} />
-           <Route path="/profile/newUpdate" render={() => {
-                return <DailyUpdateForm />
-              }} />
           <Route path="/profile/meditation" render={() => {
             return <MeditationContainer />
           }} />

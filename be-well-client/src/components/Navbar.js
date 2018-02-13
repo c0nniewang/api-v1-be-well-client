@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 import { withRouter } from 'react-router-dom'
-import { Menu, Dropdown } from 'semantic-ui-react'
+import { Menu, Dropdown, Modal } from 'semantic-ui-react'
 import ThoughtEntryForm from './ThoughtEntryForm'
+import NewGoalForm from './NewGoalForm'
 
 class Navbar extends React.Component {
   state = {activeItem: 'home'}
@@ -17,6 +18,15 @@ class Navbar extends React.Component {
 
   render() {
     const { activeItem } = this.state
+
+  const goalsModal = <Modal trigger={<Dropdown.Item icon="star" text="New Goal"/>}>
+                        <Modal.Content >
+                        <NewGoalForm />
+                        </Modal.Content>
+                        <Modal.Actions>
+                        </Modal.Actions>
+                      </Modal>
+
     return (<div>
       <Menu pointing secondary>
         <Menu.Item 
@@ -48,7 +58,7 @@ class Navbar extends React.Component {
           <Dropdown item icon="user circle">
             <Dropdown.Menu>
               <ThoughtEntryForm button={<Dropdown.Item icon="cloud" text="New Thought Entry" />}/>
-              <Dropdown.Item icon="star" text="New Goal"/>
+              {goalsModal}
               <Dropdown.Item icon="sound" text="New Meditation Session" onClick={() => this.props.history.push('/profile/meditation')}/>
               <Dropdown.Item name='logout' active={activeItem === 'logout'} onClick={() => this.props.logoutUser()} icon="power" text="Logout"/>
             </Dropdown.Menu>

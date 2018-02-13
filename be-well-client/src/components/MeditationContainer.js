@@ -10,10 +10,33 @@ class MeditationContainer extends React.Component{
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
-  const { activeItem } = this.state
+  const { activeItem } = this.state;
 
   const currentMonth = new Date().getMonth()
   const count = this.props.sessions.filter(sesh => new Date(sesh.created_at).getMonth() === currentMonth).length
+
+  const totalMin = this.props.sessions.map(session => {
+    return parseInt(session.meditation.length.slice(0, 2).replace(/[: ]+/g, " ").trim())
+  })
+
+  console.log(totalMin)
+
+  let sumMin
+  {totalMin.length ? sumMin = totalMin.reduce((acc, current) => acc + current) : null}
+  
+
+  const stats = <div>
+        <Statistic.Group>
+          <Statistic color='green'>
+            <Statistic.Value>{count}</Statistic.Value>
+            <Statistic.Label>Sessions Completed</Statistic.Label>
+          </Statistic>
+          <Statistic color='green'>
+            <Statistic.Value>{sumMin}</Statistic.Value>
+            <Statistic.Label>Total Minutes</Statistic.Label>
+          </Statistic>
+        </Statistic.Group>
+      </div>
 
   const allSessions = this.props.meditations.all.map(session => {
     return <MeditationCardDescription key={session.id} session={session} />
@@ -39,10 +62,7 @@ class MeditationContainer extends React.Component{
     display = (<div>
       <h3>This month: </h3>
         <div className="ui container center aligned">
-          <Statistic color='green'>
-            <Statistic.Value>{count}</Statistic.Value>
-            <Statistic.Label>Sessions Completed</Statistic.Label>
-          </Statistic>
+          {stats}
         </div>
         <h3>Most Recently Completed Sessions:</h3>
         <div className="ui four cards">
