@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Message } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
+import DailyUpdateForm from './DailyUpdateForm'
 
 class DailyUpdateContainer extends React.Component {
 
@@ -12,14 +13,12 @@ class DailyUpdateContainer extends React.Component {
   render() {
     return (
       <div>
-        {!this.props.isCompleted ? <Message>
-          {<h3>Welcome Back!</h3>}
-          Would you like to complete your daily check-in now?
-          {<p></p>}
-          {<button
-            onClick={this.formClick}
-            className="ui positive basic button">Let's Do it!</button>}
-          </Message> : <Message>You have already completed your daily check in. Great work!</Message>}
+        {!this.props.isCompleted ? (<Message>
+                  {<h3>Welcome Back!</h3>}
+                  Would you like to complete your daily check-in now?
+                  {<p></p>}
+                  <DailyUpdateForm />
+                  </Message>) : <Message>You have already completed your daily check in. Great work!</Message>}
       </div>
     )
   }

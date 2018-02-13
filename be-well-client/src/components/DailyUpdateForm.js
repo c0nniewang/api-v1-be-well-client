@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown, Modal, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import * as actions from '../actions'
 import { withRouter } from 'react-router-dom';
@@ -38,7 +38,6 @@ class DailyUpdateForm extends React.Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault()
-    console.log(this.state)
     this.props.newDailyUpdate({...this.state, user_id: this.props.id})
 
     this.setState({
@@ -51,21 +50,18 @@ class DailyUpdateForm extends React.Component {
       grateful3: '',
       sleep: ''
     })
-    this.props.history.push('/profile/home')
-  }
-
-  handleClick = () => {
-    this.props.history.push('/profile/home')
   }
 
   render() {
     const numArray = [...Array(11).keys()]
     const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
     return (
-      <div>
-        <form className="ui form" onSubmit={this.handleSubmit}>
-          <p></p>
-          <h3 className="ui dividing header">Daily Update</h3>
+      <Modal trigger={<button
+            onClick={this.formClick}
+            className="ui positive basic button">Let's Do it!</button>}>
+        <Modal.Header><Icon name="sun" />Daily Update</Modal.Header>
+        <Modal.Content>
+        <form className="ui form">
           <div className="field">
             <label>On a scale of 1-10, with 1 being the lowest and 10 being the highest, how would you rate your current energy level?</label>
             <Dropdown placeholder="Select Number" 
@@ -137,10 +133,12 @@ class DailyUpdateForm extends React.Component {
             name="grateful3"
             />
           </div><br />
-          <button className="ui button left floated positive" type="submit">Submit</button>
         </form>
-        <button onClick={this.handleClick} className="ui button right floated">Back</button>
-      </div>
+        </Modal.Content>
+        <Modal.Actions>
+          <button className="ui button right floated positive" onClick={this.handleSubmit}>Submit</button>
+        </Modal.Actions>
+      </Modal>
     )
   }
 }
@@ -151,4 +149,4 @@ const mapStateToProps = ({ auth }) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, actions)(DailyUpdateForm));
+export default connect(mapStateToProps, actions)(DailyUpdateForm);
