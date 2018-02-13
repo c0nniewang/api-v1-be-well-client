@@ -19,8 +19,9 @@ const MeditationCardDescription = (props) => {
         <span className="right floated">
           <MeditationCard audio_url={props.session.audio_url} id={props.session.id}/>
         </span>
-        <span>
+        <span className="left floated star">
           <i class="star icon"></i>
+          Favorite
         </span>
       </div>
     </div>
