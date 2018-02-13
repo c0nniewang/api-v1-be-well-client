@@ -55,7 +55,7 @@ class MeditationCounter extends React.Component {
 
   return (
     <div className="five wide column center aligned">
-      <h3>Meditation Streak</h3>
+      <h3>This Week's Meditation Streak</h3>
       <div className="ui two column aligned stackable grid container">
       {buttons}
       </div>

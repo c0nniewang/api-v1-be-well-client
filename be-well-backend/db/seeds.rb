@@ -43,3 +43,4 @@ Meditation.create(name: "Loving Kindness Meditation", description: "fill in late
 Meditation.create(name: "Body and Sound Meditation", description: "fill in later", length: "3:06", audio_url: "https://s3.us-east-2.amazonaws.com/meditation-services-be-well/Body-Sound-Meditation.mp3")
 Meditation.create(name: "Body Scan Meditation", description: "fill in later", length: "2:44", audio_url: "https://s3.us-east-2.amazonaws.com/meditation-services-be-well/Body-Scan-Meditation.mp3")
 Meditation.create(name: "Body Scan for Sleep", description: "fill in later", length: "13:50", audio_url: "https://s3.us-east-2.amazonaws.com/meditation-services-be-well/Body-Scan-for-Sleep.mp3")
+MeditationSession.create(user_id: 1, meditation_id: 1, created_at: "2018-02-12 15:01:33")

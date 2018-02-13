@@ -23,11 +23,11 @@ class HomeContainer extends React.Component {
           </div>
         </div>
         <div className="row">
-          <img src={Dead} />
-          <img src={Sad} />
-          <img src={Asleep} />
-          <img src={Neutral} />
-          <img src={Happy} />
+          <img src={Dead} alt="dead"/>
+          <img src={Sad} alt="sad"/>
+          <img src={Asleep} alt="asleep"/>
+          <img src={Neutral} alt="neutral"/>
+          <img src={Happy} alt="happy"/>
         </div>
         <div className="row">
         <div className="sixteen wide column center">

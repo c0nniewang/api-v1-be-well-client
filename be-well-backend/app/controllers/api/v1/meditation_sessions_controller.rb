@@ -5,7 +5,21 @@ class Api::V1::MeditationSessionsController < ApplicationController
   end
 
   def create
-    meditation_session = MeditationSession.new(meditation_session_params)
+    if MeditationSession.last.streak != nil
+      last = MeditationSession.last.created_at
+      yest = Time.now - 1.day
+
+      if yest < last
+        streak += 1
+      elsif
+        streak = MeditationSession.last.streak
+      end
+    else
+      streak = 1
+    end
+
+    meditation_session = MeditationSession.new({user_id: meditation_session_params[:user_id], meditation_id: meditation_session_params[:meditation_id], streak: streak})
+
     if meditation_session.save
         render json: meditation_session, status: 201
     else

@@ -1,7 +1,7 @@
 import React from 'react'
 import MeditationCardDescription from './MeditationCardDescription'
 import { connect } from 'react-redux'
-import { Statistic, Grid, Menu, Segment } from 'semantic-ui-react'
+import { Statistic, Menu } from 'semantic-ui-react'
 
 
 class MeditationContainer extends React.Component{
@@ -23,8 +23,10 @@ class MeditationContainer extends React.Component{
 
   let sumMin
   {totalMin.length ? sumMin = totalMin.reduce((acc, current) => acc + current) : null}
-  
 
+  let streak
+  {this.props.sessions.length ? streak = this.props.sessions[this.props.sessions.length - 1].streak : null}
+  
   const stats = <div>
         <Statistic.Group>
           <Statistic color='green'>
@@ -34,6 +36,10 @@ class MeditationContainer extends React.Component{
           <Statistic color='green'>
             <Statistic.Value>{sumMin}</Statistic.Value>
             <Statistic.Label>Total Minutes</Statistic.Label>
+          </Statistic>
+          <Statistic color='green'>
+            <Statistic.Value>{streak}{streak === 1 ? "Day" : "Days"}</Statistic.Value>
+            <Statistic.Label>Longest Streak</Statistic.Label>
           </Statistic>
         </Statistic.Group>
       </div>
