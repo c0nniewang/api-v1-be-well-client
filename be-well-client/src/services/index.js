@@ -88,6 +88,22 @@ const newSession = data => {
   }).then(resp => resp.json())
 }
 
+const addFavoriteMeditation = ({ user_id, meditation_id}) => {
+  return fetch(`${API_ROOT}/users/${user_id}/favorite_meditations`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({user_id, meditation_id})
+  }).then(resp => resp.json())
+}
+
+const removeFavoriteMeditation = ({ user_id, meditation_id }) => {
+  return fetch(`${API_ROOT}/users/${user_id}/favorite_meditations/`, {
+    method: 'DELETE',
+    headers,
+    body: JSON.stringify({ user_id, meditation_id})
+  }).then(resp => resp.json())
+}
+
 export const adapter = {
   auth: {
     login,
@@ -115,6 +131,8 @@ export const adapter = {
 
   meditation: {
     fetchMeditations,
-    newSession
+    newSession,
+    addFavoriteMeditation,
+    removeFavoriteMeditation
   }
 }

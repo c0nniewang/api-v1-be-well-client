@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE , ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL, ADD_REFLECTION, DELETE_GOAL, ADD_SESSION, FETCH_MEDITATIONS } from './types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE , ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL, ADD_REFLECTION, DELETE_GOAL, ADD_SESSION, FETCH_MEDITATIONS, ADD_FAVORITE_MED, REMOVE_FAVORITE_MED } from './types';
 import { adapter } from '../services';
 
 export const fetchUser = () => dispatch => {
@@ -85,12 +85,10 @@ export const completedGoal = (data) => dispatch => {
 }
 
 export const newGoalReflection = ({success, emotions, mood_num, goal_id}) => dispatch => {
-  // debugger
   dispatch({ type: ASYNC_START });
 
   adapter.goals.newReflection({ success, emotions, mood_num, goal_id})
   .then(json => {
-    // debugger
     dispatch({ type: ADD_REFLECTION, json})
   })
 }
@@ -101,7 +99,7 @@ export const deleteGoal= (id) => dispatch => {
     dispatch({ type: DELETE_GOAL, json})
   })
 }
-/// check these
+
 export const fetchMeditations = () => dispatch => {
   adapter.meditation.fetchMeditations()
   .then(json => {
@@ -113,5 +111,19 @@ export const newSession = (data) => dispatch => {
   adapter.meditation.newSession(data)
   .then(json => {
     dispatch({ type: ADD_SESSION, json})
+  })
+}
+
+export const addFavoriteMeditation = (data) => dispatch => {
+  adapter.meditation.addFavoriteMeditation(data)
+  .then(json => {
+    dispatch({ type: ADD_FAVORITE_MED, json})
+  })
+}
+
+export const removeFavoriteMeditation = (data) => dispatch => {
+  adapter.meditation.removeFavoriteMeditation(data)
+  .then(json => {
+    dispatch({ type: REMOVE_FAVORITE_MED, json })
   })
 }

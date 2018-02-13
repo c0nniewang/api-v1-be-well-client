@@ -29,6 +29,21 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def add_favorite_med
+    favorite = FavoriteMeditation.create(user_id: params[:user_id], meditation_id: params[:meditation_id])
+    if favorite.save
+      render json: favorite, status: 200
+    else
+      render json: {errors: favorite.errors.full_messages}, status: 422
+    end
+  end
+
+  def delete_favorite_med
+    favorite = FavoriteMeditation.where(user_id: params[:user_id], meditation_id: params[:meditation_id])[0]
+    FavoriteMeditation.destroy(favorite.id)
+    render json: {message: "successfully destroyed", id: favorite.id}
+  end
+
   private
   def user_params
     params.permit(:name, :phone, :email, :password)

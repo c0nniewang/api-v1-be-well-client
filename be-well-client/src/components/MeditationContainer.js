@@ -15,15 +15,15 @@ class MeditationContainer extends React.Component{
   const currentMonth = new Date().getMonth()
   const count = this.props.sessions.filter(sesh => new Date(sesh.created_at).getMonth() === currentMonth).length
 
-  const allSessions = this.props.meditations.map(session => {
+  const allSessions = this.props.meditations.all.map(session => {
     return <MeditationCardDescription key={session.id} session={session} />
   })
 
-  const recentSessions = this.props.sessions.reverse().slice(0, 4).map(session => {
+  const recentSessions = this.props.sessions.slice(0, 4).map(session => {
     return <MeditationCardDescription key={session.id} session={session.meditation} />
   })
 
-  const quickSesh = this.props.meditations.filter(session => {
+  const quickSesh = this.props.meditations.all.filter(session => {
     const min = session.length.slice(0, 2).replace(/[: ]+/g, " ").trim()
     if (parseInt(min) < 6)
     return session
@@ -31,6 +31,8 @@ class MeditationContainer extends React.Component{
 
   const quickCards = quickSesh.map(el => <MeditationCardDescription key={el.id} session={el} />)
 
+  const favorites = this.props.meditations.favorites.map(el => <MeditationCardDescription key={el.id} session={el.meditation} />)
+  
   let display;
 
   if (this.state.activeItem === "main") {
@@ -48,14 +50,13 @@ class MeditationContainer extends React.Component{
         </div>
       </div>)
   } else if (this.state.activeItem === 'all') {
-    display = (<div className="ui four cards">
-            {allSessions}
-          </div>)
+    display = (<div className="ui four cards">{allSessions}</div>)
   } else if (this.state.activeItem === 'sessions-under-six-minutes') {
-    display = (<div className="ui four cards">
-            {quickCards}
-          </div>)
+    display = (<div className="ui four cards">{quickCards}</div>)
+  } else if (this.state.activeItem === 'favorites') {
+    display = (<div className="ui four cards">{favorites}</div>)
   }
+
   return (
     <div>
         <h2 className="ui header">
@@ -69,8 +70,8 @@ class MeditationContainer extends React.Component{
         <div className="ui three wide column">
         <Menu pointing secondary vertical>
           <Menu.Item name='main' active={activeItem === 'main'} onClick={this.handleItemClick} />
-          <Menu.Item name='sessions-under-six-minutes' active={activeItem === 'sessions-under-six-minutes'} onClick={this.handleItemClick} />
           <Menu.Item name='favorites' active={activeItem === 'favorites'} onClick={this.handleItemClick} />
+          <Menu.Item name='sessions-under-six-minutes' active={activeItem === 'sessions-under-six-minutes'} onClick={this.handleItemClick} />
           <Menu.Item name='all' active={activeItem === 'all'} onClick={this.handleItemClick} />
         </Menu>
         </div>

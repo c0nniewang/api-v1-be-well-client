@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE, ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL, ADD_REFLECTION, DELETE_GOAL, ADD_SESSION, FETCH_MEDITATIONS} from './actions/types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE, ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL, ADD_REFLECTION, DELETE_GOAL, ADD_SESSION, FETCH_MEDITATIONS, ADD_FAVORITE_MED, REMOVE_FAVORITE_MED } from './actions/types';
 
 const defaultState = { profile: {}, loading: false}
 const initialState = { currentUser: {} };
 const goalsState = { active: [], completed: [] };
+const medState = { all: [], favorites: [] }
 
 const authReducer = (state = initialState, action) => {
   switch(action.type) {
@@ -112,10 +113,16 @@ const cogsReducer = (state = [], action) => {
   }
 }
 
-const meditationReducer = (state = [], action) => {
+const meditationReducer = (state = medState, action) => {
   switch (action.type) {
     case FETCH_MEDITATIONS:
-      return [...action.json]
+      return { all: [...action.json], favorites: []}
+    case FETCH_USER_INFO:
+      return { all: state.all, favorites: [...action.user.favorite_meditations]}
+    case ADD_FAVORITE_MED:
+      return {...state, all: state.all, favorites: [...state.favorites, action.json]}
+    case REMOVE_FAVORITE_MED:
+      return {...state, all: state.all, favorites: state.favorites.filter(el => el.id !== action.json.id)}
     default:
       return state
   }
