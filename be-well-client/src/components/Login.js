@@ -32,7 +32,6 @@ class Login extends React.Component {
   render() {
   const error = 
     <div class="ui negative message">
-      <i class="close icon"></i>
       <div class="header">
       Your Log in information is incorrect.
       </div>
@@ -49,6 +48,11 @@ class Login extends React.Component {
         <img src={Happy} alt="happy"/></div>
         {this.props.auth.login_error ? error : null}
         <div className="ui form">
+          <h2 class="ui gray image header">
+            <div class="title">
+            Log In
+            </div>
+            </h2>
           <form onSubmit={this.handleSubmit}>
             <div className="ui field">
               <label>Email</label>

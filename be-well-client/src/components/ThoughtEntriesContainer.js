@@ -50,7 +50,7 @@ class ThoughtEntriesContainer extends React.Component {
     this.props.thoughts.map(thought => thought.cognitive_distortions)
 
     return (
-      <div className="container">
+      <div className="ui container">
         <h2 className="ui header">
           <i className="cloud icon"></i>
           <div className="content">

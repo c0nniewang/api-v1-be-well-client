@@ -41,6 +41,7 @@ class MainGoalsContainer extends React.Component {
     }
   
     return (
+      <div className="ui container">
       <div className="row">
       <div className="three wide column"><p></p></div>
       <div className="ten wide column">
@@ -64,6 +65,7 @@ class MainGoalsContainer extends React.Component {
         {display}
       </div>
       <div className="three wide column"><p></p></div>
+      </div>
       </div>
     )
   }

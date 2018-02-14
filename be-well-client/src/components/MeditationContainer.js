@@ -19,10 +19,10 @@ class MeditationContainer extends React.Component{
     return parseInt(session.meditation.length.slice(0, 2).replace(/[: ]+/g, " ").trim())
   })
 
-  console.log(totalMin)
 
   let sumMin
   {totalMin.length ? sumMin = totalMin.reduce((acc, current) => acc + current) : null}
+  console.log(sumMin)
 
   let streak
   {this.props.sessions.length ? streak = this.props.sessions[this.props.sessions.length - 1].streak : null}
@@ -84,7 +84,7 @@ class MeditationContainer extends React.Component{
   }
 
   return (
-    <div>
+    <div className="ui container">
         <h2 className="ui header">
           <i className="sound icon"></i>
           <div className="content">
@@ -102,7 +102,9 @@ class MeditationContainer extends React.Component{
         </Menu>
         </div>
         <div className="ui thirteen wide column">
+          <div className="ui container">
           {display}
+          </div>
         </div>
       </div>
     </div>

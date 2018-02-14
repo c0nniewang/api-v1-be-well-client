@@ -51,7 +51,6 @@ class WordCloud extends React.Component {
   // onClick={tag => alert(`'${tag.value}' was selected!`)} />
   return (
     <div className="six wide column center aligned">
-    <h3>Your Recent Activity</h3>
       <TagCloud minSize={16}
         maxSize={35}
         tags={thoughtData}

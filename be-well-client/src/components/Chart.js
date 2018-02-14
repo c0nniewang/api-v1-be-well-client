@@ -58,8 +58,9 @@ class Chart extends React.Component {
     const tickValues = this.getTickValues();
 
     return (
-      <div className="row">
-      <div className="ten wide column">
+  <div class="ui middle aligned stackable grid container">
+    <div class="row">
+      <div className="eight wide column">
         <VictoryChart>
           <VictoryLabel x={190} y={22}
             text="Your Profile"
@@ -137,7 +138,7 @@ class Chart extends React.Component {
           <VictoryAxis
             fixLabelOverlap
             scale="time"
-            tickFormat={(x) => new Date(x).toDateString()}
+            tickFormat={(x) => new Date(x).toDateString().slice(4, 10)}
             tickValues={tickValues}
             // label="Date"
             />
@@ -147,7 +148,7 @@ class Chart extends React.Component {
           />
         </VictoryChart>
       </div>
-      <div className="six wide column">
+      <div className="six wide right floated column">
           {this.state.dailyEnergy ? <button
               onClick={(name) => this.handleClick("dailyEnergy")}
               className="ui button"><Icon name="circle"/> Energy Level</button>  :
@@ -180,6 +181,7 @@ class Chart extends React.Component {
               className="ui button"><Icon name="empty star"/> Completed Goals!</button>}   
           </div>
         </div>
+      </div>
     )
   }
 
