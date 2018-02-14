@@ -123,8 +123,8 @@ class Chart extends React.Component {
             {this.state.completedGoals ? <VictoryScatter 
               data={completedGoals}
               style={{
-                data: { stroke: "blue", fill: "blue" },
-                labels: { fill: "blue" }}
+                data: { stroke: "#49C6B7", fill: "#49C6B7" },
+                labels: { fill: "#49C6B7" }}
                 }
               size={3}
               labels={(d) => `Goal Completed!`}
@@ -179,13 +179,13 @@ class Chart extends React.Component {
               onClick={(name) => this.handleClick("thoughtData")}
               className="ui button" id="my-button"><Icon style={{"color": "tomato"}} name="square outline"/> Thought Entry Mood</button>}<br /><br />
           {this.state.completedGoals ? <button
-              style={{"border-color": "blue"}}
+              style={{"border-color": "#49C6B7"}}
               onClick={(name) => this.handleClick("completedGoals")}
-              className="ui button" id="my-button"><Icon style={{"color": "blue"}} name="star"/> Completed Goals!</button>  :
+              className="ui button" id="my-button"><Icon style={{"color": "#49C6B7"}} name="star"/> Completed Goals!</button>  :
             <button
               style={{"border-color": "e7e7e7"}}
               onClick={(name) => this.handleClick("completedGoals")}
-              className="ui button" id="my-button"><Icon style={{"color": "blue"}} name="empty star"/> Completed Goals!</button>}   
+              className="ui button" id="my-button"><Icon style={{"color": "#49C6B7"}} name="empty star"/> Completed Goals!</button>}   
           </div>
         </div>
       </div>

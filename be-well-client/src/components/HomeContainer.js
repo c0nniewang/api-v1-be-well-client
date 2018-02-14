@@ -3,27 +3,13 @@ import React from 'react';
 import DailyUpdateContainer from './DailyUpdateContainer'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
-import Happy from '../images/Happy.gif'
-import Sad from '../images/Sad.gif'
-import Neutral from '../images/Neutral.gif'
-import Dead from '../images/Dead.gif'
-import Asleep from '../images/Asleep.gif'
 import WordCloud from './WordCloud'
 import PieCharts from './PieCharts'
 import MeditationCounter from './MeditationCounter'
 import Chart from './Chart'
-
-
-
-
-
+import WellPalContainer from './WellPalContainer'
 
 class HomeContainer extends React.Component {
-  // let wellPal;
-
-
-
-
   render() {
     console.log(this.props)
     return (<div className="pusher">
@@ -34,16 +20,7 @@ class HomeContainer extends React.Component {
           </div>
         </div>
         <div class="ui middle aligned stackable grid container">
-          <div class="row">
-            <div class="eight wide center aligned column">
-            <div id="wellPalContainer">
-              <br /><br /><br />
-              <img src={Happy}/></div>
-            </div>
-            <div class="eight wide column">
-              <h3 class="ui header">Your WellPal is feeling 'insert text' today.</h3>
-            </div>
-          </div>
+          <WellPalContainer />
         </div>
         <h3 className="ui horizontal divider header">
           <i className="sun icon"></i>
