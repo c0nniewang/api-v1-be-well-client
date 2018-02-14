@@ -31,11 +31,17 @@ class Navbar extends React.Component {
 
     return (<div>
       <Menu pointing secondary>
+        <img
+          alt=""
+          height="30"
+          src={require("../images/Logo.png")}
+          active={activeItem==='home'}
+        />
+
         <Menu.Item 
         name='home' 
         active={activeItem==='home'} 
         onClick={this.handleItemClick}
-        // color="grey"
         />
         <Menu.Item 
         name='thought-entries' 

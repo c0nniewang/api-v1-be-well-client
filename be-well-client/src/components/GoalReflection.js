@@ -55,7 +55,7 @@ class GoalReflection extends React.Component {
 
     return (
     <Modal 
-    trigger={<button onClick={this.handleOpen} className="ui icon button positive">
+    trigger={<button onClick={this.handleOpen} className="ui icon button" id="my-green">
         <i className="check icon"></i>
       </button>}
       open={this.state.modalOpen}

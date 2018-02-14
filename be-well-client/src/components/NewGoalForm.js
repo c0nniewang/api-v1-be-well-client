@@ -116,7 +116,7 @@ class NewGoalForm extends React.Component {
               </div>
           </div><br />
           <span className="right floated">
-            <Button positive onClick={this.handleSubmit}> Submit <Icon name="right chevron" />
+            <Button id="my-green" onClick={this.handleSubmit}> Submit <Icon name="right chevron" />
             </Button>
           </span>
         </form>

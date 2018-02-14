@@ -25,18 +25,18 @@ class MeditationContainer extends React.Component{
   let streak
   {this.props.sessions.length ? streak = this.props.sessions[this.props.sessions.length - 1].streak : null}
   
-  const stats = <div>
-        <Statistic.Group>
-          <Statistic color='green'>
-            <Statistic.Value>{count}</Statistic.Value>
+  const stats = <div className="ui container center aligned">
+        <Statistic.Group widths='three'>
+          <Statistic>
+            <Statistic.Value style={{"color": "#3fc380"}}>{count}</Statistic.Value>
             <Statistic.Label>Sessions Completed</Statistic.Label>
           </Statistic>
-          <Statistic color='green'>
-            <Statistic.Value>{sumMin}</Statistic.Value>
+          <Statistic>
+            <Statistic.Value style={{"color": "#3fc380"}}>{sumMin}</Statistic.Value>
             <Statistic.Label>Total Minutes</Statistic.Label>
           </Statistic>
-          <Statistic color='green'>
-            <Statistic.Value>{streak}{streak === 1 ? "Day" : "Days"}</Statistic.Value>
+          <Statistic>
+            <Statistic.Value style={{"color": "#3fc380"}}>{streak}{streak === 1 ? "Day" : "Days"}</Statistic.Value>
             <Statistic.Label>Longest Streak</Statistic.Label>
           </Statistic>
         </Statistic.Group>
@@ -65,9 +65,8 @@ class MeditationContainer extends React.Component{
   if (this.state.activeItem === "main") {
     display = (<div>
       <h3>This month: </h3>
-        <div className="ui container center aligned">
           {stats}
-        </div>
+        <br /><br />
         <h3>Most Recently Completed Sessions:</h3>
         <div className="ui four cards">
           {recentSessions}
@@ -77,7 +76,7 @@ class MeditationContainer extends React.Component{
     display = (<div className="ui four cards">{allSessions}</div>)
   } else if (this.state.activeItem === 'sessions-under-six-minutes') {
     display = (<div className="ui four cards">{quickCards}</div>)
-  } else if (this.state.activeItem === 'favorites') {
+  } else if (this.state.activeItem === 'your-favorites') {
     display = (<div className="ui four cards">{favorites}</div>)
   }
 
@@ -94,13 +93,13 @@ class MeditationContainer extends React.Component{
         <div className="ui three wide column">
         <Menu pointing secondary vertical>
           <Menu.Item name='main' active={activeItem === 'main'} onClick={this.handleItemClick} />
-          <Menu.Item name='favorites' active={activeItem === 'favorites'} onClick={this.handleItemClick} />
+          <Menu.Item name='your-favorites' active={activeItem === 'your-favorites'} onClick={this.handleItemClick} />
           <Menu.Item name='sessions-under-six-minutes' active={activeItem === 'sessions-under-six-minutes'} onClick={this.handleItemClick} />
           <Menu.Item name='all' active={activeItem === 'all'} onClick={this.handleItemClick} />
         </Menu>
         </div>
         <div className="ui thirteen wide column">
-          <div className="ui container">
+          <div className="ui container" id="meditation">
           {display}
           </div>
         </div>

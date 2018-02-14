@@ -3,6 +3,7 @@ import { Popup } from 'semantic-ui-react'
 
 class ThoughtEntry extends React.Component {
   render() {
+  console.log(this.props)
     const labels = this.props.thot.cognitive_distortions.map((cog, index) => {
       return (<Popup
                 key={index}
@@ -33,9 +34,14 @@ class ThoughtEntry extends React.Component {
         {new Date(this.props.thot.created_at).toDateString()}
         </div></h2>
       <div className="ui divider"></div>
-        {thot.situation}<br />
-        {thot.emotions}<br />
-        {thot.negative_thoughts}<br />
+      <b>Situation:</b><br />
+      {thot.situation}<br /><br />
+      <b>Emotions you were feeling?</b><br />
+        {thot.emotions}<br /><br />
+      <b>Any negative thoughts you had?</b><br />
+        {thot.negative_thoughts}<br /><br />
+      <b>What was the outcome?</b><br />
+      {thot.outcome}<br /><br />
         <div className="ui divider"></div>
         {labels}
         </div>

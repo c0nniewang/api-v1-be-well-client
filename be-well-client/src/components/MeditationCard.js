@@ -35,7 +35,7 @@ class MeditationCard extends React.Component {
   render() {
     return (
       <Modal 
-      trigger={<button onClick={this.handleOpen} className="ui icon button positive">
+      trigger={<button onClick={this.handleOpen} className="ui icon button" id="my-green">
           <i className="right chevron icon"></i> Begin
         </button>}
         open={this.state.modalOpen}
@@ -51,7 +51,7 @@ class MeditationCard extends React.Component {
         </Modal.Content>
         <Modal.Actions>
           <Button name="back" onClick={this.handleClose}>Back</Button>
-          <Button name="done" positive onClick={this.handleClose}>
+          <Button name="done" id="my-green" onClick={this.handleClose}>
             <Icon name="check" /> Done
           </Button>
         </Modal.Actions>

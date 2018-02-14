@@ -4,6 +4,14 @@ import ThoughtEntry from './ThoughtEntry'
 import ThoughtEntryForm from './ThoughtEntryForm'
 import { Button, Dropdown } from 'semantic-ui-react'
 
+// <Dropdown text="Filter Entries" multiple icon='filter' onChange={this.handleDropChange}>
+//   <Dropdown.Menu>
+//     <Dropdown.Header icon='tags' content="tag" />
+//     <Dropdown.Menu scrolling>
+//       {tagOptions.map(option => <Dropdown.Item key={option.value} {...option} />)}
+//     </Dropdown.Menu>
+//   </Dropdown.Menu>
+// </Dropdown>
 class ThoughtEntriesContainer extends React.Component {
   constructor() {
     super();
@@ -57,14 +65,6 @@ class ThoughtEntriesContainer extends React.Component {
           Thoughts
           </div>
         </h2>
-        <Dropdown text="Filter Entries" multiple icon='filter' onChange={this.handleDropChange}>
-          <Dropdown.Menu>
-            <Dropdown.Header icon='tags' content="tag" />
-            <Dropdown.Menu scrolling>
-              {tagOptions.map(option => <Dropdown.Item key={option.value} {...option} />)}
-            </Dropdown.Menu>
-          </Dropdown.Menu>
-        </Dropdown>
         <div className="ui stacked segment">
           <h3 className="ui header center aligned">
             <ThoughtEntryForm button={pageButton}/>

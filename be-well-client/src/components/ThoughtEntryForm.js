@@ -75,6 +75,7 @@ class ThoughtEntryForm extends React.Component {
             onChange={this.handleChange}
             value={this.state.title}
             name="title"
+            required
             />
           </div>
           <div className="field">
@@ -84,6 +85,7 @@ class ThoughtEntryForm extends React.Component {
             onChange={this.handleChange}
             value={this.state.situation}
             name="situation"
+            required
             />
           </div>
           <div className="field">
@@ -93,6 +95,7 @@ class ThoughtEntryForm extends React.Component {
             onChange={this.handleChange}
             value={this.state.emotions}
             name="emotions"
+            required
             />
           </div>
           <div className="field">
@@ -111,6 +114,7 @@ class ThoughtEntryForm extends React.Component {
             onChange={this.handleChange}
             value={this.state.negative_thoughts}
             name="negative_thoughts"
+            required
             />
           </div>
           <div className="field">
@@ -129,6 +133,7 @@ class ThoughtEntryForm extends React.Component {
             onChange={this.handleChange}
             value={this.state.outcome}
             name="outcome"
+            required
             />
           </div>
         </form>
