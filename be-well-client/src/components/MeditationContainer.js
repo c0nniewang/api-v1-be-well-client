@@ -19,10 +19,8 @@ class MeditationContainer extends React.Component{
     return parseInt(session.meditation.length.slice(0, 2).replace(/[: ]+/g, " ").trim())
   })
 
-
   let sumMin
   {totalMin.length ? sumMin = totalMin.reduce((acc, current) => acc + current) : null}
-  console.log(sumMin)
 
   let streak
   {this.props.sessions.length ? streak = this.props.sessions[this.props.sessions.length - 1].streak : null}

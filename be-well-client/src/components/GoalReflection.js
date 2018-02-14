@@ -64,7 +64,6 @@ class GoalReflection extends React.Component {
       <Modal.Header><Icon name="star" /> Great Job on Achieving Your Goal!</Modal.Header>
       <Modal.Content >
         <form className="ui form">
-          <Modal.Description></Modal.Description>
           <div className="field">
             <label>Do you feel like you were successful upon completion of this goal? Why or why not?</label>
             <textarea 

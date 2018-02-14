@@ -51,7 +51,8 @@ class HomeContainer extends React.Component {
         </h3>
         <div class="ui text container center aligned">
           <WordCloud />
-          <a class="ui large button">See Thought Entries</a>
+          <br /><br />
+          <button class="ui large button" id="my-button" style={{"border-color": "#e7e7e7"}}>See Thought Entries</button>
         </div>
         <div class="ui vertical stripe quote segment">
           <div class="ui equal width stackable internally celled grid">
@@ -65,6 +66,7 @@ class HomeContainer extends React.Component {
             </div>
           </div>
         </div>
+        <h3 class="ui header center aligned">Your Profile Activity</h3>
         <Chart />
       </div>
     )

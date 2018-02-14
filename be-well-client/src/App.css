@@ -18,7 +18,9 @@ body, html
   margin-top: 50px;
 }
 
-
+.brown {
+  color: #ffffff;
+}
 
 .background {
   min-height: 100%;
@@ -90,4 +92,15 @@ body, html
 
 .charts {
   max-height: 300px;
+}
+
+#my-red {
+  color: #de7885;
+}
+
+#my-button {
+  background: #ffffff;
+  border: 2px solid black;
+/*  border-color: #e7e7e7;*/
+  color: #2d3436;
 }

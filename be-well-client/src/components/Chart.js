@@ -62,9 +62,6 @@ class Chart extends React.Component {
     <div class="row">
       <div className="eight wide column">
         <VictoryChart>
-          <VictoryLabel x={190} y={22}
-            text="Your Profile"
-          />
           <VictoryGroup
             scale={{x: 'time', y: 'linear'}}
             style={{
@@ -88,11 +85,11 @@ class Chart extends React.Component {
               labelComponent={<VictoryTooltip />}
               /> : null}
             {this.state.dailyMood ? <VictoryArea 
-              style={{data: { stroke: "cyan", fill: "cyan", fillOpacity: 0.4 }}}
+              style={{data: { stroke: "red", fill: "red", fillOpacity: 0.4 }}}
               data={dailyMood} /> : null}
             {this.state.dailyMood ? <VictoryScatter
               style={{
-                data: { stroke: "cyan" }
+                data: { stroke: "red" }
               }}
               data={dailyMood}
               size={(datum, active) => active ? 5 : 3}
@@ -126,8 +123,8 @@ class Chart extends React.Component {
             {this.state.completedGoals ? <VictoryScatter 
               data={completedGoals}
               style={{
-                data: { stroke: "magenta", fill: "magenta" },
-                labels: { fill: "tomato" }}
+                data: { stroke: "blue", fill: "blue" },
+                labels: { fill: "blue" }}
                 }
               size={3}
               labels={(d) => `Goal Completed!`}
@@ -149,36 +146,46 @@ class Chart extends React.Component {
         </VictoryChart>
       </div>
       <div className="six wide right floated column">
-          {this.state.dailyEnergy ? <button
-              onClick={(name) => this.handleClick("dailyEnergy")}
-              className="ui button"><Icon name="circle"/> Energy Level</button>  :
-            <button
-              onClick={(name) => this.handleClick("dailyEnergy")}
-              className="ui button"><Icon name="circle thin"/> Energy Level</button>}<br /><br />
           {this.state.dailyMood ? <button
+              style={{"border-color": "#de7885"}}
               onClick={(name) => this.handleClick("dailyMood")}
-              className="ui button"><Icon name="circle"/> Mood Level</button>  :
+              className="ui button" id="my-button"><Icon style={{"color": "#de7885"}} name="circle"/> Mood Level</button>  :
             <button
+              style={{"border-color": "#e7e7e7"}}
               onClick={(name) => this.handleClick("dailyMood")}
-              className="ui button"><Icon name="circle thin"/> Mood Level</button>}<br /><br /> 
+              className="ui button" id="my-button"><Icon style={{"color": "#de7885"}} name="circle thin"/> Mood Level</button>}<br /><br /> 
+          {this.state.dailyEnergy ? <button
+              style={{"border-color": "#f6cd98"}}
+              onClick={(name) => this.handleClick("dailyEnergy")}
+              className="ui button" id="my-button"><Icon style={{"color": "#f6cd98"}} name="circle"/> Energy Level</button>  :
+            <button
+              style={{"border-color": "#e7e7e7"}}
+              onClick={(name) => this.handleClick("dailyEnergy")}
+              className="ui button" id="my-button"><Icon style={{"color": "#f6cd98"}} name="circle thin"/> Energy Level</button>}<br /><br />
           {this.state.sleep ? <button
+              style={{"border-color": "#fde4a4"}}
               onClick={(name) => this.handleClick("sleep")}
-              className="ui button"><Icon name="circle"/> Hours of Sleep</button>  :
+              className="ui button" id="my-button"><Icon style={{"color": "#fde4a4"}} name="circle"/> Hours of Sleep</button>  :
             <button
+              style={{"border-color": "#e7e7e7"}}
               onClick={(name) => this.handleClick("sleep")}
-              className="ui button"><Icon name="circle thin"/> Hours of Sleep</button>} <br /><br />
+              className="ui button" id="my-button"><Icon style={{"color": "#fde4a4"}} name="circle thin"/> Hours of Sleep</button>} <br /><br />
           {this.state.thoughtData ? <button
+              style={{"border-color": "tomato"}}
               onClick={(name) => this.handleClick("thoughtData")}
-              className="ui button"><Icon name="square"/> Thought Entry Mood</button>  :
+              className="ui button" id="my-button"><Icon style={{"color": "tomato"}} name="square"/> Thought Entry Mood</button>  :
             <button
+              style={{"border-color": "e7e7e7"}}
               onClick={(name) => this.handleClick("thoughtData")}
-              className="ui button"><Icon name="square outline"/> Thought Entry Mood</button>}<br /><br />
+              className="ui button" id="my-button"><Icon style={{"color": "tomato"}} name="square outline"/> Thought Entry Mood</button>}<br /><br />
           {this.state.completedGoals ? <button
+              style={{"border-color": "blue"}}
               onClick={(name) => this.handleClick("completedGoals")}
-              className="ui button"><Icon name="star"/> Completed Goals!</button>  :
+              className="ui button" id="my-button"><Icon style={{"color": "blue"}} name="star"/> Completed Goals!</button>  :
             <button
+              style={{"border-color": "e7e7e7"}}
               onClick={(name) => this.handleClick("completedGoals")}
-              className="ui button"><Icon name="empty star"/> Completed Goals!</button>}   
+              className="ui button" id="my-button"><Icon style={{"color": "blue"}} name="empty star"/> Completed Goals!</button>}   
           </div>
         </div>
       </div>

@@ -35,6 +35,7 @@ class Navbar extends React.Component {
         name='home' 
         active={activeItem==='home'} 
         onClick={this.handleItemClick}
+        // color="grey"
         />
         <Menu.Item 
         name='thought-entries' 
