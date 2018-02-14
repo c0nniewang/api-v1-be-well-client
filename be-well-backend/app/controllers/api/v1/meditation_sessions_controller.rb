@@ -8,9 +8,10 @@ class Api::V1::MeditationSessionsController < ApplicationController
     if MeditationSession.last.streak != nil
       last = MeditationSession.last.created_at
       yest = Time.now - 1.day
+      today = Time.now.to_date
       streak = MeditationSession.last.streak.to_i
 
-      if yest < last
+      if yest < last && last.to_date != today
         streak += 1
       elsif
         streak = MeditationSession.last.streak
