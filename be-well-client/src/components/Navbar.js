@@ -17,15 +17,17 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const { activeItem } = this.state
+  const { activeItem } = this.state
 
   const goalsModal = <Modal trigger={<Dropdown.Item icon="star" text="New Goal"/>}>
-                        <Modal.Content >
-                        <NewGoalForm />
-                        </Modal.Content>
-                        <Modal.Actions>
-                        </Modal.Actions>
-                      </Modal>
+      <Modal.Content >
+      <NewGoalForm />
+      </Modal.Content>
+      <Modal.Actions>
+      </Modal.Actions>
+    </Modal>
+
+    console.log(this.props.match)
 
     return (<div>
       <Menu pointing secondary>

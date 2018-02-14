@@ -66,7 +66,6 @@ const goalsReducer = (state = goalsState, action) => {
       completedGoal.date_completed = new Date()
       completedGoal.goal_reflections.push(action.json)
 
-      // const arr = state.completed.slice(0, state.completed.length - 1)
       return {
         ...state,
         active: state.active,

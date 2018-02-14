@@ -20,12 +20,10 @@ class MainGoalsContainer extends React.Component {
   }
 
   render() {
-    // debugger
-    // console.log(this.props.goals.completed)
     const { activeItem } = this.state
     const goals = this.props.goals.active.reverse().map( (goal, index) => <MainGoalCard key={index} goal={goal} />)
 
-    const completedGoals = this.props.goals.completed.reverse().map((goal, index) => <CompletedGoalCard key={index} goal={goal} reflection={goal.goal_reflections} />)
+    const completedGoals = this.props.goals.completed.map((goal, index) => <CompletedGoalCard key={index} goal={goal} reflection={goal.goal_reflections} />)
     
     let display;
     if (this.state.activeItem === 'current') {
@@ -77,6 +75,3 @@ const mapStateToProps = ({ goals }) => {
 }
 
 export default connect(mapStateToProps)(MainGoalsContainer)
-        // {activeItem === 'current' ? (<div className="ui divided items">
-        //   {goals}
-        // </div>) : <NewGoalForm />}

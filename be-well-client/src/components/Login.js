@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../actions';
+import Happy from '../images/Happy.gif'
+
 
 
 class Login extends React.Component {
@@ -39,12 +41,17 @@ class Login extends React.Component {
 
     const { fields } = this.state;
     return (
-      <div className="ui middle aligned center aligned grid">
+      <div>
+      <div className="background">
+      </div>
+      <div className="login-style">
+        <div className="ui center aligned grid">
+        <img src={Happy} alt="happy"/></div>
         {this.props.auth.login_error ? error : null}
         <div className="ui form">
           <form onSubmit={this.handleSubmit}>
             <div className="ui field">
-              <label>email</label>
+              <label>Email</label>
               <input
                 name="email"
                 placeholder="email"
@@ -67,6 +74,7 @@ class Login extends React.Component {
             </button>
           </form>
         </div>
+      </div>
       </div>
     );
   }

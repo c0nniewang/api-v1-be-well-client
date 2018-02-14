@@ -20,6 +20,8 @@ class MainContainer extends React.Component {
   render() {
     return (
       <div className="ui fluid container">
+      <div className="mainbackground">
+      </div>
         <Navbar />
         <div className="main">
         <Switch>
