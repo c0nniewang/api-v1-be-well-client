@@ -56,9 +56,18 @@ class Navbar extends React.Component {
           <Menu.Item 
           name='resources' 
           active={activeItem === 'resources'} 
-          onClick={this.handleItemClick} 
+          onClick={this.handleItemClick}
+          style={{
+            background: "rgba(255, 255, 255, 0.9)",
+            "border-bottom": "2px solid rgba(34,36,38,.15)"
+          }}
           />
-          <Dropdown item icon="user circle">
+          <Dropdown 
+          style={{
+            background: "rgba(255, 255, 255, 0.9)",
+            "border-bottom": "2px solid rgba(34,36,38,.15)"
+          }}
+          item icon="user circle">
             <Dropdown.Menu>
               <ThoughtEntryForm button={<Dropdown.Item icon="cloud" text="New Thought Entry" />}/>
               {goalsModal}

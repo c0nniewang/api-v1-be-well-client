@@ -1,6 +1,5 @@
 
 import React from 'react';
-import ActivitiesContainer from './ActivitiesContainer';
 import DailyUpdateContainer from './DailyUpdateContainer'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
@@ -36,8 +35,9 @@ class HomeContainer extends React.Component {
         </div>
         <div class="ui middle aligned stackable grid container">
           <div class="row">
-            <div class="six wide left floated column">
+            <div class="eight wide center aligned column">
             <div id="wellPalContainer">
+              <br /><br /><br />
               <img src={Happy}/></div>
             </div>
             <div class="eight wide column">
@@ -49,11 +49,9 @@ class HomeContainer extends React.Component {
           <i className="sun icon"></i>
           Your Recent Activity
         </h3>
-        <div class="ui text container center aligned">
-          <WordCloud />
-          <br /><br />
-          <button class="ui large button" id="my-button" style={{"border-color": "#e7e7e7"}}>See Thought Entries</button>
-        </div>
+        <Chart />
+        <br /><br />
+        <div class="ui divider" />
         <div class="ui vertical stripe quote segment">
           <div class="ui equal width stackable internally celled grid">
             <div class="center aligned row">
@@ -66,8 +64,17 @@ class HomeContainer extends React.Component {
             </div>
           </div>
         </div>
-        <h3 class="ui header center aligned">Your Profile Activity</h3>
-        <Chart />
+        <div class="ui text container center aligned">
+          <br /><br />
+          <h3>Most Frequently Used Words</h3>
+          <WordCloud />
+          <br /><br />
+          <button 
+          class="ui large button" 
+          id="my-button" 
+          style={{"border-color": "#e7e7e7"}}
+          onClick={() => alert('figure out routing')}>See Thought Entries</button>
+        </div>
       </div>
     )
   }

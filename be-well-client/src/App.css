@@ -86,8 +86,9 @@ body, html
   clear: both;
 }
 
-.ui.vertical.stripe .horizontal.divider {
-  margin: 3em 0em;
+.ui.horizontal.divider {
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
 .charts {
@@ -101,6 +102,5 @@ body, html
 #my-button {
   background: #ffffff;
   border: 2px solid black;
-/*  border-color: #e7e7e7;*/
   color: #2d3436;
 }
