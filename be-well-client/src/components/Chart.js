@@ -175,7 +175,7 @@ class Chart extends React.Component {
               onClick={(name) => this.handleClick("thoughtData")}
               className="ui button" id="my-button"><Icon style={{"color": "tomato"}} name="square"/> Thought Entry Mood</button>  :
             <button
-              style={{"border-color": "e7e7e7"}}
+              style={{"border-color": "#e7e7e7"}}
               onClick={(name) => this.handleClick("thoughtData")}
               className="ui button" id="my-button"><Icon style={{"color": "tomato"}} name="square outline"/> Thought Entry Mood</button>}<br /><br />
           {this.state.completedGoals ? <button
@@ -183,7 +183,7 @@ class Chart extends React.Component {
               onClick={(name) => this.handleClick("completedGoals")}
               className="ui button" id="my-button"><Icon style={{"color": "#49C6B7"}} name="star"/> Completed Goals!</button>  :
             <button
-              style={{"border-color": "e7e7e7"}}
+              style={{"border-color": "#e7e7e7"}}
               onClick={(name) => this.handleClick("completedGoals")}
               className="ui button" id="my-button"><Icon style={{"color": "#49C6B7"}} name="empty star"/> Completed Goals!</button>}   
           </div>
