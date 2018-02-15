@@ -24,7 +24,8 @@ class CompletedGoalCard extends React.Component {
             icon
             floated="right"
             onClick={(id) => this.props.deleteGoal(this.props.goal.id)}
-            color="red"><Icon name="remove"/></Button>
+            color="red"
+            ><Icon name="remove"/></Button>
             <p></p>
           </div>
         </div>

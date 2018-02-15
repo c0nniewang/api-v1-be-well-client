@@ -30,7 +30,7 @@ class ThoughtEntriesContainer extends React.Component {
 
   render() {
     console.log('THOTS', this.props)
-    const pageButton = (<Button onClick={this.handleOpen}>
+    const pageButton = (<Button id="my-button" style={{"border-color": "#e7e7e7"}} onClick={this.handleOpen}>
             <i className="plus icon"></i>
             New Entry
           </Button>)

@@ -99,6 +99,11 @@ body, html
   color: #de7885;
 }
 
+#button-red {
+  background: #de7885;
+  color: #ffffff;
+}
+
 #my-button {
   background: #ffffff;
   border: 2px solid black;

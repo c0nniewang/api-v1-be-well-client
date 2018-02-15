@@ -150,7 +150,7 @@ class ThoughtEntryForm extends React.Component {
         </form>
       </Modal.Content>
       <Modal.Actions>
-        <Button positive onClick={this.handleSubmit} name="submit">
+        <Button id="my-green" onClick={this.handleSubmit} name="submit">
           Submit <Icon name="right chevron" />
         </Button>
       </Modal.Actions>

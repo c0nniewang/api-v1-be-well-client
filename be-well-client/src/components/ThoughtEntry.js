@@ -8,8 +8,12 @@ class ThoughtEntry extends React.Component {
   console.log(this.props)
     const labels = this.props.thot.cognitive_distortions.map((cog, index) => {
       return (<Popup
+                id="my-red"
                 key={index}
-                trigger={<div key={index} className="ui label">
+                trigger={<div key={index} 
+                id="my-button" 
+                style={{"border-color": "#e7e7e7", color: "#6cja89"}}
+                className="ui label">
                   <i className="comments"></i>{cog.title}
                   </div>}
                 header={cog.title}
@@ -21,11 +25,11 @@ class ThoughtEntry extends React.Component {
 
     let smiley
     if (thot.current_mood < 4) {
-      smiley = (<i className="frown icon"></i>)
+      smiley = (<Icon name="frown" color="yellow"></Icon>)
     } else if (thot.current_mood < 7) {
-      smiley = (<i className="meh icon"></i>)
+      smiley = (<Icon name="meh" color="yellow" />)
     } else if (thot.current_mood < 11) {
-      smiley = (<i className="smile icon"></i>)
+      smiley = (<Icon name="smile" color="yellow" />)
     }
     
     return (
