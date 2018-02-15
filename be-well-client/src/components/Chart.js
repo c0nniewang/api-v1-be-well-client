@@ -1,5 +1,5 @@
 import React from 'react'
-import { VictoryGroup, VictoryChart, VictoryScatter, VictoryAxis, VictoryArea, VictoryTooltip, VictoryLabel } from 'victory'
+import { VictoryGroup, VictoryChart, VictoryScatter, VictoryAxis, VictoryArea, VictoryTooltip, VictoryLabel, VictoryZoomContainer } from 'victory'
 import { connect } from 'react-redux'
 import { Icon } from 'semantic-ui-react'
 
@@ -45,7 +45,7 @@ class Chart extends React.Component {
 
     const completedGoals = this.props.goals.completed.map(goal => {
       const date = new Date(goal.date_completed)
-      return ({ x: date, y: 10, symbol: "star"})
+      return ({ x: date, y: 9, symbol: "star"})
     })
 
     // refactor code for creating buttons
@@ -57,11 +57,18 @@ class Chart extends React.Component {
     // })
     const tickValues = this.getTickValues();
 
+    let xRange
+    {this.props.thoughts.length ? 
+        (xRange = [new Date(this.props.thoughts[this.props.thoughts.length - 1].created_at), new Date()]) : null}
+
     return (
   <div class="ui middle aligned stackable grid container">
     <div class="row">
       <div className="eight wide column">
-        <VictoryChart>
+        <VictoryChart
+          domain={{y: [0, 11]}}
+          containerComponent={<VictoryZoomContainer />}
+          >
           <VictoryGroup
             scale={{x: 'time', y: 'linear'}}
             style={{
