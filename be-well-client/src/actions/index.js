@@ -37,6 +37,20 @@ export function fetchUserInfo(id) {
   }
 }
 
+export const createUser = (email, password, phone_number, name, history) => dispatch => {
+
+  adapter.auth.createUser({ email, password, phone_number, name})
+  .then(user => {
+    if (user.error) {
+      alert('error')
+    } else {
+      localStorage.setItem('token', user.jwt)
+      dispatch({ type: SET_CURRENT_USER, user: user.user})
+      history.push('/profile/home')
+    }
+  })
+}
+
 export const newDailyUpdate = (data) => dispatch => {
   dispatch({ type: ASYNC_START});
 

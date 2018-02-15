@@ -37,7 +37,6 @@ class Navbar extends React.Component {
           src={require("../images/Logo.png")}
           active={activeItem==='home'}
         />
-
         <Menu.Item 
         name='home' 
         active={activeItem==='home'} 

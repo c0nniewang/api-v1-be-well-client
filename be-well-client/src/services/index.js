@@ -24,6 +24,14 @@ const login = data => {
   }).then(res => res.json())
 }
 
+const createUser = data => {
+  return fetch(`${API_ROOT}/users`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+}
+
 const createDailyUpdate = data => {
   return fetch(`${API_ROOT}/daily_updates`, {
     method: 'POST',
@@ -107,7 +115,8 @@ const removeFavoriteMeditation = ({ user_id, meditation_id }) => {
 export const adapter = {
   auth: {
     login,
-    getCurrentUser
+    getCurrentUser,
+    createUser
   },
 
   daily_updates: {

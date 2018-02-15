@@ -1,8 +1,9 @@
 import React from 'react';
+import LoginForm from './LoginForm'
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import * as actions from '../actions';
 import Happy from '../images/Happy.gif'
+import SignupForm from './SignupForm'
+
 
 
 
@@ -10,75 +11,34 @@ class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      fields: {
-        email: '',
-        password: ''
-      }
+      login: true
     };
   }
 
-  handleChange = e => {
-    const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
-    this.setState({ fields: newFields });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    const { fields: { email, password } } = this.state;
-    this.props.loginUser(email, password, this.props.history);
-    // debugger
-  };
+  handleClick = () => {
+    this.setState({
+      login: false
+    })
+  }
 
   render() {
-  const error = 
-    <div class="ui negative message">
-      <div class="header">
-      Your Log in information is incorrect.
-      </div>
-      <p>Please try again.</p>
-    </div>
-
-    const { fields } = this.state;
     return (
       <div>
-      <div className="background">
-      </div>
-      <div className="login-style">
-        <div className="ui center aligned grid">
-        <img src={Happy} alt="happy"/></div>
-        {this.props.auth.login_error ? error : null}
-        <div className="ui form">
-          <h2 class="ui gray image header">
-            <div class="title">
-            Log In
-            </div>
-            </h2>
-          <form onSubmit={this.handleSubmit}>
-            <div className="ui field">
-              <label>Email</label>
-              <input
-                name="email"
-                placeholder="email"
-                value={fields.email}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="ui field">
-              <label>Password</label>
-              <input
-                name="password"
-                type="password"
-                placeholder="password"
-                value={fields.password}
-                onChange={this.handleChange}
-              />
-            </div>
-            <button type="submit" className="ui basic green button">
-              Login
-            </button>
-          </form>
+        <div className="background">
         </div>
-      </div>
+        <div className="login-style">
+          <div className="ui container center aligned">
+            <img src={Happy} alt="happy"/>
+          </div>
+          {this.state.login ? <LoginForm /> : <SignupForm />}
+          <div className="ui divider" />
+          {this.state.login ? (<div className="ui center aligned stackable container">
+          <p>New to Us?</p>
+          <button 
+          className="ui basic primary button" 
+          onClick={this.handleClick} >Sign Up</button>
+          </div>) : null}
+        </div>
       </div>
     );
   }
@@ -90,4 +50,4 @@ const mapStateToProps = ({ auth }) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, actions)(Login));
+export default (connect(mapStateToProps)(Login));
