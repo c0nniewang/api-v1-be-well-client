@@ -32,11 +32,11 @@ class MeditationContainer extends React.Component{
             <Statistic.Label>Sessions Completed</Statistic.Label>
           </Statistic>
           <Statistic>
-            <Statistic.Value style={{"color": "#3fc380"}}>{sumMin}</Statistic.Value>
+            <Statistic.Value style={{"color": "#3fc380"}}>{sumMin === undefined ? 0 : sumMin}</Statistic.Value>
             <Statistic.Label>Total Minutes</Statistic.Label>
           </Statistic>
           <Statistic>
-            <Statistic.Value style={{"color": "#3fc380"}}>{streak}{streak === 1 ? "Day" : "Days"}</Statistic.Value>
+            <Statistic.Value style={{"color": "#3fc380"}}>{streak === undefined ? 0 : streak}{streak === 1 ? "Day" : "Days"}</Statistic.Value>
             <Statistic.Label>Longest Streak</Statistic.Label>
           </Statistic>
         </Statistic.Group>

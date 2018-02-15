@@ -26,7 +26,7 @@ class MainContainer extends React.Component {
         <div className="main">
         <Switch>
         <Route exact path="/profile/home" render={() => {
-          return <HomeContainer />
+          return <HomeContainer history={this.props.history}/>
         }} />
         <Route path="/profile/goals" render={() => {
               return <MainGoalsContainer />

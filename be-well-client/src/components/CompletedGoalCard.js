@@ -22,7 +22,7 @@ class CompletedGoalCard extends React.Component {
             {this.props.reflection[0] ? this.props.reflection[0].success : null}<br />
             <button
             onClick={(id) => this.props.deleteGoal(this.props.goal.id)}
-            className="ui button negative"><Icon name="trash"/></button>
+            className="ui button negative"><Icon name="remove"/></button>
             <p></p>
           </div>
         </div>

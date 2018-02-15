@@ -9,7 +9,7 @@ import Asleep from '../images/Asleep.gif'
 const WellPalContainer = (props) => {
   console.log(props)
   let wellPal
-  let total
+  let total = 80
   let desc
 
   const oneWeekAgo = new Date()
@@ -53,7 +53,8 @@ const WellPalContainer = (props) => {
 
   total = (completedGoals * 5) + (createdGoals * 3) + (medSessions * 5) + sleepGrade + moodDiff
 
-  console.log(finalmood, moodDiff, total)
+  {Number.isInteger(total) ? total : total = 75}
+  console.log('HI', finalmood, moodDiff, total)
 
   if (total < 20) {
     wellPal = <img src={Dead} />

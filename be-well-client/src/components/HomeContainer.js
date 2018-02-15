@@ -19,7 +19,7 @@ class HomeContainer extends React.Component {
           <DailyUpdateContainer />
           </div>
         </div>
-        <div class="ui middle aligned stackable grid container">
+        <div className="ui middle aligned stackable grid container">
           <WellPalContainer />
         </div>
         <h3 className="ui horizontal divider header">
@@ -28,29 +28,29 @@ class HomeContainer extends React.Component {
         </h3>
         <Chart />
         <br /><br />
-        <div class="ui divider" />
-        <div class="ui vertical stripe quote segment">
-          <div class="ui equal width stackable internally celled grid">
-            <div class="center aligned row">
-              <div class="column">
+        <div className="ui divider" />
+        <div className="ui vertical stripe quote segment">
+          <div className="ui equal width stackable internally celled grid">
+            <div className="center aligned row">
+              <div className="column">
                 <PieCharts />
               </div>
-              <div class="column">
+              <div className="column">
                 <MeditationCounter />
               </div>
             </div>
           </div>
         </div>
-        <div class="ui text container center aligned">
+        <div className="ui text container center aligned">
           <br /><br />
           <h3>Most Frequently Used Words</h3>
           <WordCloud />
           <br /><br />
           <button 
-          class="ui large button" 
+          className="ui large button" 
           id="my-button" 
           style={{"border-color": "#e7e7e7"}}
-          onClick={() => alert('figure out routing')}>See Thought Entries</button>
+          onClick={() => this.props.history.push('/profile/thought-entries')}>See Thought Entries</button>
         </div>
       </div>
     )

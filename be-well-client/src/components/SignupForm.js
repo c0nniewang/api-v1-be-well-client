@@ -56,7 +56,7 @@ class SignupForm extends React.Component {
             <label>Phone Number</label>
             <input
               name="phone_number"
-              type="phone_number"
+              type="number"
               placeholder="phone number"
               value={fields.phone_number}
               onChange={this.handleChange}

@@ -129,7 +129,7 @@ class DailyUpdateForm extends React.Component {
             value={this.state.grateful3}
             name="grateful3"
             />
-          </div><br />
+          </div>
         </form>
         </Modal.Content>
         <Modal.Actions>
