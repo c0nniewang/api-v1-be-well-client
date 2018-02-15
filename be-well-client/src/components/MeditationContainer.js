@@ -24,6 +24,7 @@ class MeditationContainer extends React.Component{
 
   let streak
   {this.props.sessions.length ? streak = this.props.sessions[this.props.sessions.length - 1].streak : null}
+  console.log("STREAK", this.props.sessions, streak)
   
   const stats = <div className="ui container center aligned">
         <Statistic.Group widths='three'>
@@ -73,11 +74,11 @@ class MeditationContainer extends React.Component{
         </div>
       </div>)
   } else if (this.state.activeItem === 'all') {
-    display = (<div className="ui four cards">{allSessions}</div>)
+    display = (<div><h3>All Sessions</h3><div className="ui four cards">{allSessions}</div></div>)
   } else if (this.state.activeItem === 'sessions-under-six-minutes') {
-    display = (<div className="ui four cards">{quickCards}</div>)
+    display = (<div><h3>Quick Sessions</h3><div className="ui four cards">{quickCards}</div></div>)
   } else if (this.state.activeItem === 'your-favorites') {
-    display = (<div className="ui four cards">{favorites}</div>)
+    display = (<div><h3>Favorite Sessions</h3><div className="ui four cards">{favorites}</div></div>)
   }
 
   return (

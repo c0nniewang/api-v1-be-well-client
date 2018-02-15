@@ -5,19 +5,20 @@ class Api::V1::MeditationSessionsController < ApplicationController
   end
 
   def create
-    if MeditationSession.last.streak != nil
-      last = MeditationSession.last.created_at
-      yest = Time.now - 1.day
+    #fix for individual user
+    if MeditationSession.all.length == 0
+      streak = 0
+    else
+      last = MeditationSession.last.created_at.to_date
+      yest = Time.now.to_date - 1.day
       today = Time.now.to_date
       streak = MeditationSession.last.streak.to_i
 
-      if yest < last && last.to_date != today
+      if yest <= last && last.to_date != today
         streak += 1
       elsif
         streak = MeditationSession.last.streak
       end
-    else
-      streak = 0
     end
 
     meditation_session = MeditationSession.new({user_id: meditation_session_params[:user_id], meditation_id: meditation_session_params[:meditation_id], streak: streak})
