@@ -57,10 +57,6 @@ class Chart extends React.Component {
     // })
     const tickValues = this.getTickValues();
 
-    let xRange
-    {this.props.thoughts.length ? 
-        (xRange = [new Date(this.props.thoughts[this.props.thoughts.length - 1].created_at), new Date()]) : null}
-
     return (
   <div class="ui middle aligned stackable grid container">
     <div class="row">
