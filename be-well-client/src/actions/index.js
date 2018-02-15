@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE , ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL, ADD_REFLECTION, DELETE_GOAL, ADD_SESSION, FETCH_MEDITATIONS, ADD_FAVORITE_MED, REMOVE_FAVORITE_MED } from './types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE , ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL, ADD_REFLECTION, DELETE_GOAL, ADD_SESSION, FETCH_MEDITATIONS, ADD_FAVORITE_MED, REMOVE_FAVORITE_MED, DELETE_THOUGHT } from './types';
 import { adapter } from '../services';
 
 export const fetchUser = () => dispatch => {
@@ -133,5 +133,12 @@ export const removeFavoriteMeditation = (data) => dispatch => {
   adapter.meditation.removeFavoriteMeditation(data)
   .then(json => {
     dispatch({ type: REMOVE_FAVORITE_MED, json })
+  })
+}
+
+export const deleteThought = (id) => dispatch => {
+  adapter.thoughts.deleteThought(id)
+  .then(json => {
+    dispatch({ type: DELETE_THOUGHT, json })
   })
 }

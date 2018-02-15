@@ -1,5 +1,5 @@
 import React from 'react'
-import { Progress } from 'semantic-ui-react'
+import { Progress, Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 import GoalReflection from './GoalReflection'
@@ -51,6 +51,14 @@ class MainGoalCard extends React.Component {
             <Progress color="yellow" percent={percent} label={`${daysLeft} ${daysLeft === 1 ? "day" : "days"} until your target date for goal completion!`}/>
           </div>
           <div className="extra content">
+          <Button 
+            onClick={(id) => this.props.deleteGoal(this.props.goal.id)}
+            floated="left" 
+            color="red" 
+            icon
+            >
+              <Icon name="remove" />
+            </Button>
             <button className="ui button">Edit Goal</button>
             <span className="right floated">
               <GoalReflection goal={this.props.goal} />

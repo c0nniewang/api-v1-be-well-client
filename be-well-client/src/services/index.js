@@ -112,6 +112,12 @@ const removeFavoriteMeditation = ({ user_id, meditation_id }) => {
   }).then(resp => resp.json())
 }
 
+const deleteThought = id => {
+  return fetch(`${API_ROOT}/thought_entries/${id}`, {
+    method: 'DELETE'
+  }).then(resp => resp.json())
+}
+
 export const adapter = {
   auth: {
     login,
@@ -135,7 +141,8 @@ export const adapter = {
   },
 
   thoughts: {
-    newThoughtEntry
+    newThoughtEntry,
+    deleteThought
   },
 
   meditation: {

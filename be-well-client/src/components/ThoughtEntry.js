@@ -1,5 +1,7 @@
 import React from 'react'
-import { Popup } from 'semantic-ui-react'
+import { Popup, Button, Icon } from 'semantic-ui-react'
+import * as actions from '../actions'
+import { connect } from 'react-redux'
 
 class ThoughtEntry extends React.Component {
   render() {
@@ -44,9 +46,17 @@ class ThoughtEntry extends React.Component {
       {thot.outcome}<br /><br />
         <div className="ui divider"></div>
         {labels}
+        <Button 
+        onClick={(id) => this.props.deleteThought(this.props.thot.id)}
+        floated="right" 
+        color="red" 
+        icon
+        >
+          <Icon name="remove" />
+        </Button>
         </div>
     )
   }
 }
 
-export default ThoughtEntry
+export default connect(null, actions)(ThoughtEntry)

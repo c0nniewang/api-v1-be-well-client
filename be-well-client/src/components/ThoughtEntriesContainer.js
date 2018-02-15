@@ -35,7 +35,7 @@ class ThoughtEntriesContainer extends React.Component {
             New Entry
           </Button>)
 
-    const thots = this.props.thoughts.reverse().map((thot, index) => <ThoughtEntry key={index} thot={thot} />)
+    const thots = this.props.thoughts.map((thot, index) => <ThoughtEntry key={index} thot={thot} />)
 
     const tagOptions = [
       {

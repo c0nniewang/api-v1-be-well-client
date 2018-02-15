@@ -30,6 +30,13 @@ class Api::V1::ThoughtEntriesController < ApplicationController
     end
   end
 
+  def destroy
+    thought_entry = ThoughtEntry.find(params[:id])
+
+    thought_entry.destroy
+    render json: {message: 'successfully deleted', id: thought_entry.id}
+  end
+
   private
   def thought_entry_params
     params.permit(thought_entry: [:title, :current_mood, :emotions, :situation, :negative_thoughts, :outcome, :user_id], cognitive_distortions: [])

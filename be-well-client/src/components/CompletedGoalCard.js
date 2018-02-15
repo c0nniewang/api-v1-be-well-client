@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 
@@ -20,9 +20,11 @@ class CompletedGoalCard extends React.Component {
             <p></p>
             <b>Did you feel like you were successful in your completion of this goal?</b><br />
             {this.props.reflection[0] ? this.props.reflection[0].success : null}<br />
-            <button
+            <Button 
+            icon
+            floated="right"
             onClick={(id) => this.props.deleteGoal(this.props.goal.id)}
-            className="ui button negative"><Icon name="remove"/></button>
+            color="red"><Icon name="remove"/></Button>
             <p></p>
           </div>
         </div>

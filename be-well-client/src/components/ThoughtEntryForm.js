@@ -53,6 +53,17 @@ class ThoughtEntryForm extends React.Component {
 
     console.log(this.state)
     this.props.newThoughtEntry({...this.state, user_id: this.props.id})
+
+    this.setState({
+      title: '',
+      situation: '',
+      emotions: '',
+      negative_thoughts: '',
+      outcome: '',
+      cognitive_distortions: [],
+      current_mood: '',
+      modalOpen: false
+    })
   }
 
   render() {
