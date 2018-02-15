@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dropdown, Modal, Icon } from 'semantic-ui-react'
+import { Dropdown, Modal, Icon, Divider } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import * as actions from '../actions'
 
@@ -135,6 +135,7 @@ class DailyUpdateForm extends React.Component {
         <Modal.Actions>
           <button className="ui button right floated positive" onClick={this.handleSubmit}>Submit</button>
         </Modal.Actions>
+        <Divider hidden /> 
       </Modal>
     )
   }

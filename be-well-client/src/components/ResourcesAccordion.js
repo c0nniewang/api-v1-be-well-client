@@ -55,6 +55,19 @@ class ResourcesAccordion extends Component {
           </p>
         </Accordion.Content>
 
+        <Accordion.Title active={activeIndex === 4} index={4} onClick={this.handleClick}>
+          <Icon name='dropdown' />
+          Why meditation sessions?
+        </Accordion.Title>
+        <Accordion.Content active={activeIndex === 4}>
+          <p>
+            Research has shown mindfulness to address health issues such as lower blood pressure and improving the immune system. Additionally, mindful awareness practices can aid in increasing attention and focus, foster well-being and less emotional reactivity, and can help with difficult mental states such as anxiety and depression.
+          </p>
+          <p>
+            The guided meditation sessions on Be Well are taken from UCLA's Mindful Awareness Research Center, found here: <a target="_blank" href="http://marc.ucla.edu/">UCLA MARC</a>.
+          </p>
+        </Accordion.Content>
+
         <Accordion.Title active={activeIndex === 3} index={3} onClick={this.handleClick}>
           <Icon name='dropdown' />
           What is the WellPal?
@@ -67,6 +80,7 @@ class ResourcesAccordion extends Component {
           <img src={Happy}/> <img src={Neutral}/><img src={Asleep}/><img src={Sad}/><img src={Dead}/>
           </div>
         </Accordion.Content>
+
       </Accordion>
     )
   }
