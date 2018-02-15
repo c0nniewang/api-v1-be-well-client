@@ -86,11 +86,18 @@ class SignupForm extends React.Component {
             />
           </div>
           <div className="ui center aligned stackable container">
-          <button type="submit" className="ui basic button positive">
+          <button type="submit" className="ui basic button primary">
             Submit
           </button><br />
         </div>
         </form>
+        <div className="ui divider" />
+        <div className="ui center aligned stackable container">
+          <p>Have an Account?</p>
+          <button 
+          className="ui basic positive button" 
+          onClick={() => this.props.history.push('/login')} >Log In</button>
+          </div>
       </div>
       </div>
   )}

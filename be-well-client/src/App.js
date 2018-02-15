@@ -22,7 +22,7 @@ class App extends Component {
       <div className="App">
         <div className="main">
         <Switch>
-          <Route exact path="/login" render={() => {
+          <Route path="/login" render={() => {
             return <Login />
           }} />
           <Route path="/profile" render={() => {

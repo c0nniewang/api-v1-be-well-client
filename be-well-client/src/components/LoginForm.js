@@ -25,7 +25,6 @@ class LoginForm extends React.Component {
     e.preventDefault();
     const { fields: { email, password } } = this.state;
     this.props.loginUser(email, password, this.props.history);
-    // debugger
   };
 
   render() {
@@ -74,6 +73,13 @@ class LoginForm extends React.Component {
           </button><br />
         </div>
         </form>
+        <div className="ui divider" />
+        <div className="ui center aligned stackable container">
+          <p>New to Us?</p>
+          <button 
+          className="ui basic primary button"
+          onClick={() => this.props.history.push('login/new')} >Sign Up</button>
+          </div>
       </div>
       </div>
   )}

@@ -3,6 +3,7 @@ import LoginForm from './LoginForm'
 import { connect } from 'react-redux';
 import Happy from '../images/Happy.gif'
 import SignupForm from './SignupForm'
+import { withRouter, Route, Switch } from 'react-router-dom';
 
 
 
@@ -30,14 +31,14 @@ class Login extends React.Component {
           <div className="ui container center aligned">
             <img src={Happy} alt="happy"/>
           </div>
-          {this.state.login ? <LoginForm /> : <SignupForm />}
-          <div className="ui divider" />
-          {this.state.login ? (<div className="ui center aligned stackable container">
-          <p>New to Us?</p>
-          <button 
-          className="ui basic primary button" 
-          onClick={this.handleClick} >Sign Up</button>
-          </div>) : null}
+          <Switch>
+          <Route exact path="/login" render={() => {
+            return <LoginForm />
+          }} />
+          <Route path="/login/new" render={() => {
+            return <SignupForm />
+          }} />
+          </Switch>
         </div>
       </div>
     );
@@ -50,4 +51,4 @@ const mapStateToProps = ({ auth }) => {
   }
 }
 
-export default (connect(mapStateToProps)(Login));
+export default withRouter((connect(mapStateToProps)(Login)));
