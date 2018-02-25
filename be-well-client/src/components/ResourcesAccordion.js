@@ -28,7 +28,7 @@ class ResourcesAccordion extends Component {
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 0}>
           <p>
-            Be Well is built off of principles of CBT, or Cognitive Behavioral therapy. It is the most widely used evience-based practice for improving mental health, and is something that everybody can easily apply to their own life. The hope is that through the use of Be Well, by tracking your mood and thoughts, you can increase self awareness, mindfulness, and emotional intelligence. Additionally, by linking these thoughts to your physical state, you can begin to identify thought patterns and emotional tendencies over time.
+            Be Well is built with principles of CBT, or Cognitive Behavioral Therapy. It is the most widely used evidence-based practice for improving mental health, and is something that everybody can easily apply to their own life. The hope is that through the use of Be Well, by tracking your mood and thoughts, you can increase self awareness, mindfulness, and emotional intelligence. Additionally, by linking these thoughts to your physical state, you can begin to identify thought patterns and emotional tendencies over time.
           </p>
         </Accordion.Content>
 
