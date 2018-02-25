@@ -1,5 +1,6 @@
 # Be Well
 **Author:** Connie Wang
+
 **Contact:** connie.wang303@gmail.com
 
 ## App Description
