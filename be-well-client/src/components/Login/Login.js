@@ -1,12 +1,9 @@
 import React from 'react';
 import LoginForm from './LoginForm'
 import { connect } from 'react-redux';
-import Happy from '../images/Happy.gif'
+import Happy from '../../images/Happy.gif'
 import SignupForm from './SignupForm'
 import { withRouter, Route, Switch } from 'react-router-dom';
-
-
-
 
 class Login extends React.Component {
   constructor() {
@@ -51,4 +48,4 @@ const mapStateToProps = ({ auth }) => {
   }
 }
 
-export default withRouter((connect(mapStateToProps)(Login)));
+export default withRouter(connect(mapStateToProps)(Login));

@@ -1,13 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Happy from '../images/Happy.gif'
-import Sad from '../images/Sad.gif'
-import Neutral from '../images/Neutral.gif'
-import Dead from '../images/Dead.gif'
-import Asleep from '../images/Asleep.gif'
+import Happy from '../../images/Happy.gif'
+import Sad from '../../images/Sad.gif'
+import Neutral from '../../images/Neutral.gif'
+import Dead from '../../images/Dead.gif'
+import Asleep from '../../images/Asleep.gif'
 
 const WellPalContainer = (props) => {
-  console.log(props)
   let wellPal
   let total = 80
   let desc
@@ -49,12 +48,12 @@ const WellPalContainer = (props) => {
   let sleepGrade
   {sleepAvg < 8 ? sleepGrade = -10 : sleepGrade = 10}
 
-  console.log('HEY', completedGoals, createdGoals, medSessions, sleepAvg, finalmood)
+  // console.log('HEY', completedGoals, createdGoals, medSessions, sleepAvg, finalmood)
 
   total = (completedGoals * 5) + (createdGoals * 3) + (medSessions * 5) + sleepGrade + moodDiff
 
   {Number.isInteger(total) ? total : total = 75}
-  console.log('HI', finalmood, moodDiff, total)
+  // console.log('HI', finalmood, moodDiff, total)
 
   if (total < 20) {
     wellPal = <img src={Dead} />

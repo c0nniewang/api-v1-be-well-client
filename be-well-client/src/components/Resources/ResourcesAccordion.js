@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Accordion, Icon } from 'semantic-ui-react'
-import Happy from '../images/Happy.gif'
-import Sad from '../images/Sad.gif'
-import Neutral from '../images/Neutral.gif'
-import Dead from '../images/Dead.gif'
-import Asleep from '../images/Asleep.gif'
+import Happy from '../../images/Happy.gif'
+import Sad from '../../images/Sad.gif'
+import Neutral from '../../images/Neutral.gif'
+import Dead from '../../images/Dead.gif'
+import Asleep from '../../images/Asleep.gif'
 
 class ResourcesAccordion extends Component {
   state = { activeIndex: 0 }

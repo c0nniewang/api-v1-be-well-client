@@ -4,7 +4,7 @@ import * as actions from './actions'
 import { connect } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import MainContainer from './components/MainContainer'
-import Login from './components/Login'
+import Login from './components/Login/Login'
 
 
 class App extends Component {

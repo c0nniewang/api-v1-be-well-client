@@ -11,7 +11,7 @@ Be Well is built with principles of CBT, or Cognitive Behavioral Therapy and min
 ## Core Features
 Be Well provides several features to equip users with tools to track their own mental state and encourage positive thoughts and behaviors, such as:
 * thought entries in which a user can reflect on a situation and identify cognitive distortions in their own thought process
-* goal-tracking using the SMART model (Specific, Measureable, Achievable, Relevant, Time bound)
+* goal setting and tracking using the SMART model (Specific, Measureable, Achievable, Relevant, Time bound)
     * goal reflection upon goal completion
 * variety of guided meditation sessions taken from the [UCLA Mindful Awareness Research Center](http://marc.ucla.edu/default.cfm)
 * charts to visualize user data and trends

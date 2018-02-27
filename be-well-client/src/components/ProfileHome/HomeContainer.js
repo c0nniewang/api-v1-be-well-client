@@ -1,11 +1,10 @@
-
 import React from 'react';
 import DailyUpdateContainer from './DailyUpdateContainer'
 import { connect } from 'react-redux'
-import * as actions from '../actions'
+import * as actions from '../../actions'
 import WordCloud from './WordCloud'
 import PieCharts from './PieCharts'
-import MeditationCounter from './MeditationCounter'
+import MeditationCounter from '../Meditation/MeditationCounter'
 import Chart from './Chart'
 import WellPalContainer from './WellPalContainer'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { VictoryGroup, VictoryChart, VictoryScatter, VictoryAxis, VictoryArea, VictoryTooltip, VictoryLabel, VictoryZoomContainer } from 'victory'
+import { VictoryGroup, VictoryChart, VictoryScatter, VictoryAxis, VictoryArea, VictoryTooltip, VictoryZoomContainer } from 'victory'
 import { connect } from 'react-redux'
 import { Icon } from 'semantic-ui-react'
 

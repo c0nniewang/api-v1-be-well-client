@@ -4,11 +4,11 @@ import * as actions from '../actions'
 import Navbar from './Navbar'
 import withAuth from '../hocs/withAuth'
 import { Switch, Route, withRouter } from 'react-router-dom';
-import HomeContainer from './HomeContainer'
-import MainGoalsContainer from './MainGoalsContainer'
-import ThoughtEntriesContainer from './ThoughtEntriesContainer'
-import MeditationContainer from './MeditationContainer'
-import ResourcesContainer from './ResourcesContainer'
+import HomeContainer from './ProfileHome/HomeContainer'
+import MainGoalsContainer from './Goals/MainGoalsContainer'
+import ThoughtEntriesContainer from './ThoughtEntries/ThoughtEntriesContainer'
+import MeditationContainer from './Meditation/MeditationContainer'
+import ResourcesContainer from './Resources/ResourcesContainer'
 
 class MainContainer extends React.Component {
   componentDidMount() {

@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import * as actions from '../actions'
 import { withRouter } from 'react-router-dom'
 import { Menu, Dropdown, Modal } from 'semantic-ui-react'
-import ThoughtEntryForm from './ThoughtEntryForm'
-import NewGoalForm from './NewGoalForm'
+import ThoughtEntryForm from './ThoughtEntries/ThoughtEntryForm'
+import NewGoalForm from './Goals/NewGoalForm'
 
 class Navbar extends React.Component {
   state = {activeItem: 'home'}

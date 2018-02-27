@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import * as actions from '../actions'
+import * as actions from '../../actions'
 
 class CompletedGoalCard extends React.Component {
   render() {
