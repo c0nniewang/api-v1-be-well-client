@@ -16,7 +16,24 @@ class DailyUpdateForm extends React.Component {
       grateful1: '',
       grateful2: '',
       grateful3: '',
-      sleep: ''
+      sleep: '',
+      modalOpen: false
+    }
+  }
+
+  handleOpen = () => {
+    this.setState({
+      modalOpen: true
+    })
+  }
+
+  handleClose = (ev) => {
+    this.setState({
+      modalOpen: false
+    })
+
+    if (ev.target.name === "submit") {
+      this.props.newDailyUpdate({...this.state, user_id: this.props.id})
     }
   }
 
@@ -33,29 +50,15 @@ class DailyUpdateForm extends React.Component {
     })
   }
 
-  handleSubmit = (ev) => {
-    ev.preventDefault()
-    this.props.newDailyUpdate({...this.state, user_id: this.props.id})
-
-    this.setState({
-      energy_level: '',
-      mood_desc: '',
-      mood_num: '',
-      day_desc: '',
-      grateful1: '',
-      grateful2: '',
-      grateful3: '',
-      sleep: ''
-    })
-  }
-
   render() {
     const numArray = [...Array(11).keys()]
     const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
     return (
       <Modal trigger={<button
-            onClick={this.formClick}
-            className="ui positive basic button">Let's Do it!</button>}>
+            onClick={this.handleOpen}
+            className="ui positive basic button">Let's Do it!</button>}
+            open={this.state.modalOpen}
+            onClose={this.handleClose}>
         <Modal.Header><Icon name="sun" />Daily Update</Modal.Header>
         <Modal.Content>
         <form className="ui form">
@@ -133,7 +136,11 @@ class DailyUpdateForm extends React.Component {
         </form>
         </Modal.Content>
         <Modal.Actions>
-          <button className="ui button right floated positive" onClick={this.handleSubmit}>Submit</button>
+          <button 
+          className="ui button right floated positive" 
+          onClick={this.handleClose}
+          name="submit"
+          >Submit</button>
         </Modal.Actions>
         <Divider hidden /> 
       </Modal>

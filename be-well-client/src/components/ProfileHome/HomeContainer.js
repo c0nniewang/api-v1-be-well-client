@@ -10,7 +10,6 @@ import WellPalContainer from './WellPalContainer'
 
 class HomeContainer extends React.Component {
   render() {
-    console.log(this.props)
     return (<div className="pusher">
         <div className="row">
         <div className="ui raised very padded text container segment">
@@ -48,7 +47,7 @@ class HomeContainer extends React.Component {
           <button 
           className="ui large button" 
           id="my-button" 
-          style={{"border-color": "#e7e7e7"}}
+          style={{"borderColor": "#e7e7e7"}}
           onClick={() => this.props.history.push('/profile/thought-entries')}>See Thought Entries</button>
         </div>
       </div>

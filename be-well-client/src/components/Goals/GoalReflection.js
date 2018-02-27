@@ -31,8 +31,6 @@ class GoalReflection extends React.Component {
       const id = this.props.goal.id
 
       this.props.completedGoal({ ...this.state, goal_id: id})
-      
-      console.log('GOAL REF', id)
     }
   }
 

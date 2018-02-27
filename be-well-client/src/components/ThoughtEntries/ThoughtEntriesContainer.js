@@ -17,7 +17,7 @@ class ThoughtEntriesContainer extends React.Component {
     super();
 
     this.state = {
-      current: 'All'
+      current: 'All',
     }
   }
 
@@ -30,10 +30,15 @@ class ThoughtEntriesContainer extends React.Component {
 
   render() {
     console.log('THOTS', this.props)
-    const pageButton = (<Button id="my-button" style={{"border-color": "#e7e7e7"}} onClick={this.handleOpen}>
-            <i className="plus icon"></i>
-            New Entry
-          </Button>)
+    const pageButton = (<Button 
+      id="my-button" 
+      style={{"border-color": "#e7e7e7"}} 
+      >
+        <i className="plus icon"></i>
+        New Entry
+      </Button>)
+
+
 
     const thots = this.props.thoughts.map((thot, index) => <ThoughtEntry key={index} thot={thot} />)
 
@@ -67,7 +72,9 @@ class ThoughtEntriesContainer extends React.Component {
         </h2>
         <div className="ui stacked segment">
           <h3 className="ui header center aligned">
-            <ThoughtEntryForm button={pageButton}/>
+            <ThoughtEntryForm 
+            button={pageButton}
+            />
           </h3>
         </div>
         {thots}

@@ -82,7 +82,24 @@ class NewGoalForm extends React.Component {
   }
  
   render() {
-    let goal;
+    let displayError;
+    if (this.state.target_date) {
+      if (new Date(this.state.target_date).toISOString() <= new Date().toISOString()) {
+        displayError = true
+      } 
+    } else {
+      displayError = false
+    }
+
+    const error = 
+      <div className="ui negative message">
+        <div className="header">
+        Your goal date must be a future date.
+        </div>
+        <p>Please try again.</p>
+      </div>
+
+
     return (
       <div>
         <form className="ui form">
@@ -137,6 +154,7 @@ class NewGoalForm extends React.Component {
             value={this.state.relevance}
             name="relevance"></textarea>
           </div>
+          {displayError ? error : null}
           <div className="field">
             <label>Set a deadline for yourself to achieve this goal. When do you aim to reach your goal by?</label>
               <div>

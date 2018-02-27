@@ -13,7 +13,8 @@ class SignupForm extends React.Component {
         email: '',
         password: '',
         phone_number: '',
-        name: ''
+        name: '',
+        error: false
       }
     };
   }
@@ -30,6 +31,13 @@ class SignupForm extends React.Component {
   };
 
   render() {
+  const error = 
+    <div className="ui negative message">
+      <div className="header">
+      All fields must be completed.
+      </div>
+      <p>Please try again.</p>
+    </div>
 
     const { fields } = this.state;
     return (

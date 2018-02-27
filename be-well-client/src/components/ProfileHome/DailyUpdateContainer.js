@@ -5,11 +5,6 @@ import { withRouter } from 'react-router-dom';
 import DailyUpdateForm from './DailyUpdateForm'
 
 class DailyUpdateContainer extends React.Component {
-
-  formClick = () => {
-    this.props.history.push("/profile/newUpdate")
-  }
-
   render() {
     return (
       <div>

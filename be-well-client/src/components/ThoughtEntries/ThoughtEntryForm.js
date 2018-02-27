@@ -20,6 +20,14 @@ class ThoughtEntryForm extends React.Component {
     }
   }
 
+  componentDidMount = () => {
+    if (this.props.click) {
+      this.setState({
+        modalOpen: true
+      })
+    }
+  }
+
   handleChange = (ev) => {
     this.setState({
       [ev.target.name]: ev.target.value
@@ -72,6 +80,8 @@ class ThoughtEntryForm extends React.Component {
     const numArray = [...Array(11).keys()]
     const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
 
+    // open={this.state.modalOpen}
+    // onClose={this.state.handleClose}
     return (
     <Modal 
     trigger={this.props.button}
@@ -150,7 +160,7 @@ class ThoughtEntryForm extends React.Component {
         </form>
       </Modal.Content>
       <Modal.Actions>
-        <Button id="my-green" onClick={this.handleSubmit} name="submit">
+        <Button id="my-green" onClick={this.handleClose} name="submit">
           Submit <Icon name="right chevron" />
         </Button>
       </Modal.Actions>
