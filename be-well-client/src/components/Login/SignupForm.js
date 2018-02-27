@@ -44,8 +44,8 @@ class SignupForm extends React.Component {
       <div className="ui stackable container">
       <div className="ui form">
         <div className="ui container center aligned">
-        <h2 class="ui gray image header">
-          <div class="title">
+        <h2 className="ui gray image header">
+          <div className="title">
           Sign Up
           </div>
           </h2></div>
@@ -68,6 +68,7 @@ class SignupForm extends React.Component {
               placeholder="phone number"
               value={fields.phone_number}
               onChange={this.handleChange}
+              maxlength="10"
               required
             />
           </div>

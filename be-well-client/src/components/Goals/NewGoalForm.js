@@ -7,7 +7,6 @@ import { withRouter } from 'react-router-dom';
 
 
 class NewGoalForm extends React.Component {
-
   constructor() {
     super();
 

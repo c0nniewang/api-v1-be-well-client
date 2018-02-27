@@ -11,13 +11,12 @@ class DailyUpdateForm extends React.Component {
     this.state={
       energy_level: '',
       mood_desc: '',
-      moodNum: '',
-      dayDesc: '',
       grateful1: '',
       grateful2: '',
       grateful3: '',
       sleep: '',
-      modalOpen: false
+      modalOpen: false,
+      errors: false
     }
   }
 
@@ -28,12 +27,25 @@ class DailyUpdateForm extends React.Component {
   }
 
   handleClose = (ev) => {
-    this.setState({
-      modalOpen: false
-    })
-
     if (ev.target.name === "submit") {
-      this.props.newDailyUpdate({...this.state, user_id: this.props.id})
+      let error = false
+
+      Object.entries(this.state).forEach(([k,v]) => {
+        if (v.length === 0) {
+          error = true
+        }
+      })
+
+      if (error === false) {
+        this.props.newDailyUpdate({...this.state, user_id: this.props.id})
+        this.setState({
+          modalOpen: false
+        })
+      } else {
+        this.setState({ errors: true })
+      }
+    } else {
+      this.setState({ modalOpen: false})
     }
   }
 
@@ -44,7 +56,6 @@ class DailyUpdateForm extends React.Component {
   }
 
   handleDropChange = (value, key) => {
-    console.log(value, key)
     this.setState({
       [key]: value
     })
@@ -53,6 +64,15 @@ class DailyUpdateForm extends React.Component {
   render() {
     const numArray = [...Array(11).keys()]
     const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
+
+    const required = 
+      <div className="ui negative message">
+        <div className="header">
+        All fields must be completed.
+        </div>
+        <p>Please try again.</p>
+      </div>
+
     return (
       <Modal trigger={<button
             onClick={this.handleOpen}
@@ -62,6 +82,7 @@ class DailyUpdateForm extends React.Component {
         <Modal.Header><Icon name="sun" />Daily Update</Modal.Header>
         <Modal.Content>
         <form className="ui form">
+        {this.state.errors ? required : null}
           <div className="field">
             <label>On a scale of 1-10, with 1 being the lowest and 10 being the highest, how would you rate your current energy level?</label>
             <Dropdown placeholder="Select Number" 
