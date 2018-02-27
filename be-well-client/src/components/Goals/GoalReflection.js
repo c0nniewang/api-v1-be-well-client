@@ -12,7 +12,8 @@ class GoalReflection extends React.Component {
       success: '',
       emotions: '',
       mood_num: '',
-      modalOpen: false
+      modalOpen: false,
+      errors: false
     }
   }
 
@@ -23,14 +24,25 @@ class GoalReflection extends React.Component {
   }
 
   handleClose = (ev) => {
-    this.setState({
-      modalOpen: false
-    })
-
     if (ev.target.name === "submit") {
-      const id = this.props.goal.id
+      let error = false
 
+      Object.entries(this.state).forEach(([k,v]) => {
+        if (v.length === 0) {
+          error = true
+        }
+      })
+
+      if (error === false) {
+      const id = this.props.goal.id
       this.props.completedGoal({ ...this.state, goal_id: id})
+
+      this.setState({ modalOpen: false})
+      } else {
+        this.setState({ errors: true})
+      }
+    } else {
+      this.setState({ modalOpen: false })
     }
   }
 
@@ -51,6 +63,14 @@ class GoalReflection extends React.Component {
     const numArray = [...Array(11).keys()]
     const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
 
+    const required = 
+      <div className="ui negative message">
+        <div className="header">
+        All fields must be completed.
+        </div>
+        <p>Please try again.</p>
+      </div>
+
     return (
     <Modal 
     trigger={<button onClick={this.handleOpen} className="ui icon button" id="my-green">
@@ -62,6 +82,7 @@ class GoalReflection extends React.Component {
       <Modal.Header><Icon name="star" /> Great Job on Achieving Your Goal!</Modal.Header>
       <Modal.Content >
         <form className="ui form">
+        {this.state.errors ? required : null}
           <div className="field">
             <label>Do you feel like you were successful upon completion of this goal? Why or why not?</label>
             <textarea 
