@@ -11,14 +11,16 @@ class NewGoalForm extends React.Component {
   constructor() {
     super();
 
-    this.state={
+    this.state = {
       title: '',
       action1: '',
       action2: '',
       action3: '',
       attainable: '',
       relevance: '',
-      target_date: ''
+      target_date: '',
+      date_error: false,
+      errors: false
     }
   }
 
@@ -41,57 +43,54 @@ class NewGoalForm extends React.Component {
     this.setState({
       [ev.target.name]: ev.target.value
     })
-  }
 
-  handleDayChange = (day) => {
-    this.setState({
-      target_date: day
-    })
+    if (ev.target.name === "target_date") {
+      if (new Date(ev.target.value).toISOString() <= new Date().toISOString()) {
+        this.setState({ date_error: true })
+      } else  {
+        this.setState({ date_error: false })
+      }
+    }
   }
 
   handleSubmit = (ev) => {
     ev.preventDefault()
-    this.props.newGoal({...this.state, user_id: this.props.id})
 
-    this.setState({
-      title: '',
-      action1: '',
-      action2: '',
-      action3: '',
-      attainable: '',
-      relevance: '',
-      target_date: ''
+    let error = false;
+
+    Object.entries(this.state).forEach(([k, v]) => {
+      if (v.length === 0) {
+        error = true
+      } else if (k==="date_error" && v === true) {
+        error = true
+      }
     })
-  }
 
-  handleEditSubmit = (ev) => {
-    ev.preventDefault()
+    if (error === false) {
+      if (ev.target.name === "submit") {
+        this.props.newGoal({...this.state, user_id: this.props.id})
+      } else if (ev.target.name === "edit") {
+        this.props.updateGoal({...this.state, user_id: this.props.id, goalId: this.props.goalId})
+      }
 
-    console.log(this.state)
-    this.props.updateGoal({...this.state, user_id: this.props.id, goalId: this.props.goalId})
+      this.setState({
+       title: '',
+       action1: '',
+       action2: '',
+       action3: '',
+       attainable: '',
+       relevance: '',
+       target_date: '',
+       errors: false
+      })
 
-    this.setState({
-      title: '',
-      action1: '',
-      action2: '',
-      action3: '',
-      attainable: '',
-      relevance: '',
-      target_date: ''
-    })
+    } else {
+      this.setState({ errors: true })
+    }
   }
  
   render() {
-    let displayError;
-    if (this.state.target_date) {
-      if (new Date(this.state.target_date).toISOString() <= new Date().toISOString()) {
-        displayError = true
-      } 
-    } else {
-      displayError = false
-    }
-
-    const error = 
+    const date_error = 
       <div className="ui negative message">
         <div className="header">
         Your goal date must be a future date.
@@ -99,12 +98,20 @@ class NewGoalForm extends React.Component {
         <p>Please try again.</p>
       </div>
 
+    const required = 
+      <div className="ui negative message">
+        <div className="header">
+        All fields must be completed.
+        </div>
+        <p>Please try again.</p>
+      </div>
 
     return (
       <div>
         <form className="ui form">
           <p></p>
           <h3 className="ui dividing header">{this.props.goalId ? "Edit Goal" : "New Goal"}</h3>
+          {this.state.errors ? required : null}
           <div className="field">
             <label>What is your goal?</label>
             <input 
@@ -154,7 +161,7 @@ class NewGoalForm extends React.Component {
             value={this.state.relevance}
             name="relevance"></textarea>
           </div>
-          {displayError ? error : null}
+          {this.state.date_error ? date_error : null}
           <div className="field">
             <label>Set a deadline for yourself to achieve this goal. When do you aim to reach your goal by?</label>
               <div>
@@ -167,8 +174,16 @@ class NewGoalForm extends React.Component {
               </div>
           </div><br />
           <span className="right floated">
-            {this.props.goalId ? <Button id="my-green" onClick={this.handleEditSubmit}> Edit <Icon name="right chevron" />
-            </Button>: <Button id="my-green" onClick={this.handleSubmit}> Submit <Icon name="right chevron" />
+            {this.props.goalId ? <Button 
+              id="my-green" 
+              onClick={this.handleSubmit}
+              name="edit"
+              > Edit <Icon name="right chevron" />
+            </Button>: <Button 
+            id="my-green" 
+            onClick={this.handleSubmit}
+            name="submit"
+            > Submit <Icon name="right chevron" />
             </Button>}
           </span>
         </form>
