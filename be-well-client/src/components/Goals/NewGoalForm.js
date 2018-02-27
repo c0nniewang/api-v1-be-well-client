@@ -22,6 +22,21 @@ class NewGoalForm extends React.Component {
     }
   }
 
+  componentDidMount = () => {
+    if (this.props.goalId !== undefined) {
+      let goal = this.props.goals.active.find(el => el.id === this.props.goalId)
+      this.setState({
+        title: goal.title,
+        action1: goal.action1,
+        action2: goal.action2,
+        action3: goal.action3,
+        attainable: goal.attainable,
+        relevance: goal.relevance,
+        target_date: goal.target_date
+      })
+    }
+  }
+
   handleChange = (ev) => {
     this.setState({
       [ev.target.name]: ev.target.value
@@ -48,13 +63,31 @@ class NewGoalForm extends React.Component {
       target_date: ''
     })
   }
+
+  handleEditSubmit = (ev) => {
+    ev.preventDefault()
+
+    console.log(this.state)
+    this.props.updateGoal({...this.state, user_id: this.props.id, goalId: this.props.goalId})
+
+    this.setState({
+      title: '',
+      action1: '',
+      action2: '',
+      action3: '',
+      attainable: '',
+      relevance: '',
+      target_date: ''
+    })
+  }
  
   render() {
+    let goal;
     return (
       <div>
         <form className="ui form">
           <p></p>
-          <h3 className="ui dividing header">New Goal</h3>
+          <h3 className="ui dividing header">{this.props.goalId ? "Edit Goal" : "New Goal"}</h3>
           <div className="field">
             <label>What is your goal?</label>
             <input 
@@ -116,8 +149,9 @@ class NewGoalForm extends React.Component {
               </div>
           </div><br />
           <span className="right floated">
-            <Button id="my-green" onClick={this.handleSubmit}> Submit <Icon name="right chevron" />
-            </Button>
+            {this.props.goalId ? <Button id="my-green" onClick={this.handleEditSubmit}> Edit <Icon name="right chevron" />
+            </Button>: <Button id="my-green" onClick={this.handleSubmit}> Submit <Icon name="right chevron" />
+            </Button>}
           </span>
         </form>
       </div>
@@ -125,9 +159,10 @@ class NewGoalForm extends React.Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, goals }) => {
   return {
-    id: auth.currentUser.id
+    id: auth.currentUser.id,
+    goals
   }
 }
 

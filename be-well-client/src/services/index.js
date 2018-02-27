@@ -118,6 +118,15 @@ const deleteThought = id => {
   }).then(resp => resp.json())
 }
 
+const updateGoal = data => {
+  const id = data.goalId
+  return fetch(`${API_ROOT}/goals/${id}`, {
+    method: 'PATCH',
+    headers,
+    body: JSON.stringify(data)
+  }).then(resp => resp.json())
+}
+
 export const adapter = {
   auth: {
     login,
@@ -133,7 +142,8 @@ export const adapter = {
     createGoal,
     completedGoal,
     newReflection,
-    deleteGoal
+    deleteGoal,
+    updateGoal
   },
 
   cogDistortions: {

@@ -1,8 +1,9 @@
 import React from 'react'
-import { Progress, Button, Icon } from 'semantic-ui-react'
+import { Progress, Button, Icon, Modal } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import * as actions from '../../actions'
 import GoalReflection from './GoalReflection'
+import NewGoalForm from './NewGoalForm'
 
 class MainGoalCard extends React.Component {
   
@@ -28,6 +29,15 @@ class MainGoalCard extends React.Component {
 
   // console.log(formattedDate, new Date(formattedDate), target);
   // console.log(totalDays, daysLeft, percent)
+
+  const goalsModal = <Modal trigger={<Button>Edit Goal</Button>}>
+    <Modal.Content >
+    <NewGoalForm goalId = {this.props.goal.id}/>
+    </Modal.Content>
+    <Modal.Actions>
+    </Modal.Actions>
+  </Modal>
+
     return (
       <div className="item">
         <div className="content">
@@ -59,7 +69,7 @@ class MainGoalCard extends React.Component {
             >
               <Icon name="remove" />
             </Button>
-            <button className="ui button">Edit Goal</button>
+            {goalsModal}
             <span className="right floated">
               <GoalReflection goal={this.props.goal} />
             </span>

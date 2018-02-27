@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE, ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL, ADD_REFLECTION, DELETE_GOAL, ADD_SESSION, FETCH_MEDITATIONS, ADD_FAVORITE_MED, REMOVE_FAVORITE_MED, DELETE_THOUGHT } from './actions/types';
+import { ASYNC_START, SET_CURRENT_USER, LOGOUT_USER, FETCH_USER_INFO, LOGIN_ERROR, ADD_DAILY_UPDATE, ADD_GOAL, ADD_COG_DIST, ADD_THOT, COMPLETE_GOAL, ADD_REFLECTION, DELETE_GOAL, ADD_SESSION, FETCH_MEDITATIONS, ADD_FAVORITE_MED, REMOVE_FAVORITE_MED, DELETE_THOUGHT, UPDATE_GOAL } from './actions/types';
 
 const defaultState = { profile: {}, loading: false}
 const initialState = { currentUser: {} };
@@ -76,6 +76,15 @@ const goalsReducer = (state = goalsState, action) => {
         ...state,
         active: state.active.filter(el => el.id !== action.json.id),
         completed: state.completed.filter(el => el.id !== action.json.id)
+      }
+    case UPDATE_GOAL:
+      const goalId = action.json.id
+      const updatedGoal = action.json
+      
+      return {
+        ...state,
+        active: [...state.active.filter(el => el.id !== goalId), updatedGoal],
+        completed: state.completed
       }
     default:
       return state
