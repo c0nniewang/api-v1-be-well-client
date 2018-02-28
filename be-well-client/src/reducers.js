@@ -131,7 +131,7 @@ const meditationReducer = (state = medState, action) => {
     case FETCH_USER_INFO:
       return { all: state.all, favorites: [...action.user.favorite_meditations]}
     case ADD_FAVORITE_MED:
-      return {...state, all: state.all, favorites: [...state.favorites, action.json]}
+      return {all: state.all, favorites: [...state.favorites, action.json]}
     case REMOVE_FAVORITE_MED:
       return {...state, all: state.all, favorites: state.favorites.filter(el => el.id !== action.json.id)}
     default:

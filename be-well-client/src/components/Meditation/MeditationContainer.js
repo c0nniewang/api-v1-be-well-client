@@ -51,7 +51,7 @@ class MeditationContainer extends React.Component{
 
   // grab most recently complete sessions and remove duplicates
   const uniq = {}
-  const recentSessions = this.props.sessions.reverse().map(session => {
+  const recentSessions = this.props.sessions.slice().reverse().map(session => {
     if (uniq[session.meditation.id] === undefined && Object.keys(uniq).length < 4) {
       uniq[session.meditation.id] = session.id
       return <MeditationCardDescription key={session.id} session={session.meditation} />

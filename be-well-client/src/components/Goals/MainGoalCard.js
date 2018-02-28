@@ -71,8 +71,8 @@ class MainGoalCard extends React.Component {
             >
               <Icon name="remove" />
             </Button>
-            {goalsModal}
             <span className="right floated">
+              {goalsModal}
               <GoalReflection goal={this.props.goal} />
             </span>
           </div>

@@ -10,9 +10,20 @@ class MeditationCardDescription extends React.Component {
     console.log(this.props.meditations.favorites)
   let star;
   if (this.props.meditations.favorites.find( el => el.meditation.id === this.props.session.id)) {
-    star = (<Icon name="star" color="yellow" onClick={({data}) => this.props.removeFavoriteMeditation({meditation_id: this.props.session.id, user_id: this.props.id})} size="large"/>)
+    star = (
+      <Icon 
+      name="star"
+      color="yellow"
+      onClick={({data}) => this.props.removeFavoriteMeditation({meditation_id: this.props.session.id, user_id: this.props.id})} 
+      size="large"
+      />)
   } else {
-    star = (<Icon name="star" onClick={({data}) => this.props.addFavoriteMeditation({meditation_id: this.props.session.id, user_id: this.props.id})} size="large" />)
+    star = (
+      <Icon 
+      name="star"
+      onClick={({data}) => this.props.addFavoriteMeditation({meditation_id: this.props.session.id, user_id: this.props.id})}
+      size="large"
+      />)
   }
 
     return (

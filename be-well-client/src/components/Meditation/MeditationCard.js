@@ -25,7 +25,6 @@ class MeditationCard extends React.Component {
       const userId = this.props.userId
       console.log(meditationId, userId)
       this.props.newSession({meditation_id: meditationId, user_id: userId})
-      // create function and resources for meditation session on backend
     }
     this.setState({
       modalOpen: false
