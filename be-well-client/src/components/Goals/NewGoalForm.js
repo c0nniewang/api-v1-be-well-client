@@ -46,6 +46,7 @@ class NewGoalForm extends React.Component {
 
 
     if (ev.target.name === "target_date") {
+      // make sure selected target date is a date in the future
       let today = convertToLocalDate(new Date())
 
       let selected = convertToLocalDate(new Date(ev.target.value))
@@ -60,7 +61,7 @@ class NewGoalForm extends React.Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault()
-
+    // check that all fields are completed
     let error = false;
 
     Object.entries(this.state).forEach(([k, v]) => {
@@ -119,8 +120,6 @@ class NewGoalForm extends React.Component {
         </div>
         <p>Great work!</p>
       </div>
-
-      console.log("SUCCESS", this.state.success)
 
     return (
       <div>

@@ -51,10 +51,17 @@ class WordCloud extends React.Component {
   // onClick={tag => alert(`'${tag.value}' was selected!`)} />
   return (
     <div className="six wide column center aligned">
-      <TagCloud minSize={16}
-        maxSize={35}
-        tags={thoughtData}
-        className="simple-cloud" />
+    <br />
+      {thoughtData.length ? 
+        <TagCloud minSize={16}
+              maxSize={35}
+              tags={thoughtData}
+              className="simple-cloud" /> : 
+            <div className="ui warning message">
+              <div className="header">
+              You have not written anything yet. 
+              </div>Enter a thought entry!
+            </div>}
     </div>
     )
   }

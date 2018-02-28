@@ -30,6 +30,7 @@ function convertToLocalDate(date) {
 }
 
 const mapStateToProps = ({ updates }) => {
+  // check if daily update was completed yet today
   let isCompleted = false
 
   if (updates.length) {

@@ -32,9 +32,6 @@ class MainGoalCard extends React.Component {
   // calculate percentage of time elapsed
   const percent = (100 - (daysLeft / (totalDays + 2))* 100)
 
-  // console.log(formattedDate, new Date(formattedDate), target);
-  // console.log(totalDays, daysLeft, percent)
-
   const goalsModal = <Modal trigger={<Button>Edit Goal</Button>}>
     <Modal.Content >
     <NewGoalForm goalId = {this.props.goal.id}/>

@@ -77,7 +77,15 @@ class ThoughtEntriesContainer extends React.Component {
             />
           </h3>
         </div>
-        {thots}
+        {thots.length ? thots : 
+          <div className="ui stacked segment center aligned">
+          <div className="ui header">
+          You do not have any thought entries yet.
+          </div>
+          <div className="content">
+          Create a new one now!
+          </div>
+          </div>}
       </div>
     )
   }
