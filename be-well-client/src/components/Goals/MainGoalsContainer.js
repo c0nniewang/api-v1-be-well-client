@@ -29,12 +29,23 @@ class MainGoalsContainer extends React.Component {
     let display;
     if (this.state.activeItem === 'current') {
       display = (<div className="ui divided items">
-          {goals}
+          {goals.length ? goals : 
+          <div className="ui warning message">
+            <div className="header">
+            You have not created any goals yet.
+            </div>
+          </div>}
         </div>
       )
     } else if (this.state.activeItem === 'completed') {
       display = (<div className="ui divided items">
-        {completedGoals}
+        {completedGoals.length ? completedGoals :
+        <div className="ui warning message">
+            <div className="header">
+            You have not completed any goals yet.
+            </div>
+            Keep working! :)
+          </div>}
         </div>
       )
     } else if (this.state.activeItem === 'new-goal') {

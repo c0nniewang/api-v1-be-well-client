@@ -12,19 +12,20 @@ class MeditationContainer extends React.Component{
   render() {
   const { activeItem } = this.state;
 
+  // grab data statistics for the current month
   const currentMonth = new Date().getMonth()
+  // calculate how many sessions completed
   const count = this.props.sessions.filter(sesh => new Date(sesh.created_at).getMonth() === currentMonth).length
-
+  // calculate total minutes of meditation sessions
   const totalMin = this.props.sessions.map(session => {
     return parseInt(session.meditation.length.slice(0, 2).replace(/[: ]+/g, " ").trim())
   })
 
   let sumMin
   {totalMin.length ? sumMin = totalMin.reduce((acc, current) => acc + current) : null}
-
+  // grab longest streak
   let streak
   {this.props.sessions.length ? streak = this.props.sessions[this.props.sessions.length - 1].streak : null}
-  console.log("STREAK", this.props.sessions, streak)
   
   const stats = <div className="ui container center aligned">
         <Statistic.Group widths='three'>
@@ -70,7 +71,8 @@ class MeditationContainer extends React.Component{
         <br /><br />
         <h3>Most Recently Completed Sessions:</h3>
         <div className="ui four cards">
-          {recentSessions}
+          {recentSessions.length ? recentSessions : 
+            <h4>You have not completed any meditation sessions yet.</h4>}
         </div>
       </div>)
   } else if (this.state.activeItem === 'all') {
@@ -78,7 +80,18 @@ class MeditationContainer extends React.Component{
   } else if (this.state.activeItem === 'sessions-under-six-minutes') {
     display = (<div><h3>Quick Sessions</h3><div className="ui four cards">{quickCards}</div></div>)
   } else if (this.state.activeItem === 'your-favorites') {
-    display = (<div><h3>Favorite Sessions</h3><div className="ui four cards">{favorites}</div></div>)
+    display = (<div>
+        <h3>Favorite Sessions</h3>
+        {favorites.length ? 
+          <div className="ui four cards">
+          {favorites}
+          </div> : 
+          <div className="ui warning message">
+          <div className="ui header">You do not have any favorited meditation sessions yet!
+          </div>
+           Click on the star at the bottom corner of the meditation session card to add one to your favorites.
+           </div>} 
+      </div>)
   }
 
   return (

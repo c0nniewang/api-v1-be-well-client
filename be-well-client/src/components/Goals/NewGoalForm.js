@@ -75,21 +75,31 @@ class NewGoalForm extends React.Component {
     if (error === false) {
       if (ev.target.name === "submit") {
         this.props.newGoal({...this.state, user_id: this.props.id})
+        this.setState({
+         title: '',
+         action1: '',
+         action2: '',
+         action3: '',
+         attainable: '',
+         relevance: '',
+         target_date: '',
+         errors: false,
+         success: true
+        })
       } else if (ev.target.name === "edit") {
         this.props.updateGoal({...this.state, user_id: this.props.id, goalId: this.props.goalId})
+        this.setState({
+         title: '',
+         action1: '',
+         action2: '',
+         action3: '',
+         attainable: '',
+         relevance: '',
+         target_date: '',
+         errors: false,
+         success: true
+        })
       }
-
-      this.setState({
-       title: '',
-       action1: '',
-       action2: '',
-       action3: '',
-       attainable: '',
-       relevance: '',
-       target_date: '',
-       errors: false,
-       success: true
-      })
 
     } else {
       this.setState({ errors: true })
