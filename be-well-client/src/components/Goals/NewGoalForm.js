@@ -19,7 +19,8 @@ class NewGoalForm extends React.Component {
       relevance: '',
       target_date: '',
       date_error: false,
-      errors: false
+      errors: false,
+      success: false
     }
   }
 
@@ -44,7 +45,7 @@ class NewGoalForm extends React.Component {
     })
 
     if (ev.target.name === "target_date") {
-      if (new Date(ev.target.value).toISOString() <= new Date().toISOString()) {
+      if (new Date(ev.target.value).toLocaleDateString() <= new Date().toLocaleDateString()) {
         this.setState({ date_error: true })
       } else  {
         this.setState({ date_error: false })
@@ -80,7 +81,8 @@ class NewGoalForm extends React.Component {
        attainable: '',
        relevance: '',
        target_date: '',
-       errors: false
+       errors: false,
+       success: true
       })
 
     } else {
@@ -105,12 +107,24 @@ class NewGoalForm extends React.Component {
         <p>Please try again.</p>
       </div>
 
+    const success = 
+      <div className="ui positive message">
+        <div className="header">
+        Your new goal has been submitted successfully!
+        </div>
+        <p>Great work!</p>
+      </div>
+
+      console.log("SUCCESS", this.state.success)
+
     return (
       <div>
         <form className="ui form">
           <p></p>
+          {this.state.success ? success : null}
           <h3 className="ui dividing header">{this.props.goalId ? "Edit Goal" : "New Goal"}</h3>
           {this.state.errors ? required : null}
+
           <div className="field">
             <label>What is your goal?</label>
             <input 

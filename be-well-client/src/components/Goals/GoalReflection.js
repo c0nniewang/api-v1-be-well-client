@@ -13,7 +13,7 @@ class GoalReflection extends React.Component {
       emotions: '',
       mood_num: '',
       modalOpen: false,
-      errors: false
+      errors: false,
     }
   }
 
@@ -59,7 +59,6 @@ class GoalReflection extends React.Component {
   }
 
   render() {
-
     const numArray = [...Array(11).keys()]
     const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
 

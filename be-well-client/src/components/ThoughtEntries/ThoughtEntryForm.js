@@ -16,15 +16,8 @@ class ThoughtEntryForm extends React.Component {
       outcome: '',
       cognitive_distortions: [],
       current_mood: '',
-      modalOpen: false
-    }
-  }
-
-  componentDidMount = () => {
-    if (this.props.click) {
-      this.setState({
-        modalOpen: true
-      })
+      errors: false,
+      success: false
     }
   }
 
@@ -59,19 +52,31 @@ class ThoughtEntryForm extends React.Component {
   handleSubmit = (ev) => {
     ev.preventDefault()
 
-    console.log(this.state)
-    this.props.newThoughtEntry({...this.state, user_id: this.props.id})
+    let error = false;
 
-    this.setState({
-      title: '',
-      situation: '',
-      emotions: '',
-      negative_thoughts: '',
-      outcome: '',
-      cognitive_distortions: [],
-      current_mood: '',
-      modalOpen: false
+    Object.entries(this.state).forEach(([k,v]) => {
+      if (v.length === 0) {
+        error = true
+      }
     })
+
+    if (error === false) {
+      this.props.newThoughtEntry({...this.state, user_id: this.props.id})
+
+      this.setState({
+        title: '',
+        situation: '',
+        emotions: '',
+        negative_thoughts: '',
+        outcome: '',
+        cognitive_distortions: [],
+        current_mood: '',
+        errors: false,
+        success: true
+      })
+    } else {
+      this.setState({ errors: true })
+    }
   }
 
   render() {
@@ -80,6 +85,21 @@ class ThoughtEntryForm extends React.Component {
     const numArray = [...Array(11).keys()]
     const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
 
+    const required = 
+      <div className="ui negative message">
+        <div className="header">
+        All fields must be completed.
+        </div>
+        <p>Please try again.</p>
+      </div>
+
+    const success = 
+      <div className="ui positive message">
+        <div className="header">
+        Your thought entry has been submitted successfully!
+        </div>
+      </div>
+ 
     // open={this.state.modalOpen}
     // onClose={this.state.handleClose}
     return (
@@ -88,7 +108,9 @@ class ThoughtEntryForm extends React.Component {
     >
       <Modal.Header><Icon name="cloud" /> New Thought Entry</Modal.Header>
       <Modal.Content >
+        {this.state.success ? success : null}
         <form className="ui form">
+        {this.state.errors? required : null}
           <div className="field">
             <label>Title</label>
             <input 
@@ -160,7 +182,7 @@ class ThoughtEntryForm extends React.Component {
         </form>
       </Modal.Content>
       <Modal.Actions>
-        <Button id="my-green" onClick={this.handleClose} name="submit">
+        <Button id="my-green" onClick={this.handleSubmit} name="submit">
           Submit <Icon name="right chevron" />
         </Button>
       </Modal.Actions>
