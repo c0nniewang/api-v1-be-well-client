@@ -44,12 +44,18 @@ class MeditationContainer extends React.Component{
         </Statistic.Group>
       </div>
 
+  // organize meditation sessions for different tab views
   const allSessions = this.props.meditations.all.map(session => {
     return <MeditationCardDescription key={session.id} session={session} />
   })
 
-  const recentSessions = this.props.sessions.slice(0, 4).map(session => {
-    return <MeditationCardDescription key={session.id} session={session.meditation} />
+  // grab most recently complete sessions and remove duplicates
+  const uniq = {}
+  const recentSessions = this.props.sessions.reverse().map(session => {
+    if (uniq[session.meditation.id] === undefined && Object.keys(uniq).length < 4) {
+      uniq[session.meditation.id] = session.id
+      return <MeditationCardDescription key={session.id} session={session.meditation} />
+    }
   })
 
   const quickSesh = this.props.meditations.all.filter(session => {

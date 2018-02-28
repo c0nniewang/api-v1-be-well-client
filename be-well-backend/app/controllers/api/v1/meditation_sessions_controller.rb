@@ -5,7 +5,6 @@ class Api::V1::MeditationSessionsController < ApplicationController
   end
 
   def create
-    #fix for individual user
     if MeditationSession.where(user_id: params[:user_id]).length == 0
       streak = 0
     else
