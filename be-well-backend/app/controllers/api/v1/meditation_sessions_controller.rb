@@ -6,10 +6,10 @@ class Api::V1::MeditationSessionsController < ApplicationController
 
   def create
     #fix for individual user
-    if MeditationSession.all.length == 0
+    if MeditationSession.where(user_id: params[:user_id]).length == 0
       streak = 0
     else
-      last = MeditationSession.last.created_at.to_date
+      last = MeditationSession.where(user_id: params[:user_id]).last.created_at.to_date
       yest = Time.now.to_date - 1.day
       today = Time.now.to_date
       streak = MeditationSession.last.streak.to_i
@@ -17,7 +17,7 @@ class Api::V1::MeditationSessionsController < ApplicationController
       if yest <= last && last.to_date != today
         streak += 1
       elsif
-        streak = MeditationSession.last.streak
+        streak = MeditationSession.where(user_id: params[:user_id]).last.streak
       end
     end
 

@@ -62,8 +62,8 @@ class Chart extends React.Component {
     <div className="row">
       <div className="eight wide column">
         <VictoryChart
-          domain={{y: [0, 11]}}
-          containerComponent={<VictoryZoomContainer />}
+          // domain={{y: [0, 11]}}
+          // containerComponent={<VictoryZoomContainer />}
           >
           <VictoryGroup
             scale={{x: 'time', y: 'linear'}}
