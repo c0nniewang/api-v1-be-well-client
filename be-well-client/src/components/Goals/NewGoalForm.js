@@ -5,7 +5,6 @@ import * as actions from '../../actions'
 import { withRouter } from 'react-router-dom';
 
 
-
 class NewGoalForm extends React.Component {
   constructor() {
     super();
@@ -23,7 +22,7 @@ class NewGoalForm extends React.Component {
       success: false
     }
   }
-
+  // pre populate fields for edit function
   componentDidMount = () => {
     if (this.props.goalId !== undefined) {
       let goal = this.props.goals.active.find(el => el.id === this.props.goalId)
@@ -44,8 +43,14 @@ class NewGoalForm extends React.Component {
       [ev.target.name]: ev.target.value
     })
 
+
+
     if (ev.target.name === "target_date") {
-      if (new Date(ev.target.value).toLocaleDateString() <= new Date().toLocaleDateString()) {
+      let today = convertToLocalDate(new Date())
+
+      let selected = convertToLocalDate(new Date(ev.target.value))
+      
+      if (selected <= today) {
         this.setState({ date_error: true })
       } else  {
         this.setState({ date_error: false })
@@ -203,6 +208,16 @@ class NewGoalForm extends React.Component {
       </div>
     )
   }
+}
+
+function convertToLocalDate(date) {
+  let newDate = new Date(date.getTime() + date.getTimezoneOffset()*60*1000)
+  let offset = date.getTimezoneOffset()
+  let minutes = date.getMinutes()
+
+  newDate.setMinutes(minutes - offset)
+
+  return newDate
 }
 
 const mapStateToProps = ({ auth, goals }) => {

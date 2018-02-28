@@ -41,7 +41,7 @@ class ThoughtEntriesContainer extends React.Component {
 
 
     const thots = this.props.thoughts.map((thot, index) => <ThoughtEntry key={index} thot={thot} />)
-
+    
     const tagOptions = [
       {
         text: <i className="frown icon"></i>,

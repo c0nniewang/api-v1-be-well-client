@@ -27,22 +27,6 @@ class ThoughtEntryForm extends React.Component {
     })
   }
 
-  // handleOpen = () => {
-  //   this.setState({
-  //     modalOpen: true
-  //   })
-  // }
-
-  // handleClose = (ev) => {
-  //   this.setState({
-  //     modalOpen: false
-  //   })
-
-  //   if (ev.target.name === "submit") {
-  //     this.props.newThoughtEntry({...this.state, user_id: this.props.id})
-  //   }
-  // }
-
   handleDropChange = (value, key) => {
     this.setState({
       [key]: value
@@ -80,6 +64,7 @@ class ThoughtEntryForm extends React.Component {
   }
 
   render() {
+    // format cognitive distortions for dropdown menu
     const cogOptions= this.props.cogDistortions.map( cog => ({key: cog.id, text: cog.title, value: cog.id}))
 
     const numArray = [...Array(11).keys()]
@@ -100,8 +85,6 @@ class ThoughtEntryForm extends React.Component {
         </div>
       </div>
  
-    // open={this.state.modalOpen}
-    // onClose={this.state.handleClose}
     return (
     <Modal 
     trigger={this.props.button}

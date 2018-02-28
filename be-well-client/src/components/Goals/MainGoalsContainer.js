@@ -25,6 +25,7 @@ class MainGoalsContainer extends React.Component {
 
     const completedGoals = this.props.goals.completed.map((goal, index) => <CompletedGoalCard key={index} goal={goal} reflection={goal.goal_reflections} />)
     
+    // render tabs
     let display;
     if (this.state.activeItem === 'current') {
       display = (<div className="ui divided items">

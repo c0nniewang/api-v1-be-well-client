@@ -14,7 +14,6 @@ class CogDistortionsAcc extends Component {
   }
 
   render() {
-    console.log('COGS')
     const { activeIndex } = this.state
 
     let acc
@@ -22,16 +21,23 @@ class CogDistortionsAcc extends Component {
     {this.props.cogDistortions ? (acc = this.props.cogDistortions.map(cog => {
       i++
       return (
-        <div>
-       <Accordion.Title active={activeIndex === i} index={i} onClick={this.handleClick}>
-          <Icon name='dropdown' />
-          {cog.title}
-        </Accordion.Title>
-        <Accordion.Content active={activeIndex === i}>
-          <p>
-            {cog.description}
-          </p>
-        </Accordion.Content></div>)
+        <div key={i}>
+          <Accordion.Title
+          active={activeIndex === i} 
+          index={i} 
+          onClick={this.handleClick}
+          >
+            <Icon name='dropdown' />
+            {cog.title}
+          </Accordion.Title>
+          <Accordion.Content 
+          active={activeIndex === i}
+          >
+            <p>
+              {cog.description}
+            </p>
+          </Accordion.Content>
+        </div>)
     })) : null }
 
     return (

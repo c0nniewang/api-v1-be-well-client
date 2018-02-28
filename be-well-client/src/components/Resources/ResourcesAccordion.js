@@ -76,7 +76,7 @@ class ResourcesAccordion extends Component {
           <p>
             The WellPal is your wellness buddy! The state of your WellPal is determined by your user activity. Postive acts such as meditation and goal completion increase the happiness of the WellPal, whereas negative acts such as low sleep hours may decrease the WellPal's happiness. The five states of the WellPal are: 
           </p>
-          <div class="ui container">
+          <div className="ui container">
           <img src={Happy}/> <img src={Neutral}/><img src={Asleep}/><img src={Sad}/><img src={Dead}/>
           </div>
         </Accordion.Content>

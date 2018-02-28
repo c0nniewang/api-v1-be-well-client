@@ -8,12 +8,15 @@ import NewGoalForm from './NewGoalForm'
 class MainGoalCard extends React.Component {
   
   render() {
+  // calculate days left for progress bar
   let today = new Date()
   today = today.setMinutes(today.getMinutes() - today.getTimezoneOffset())
 
+  // get date goal was created on and account for timezone
   const created = new Date(this.props.goal.created_at)
   const createdMin = created.setMinutes(created.getMinutes() - created.getTimezoneOffset())
 
+  // get target date user set for goal completion
   const targetDate = this.props.goal.target_date
   const formattedDate = `${targetDate.slice(0, 4)}, ${targetDate.slice(5, 7)}, ${targetDate.slice(8, 10)}`
 
@@ -21,10 +24,12 @@ class MainGoalCard extends React.Component {
 
   const targetMinutes = target.setMinutes(target.getMinutes() - target.getTimezoneOffset())
 
+  // calculate days left
   const days = Math.round((today - createdMin) / (24*60*60*1000))
   const totalDays = Math.round((targetMinutes - createdMin) / (24*60*60*1000))
   const daysLeft = (totalDays - days) + 1
 
+  // calculate percentage of time elapsed
   const percent = (100 - (daysLeft / (totalDays + 2))* 100)
 
   // console.log(formattedDate, new Date(formattedDate), target);

@@ -19,12 +19,24 @@ class DailyUpdateContainer extends React.Component {
   }
 }
 
+function convertToLocalDate(date) {
+  let newDate = new Date(date.getTime() + date.getTimezoneOffset()*60*1000)
+  let offset = date.getTimezoneOffset()
+  let minutes = date.getMinutes()
+
+  newDate.setMinutes(minutes - offset)
+
+  return newDate
+}
+
 const mapStateToProps = ({ updates }) => {
-  const currentDateTime = new Date()
   let isCompleted = false
 
   if (updates.length) {
-   isCompleted = !(updates[updates.length - 1].created_at.slice(0, 10) < currentDateTime.toISOString().slice(0, 10))
+    let lastCompleted = convertToLocalDate(new Date(updates[updates.length - 1].created_at))
+    let today = convertToLocalDate(new Date())
+
+   isCompleted = (lastCompleted.toLocaleDateString() === today.toLocaleDateString())
   }
 
   return {
