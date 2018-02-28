@@ -101,7 +101,7 @@ class MeditationContainer extends React.Component{
   }
 
   return (
-    <div className="ui container">
+    <div className="ui container" id="white">
         <h2 className="ui header">
           <i className="sound icon"></i>
           <div className="content">

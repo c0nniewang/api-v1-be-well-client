@@ -40,6 +40,8 @@ class ThoughtEntry extends React.Component {
         {new Date(this.props.thot.created_at).toDateString()}
         </div></h2>
       <div className="ui divider"></div>
+      <b>Title:</b><br />
+      {thot.title}<br /><br />
       <b>Situation:</b><br />
       {thot.situation}<br /><br />
       <b>Emotions you were feeling?</b><br />

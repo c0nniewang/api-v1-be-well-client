@@ -118,3 +118,11 @@ body, html
 #meditation {
   padding: 2%;
 }
+
+#white {
+  background-color: #ffffff;
+}
+
+.goalDiv {
+  padding: 2%;
+}
