@@ -82,8 +82,7 @@ class Chart extends React.Component {
     })
 
     const tickValues = this.getTickValues();
-    console.log("CHECKING", goals, thoughts, currentMonth)
-    // if tickValues is empty, do not display graph 'you do not have enough data for this week / month'
+    
     return (
   <div className="ui middle aligned stackable grid container">
     <div className="ui container center aligned">

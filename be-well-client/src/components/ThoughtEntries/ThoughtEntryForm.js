@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, Icon, Dropdown } from 'semantic-ui-react';
+import { Modal, Button, Icon, Dropdown, Header } from 'semantic-ui-react';
 import { connect } from 'react-redux'
 import * as actions from '../../actions'
 
@@ -65,7 +65,7 @@ class ThoughtEntryForm extends React.Component {
 
   render() {
     // format cognitive distortions for dropdown menu
-    const cogOptions= this.props.cogDistortions.map( cog => ({key: cog.id, text: cog.title, value: cog.id}))
+    const cogOptions= this.props.cogDistortions.map( cog => ({key: cog.id, text: cog.title, value: cog.id, content: <Header content={cog.title} subheader={cog.description} />}))
 
     const numArray = [...Array(11).keys()]
     const numberOptions = numArray.slice(1).map(num => ({text: num, value: num}))
