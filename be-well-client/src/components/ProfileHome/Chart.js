@@ -161,7 +161,7 @@ class Chart extends React.Component {
               labels={(d) => `sleep: ${d.y} hours`}
               labelComponent={<VictoryTooltip />}
               /> : null }
-            {this.state.thoughtData ? <VictoryScatter 
+            {(this.state.thoughtData && thoughtData.length) ? <VictoryScatter 
               data={thoughtData}
               style={{
                 data: { stroke: "tomato", fill: "tomato" },
@@ -171,7 +171,7 @@ class Chart extends React.Component {
               labels={(d) => `thought entry mood: ${d.y}`}
               labelComponent={<VictoryTooltip />}
               /> : null}
-            {this.state.completedGoals ? <VictoryScatter 
+            {(this.state.completedGoals && completedGoals.length) ? <VictoryScatter 
               data={completedGoals}
               style={{
                 data: { stroke: "#49C6B7", fill: "#49C6B7" },
@@ -221,7 +221,7 @@ class Chart extends React.Component {
               style={{"borderColor": "#e7e7e7"}}
               onClick={(name) => this.handleClick("sleep")}
               className="ui button" id="my-button"><Icon style={{"color": "#fde4a4"}} name="circle thin"/> Hours of Sleep</button>} <br /><br />
-          {this.state.thoughtData ? <button
+          {this.state.thoughtData && thoughtData.length ? <button
               style={{"borderColor": "tomato"}}
               onClick={(name) => this.handleClick("thoughtData")}
               className="ui button" id="my-button"><Icon style={{"color": "tomato"}} name="square"/> Thought Entry Mood</button>  :
@@ -229,7 +229,7 @@ class Chart extends React.Component {
               style={{"borderColor": "#e7e7e7"}}
               onClick={(name) => this.handleClick("thoughtData")}
               className="ui button" id="my-button"><Icon style={{"color": "tomato"}} name="square outline"/> Thought Entry Mood</button>}<br /><br />
-          {this.state.completedGoals ? <button
+          {this.state.completedGoals && completedGoals.length ? <button
               style={{"borderColor": "#49C6B7"}}
               onClick={(name) => this.handleClick("completedGoals")}
               className="ui button" id="my-button"><Icon style={{"color": "#49C6B7"}} name="star"/> Completed Goals!</button>  :
