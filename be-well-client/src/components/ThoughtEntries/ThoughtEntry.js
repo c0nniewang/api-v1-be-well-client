@@ -14,7 +14,7 @@ class ThoughtEntry extends React.Component {
                 id="my-button" 
                 style={{"border-color": "#e7e7e7", color: "#6cja89"}}
                 className="ui label">
-                  <i className="comments"></i>{cog.title}
+                  <i className="comments">{cog.title}</i>
                   </div>}
                 header={cog.title}
                 content={cog.description}

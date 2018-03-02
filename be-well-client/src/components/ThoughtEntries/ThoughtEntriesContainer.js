@@ -4,29 +4,7 @@ import ThoughtEntry from './ThoughtEntry'
 import ThoughtEntryForm from './ThoughtEntryForm'
 import { Button, Dropdown, Popup } from 'semantic-ui-react'
 
-// <Dropdown text="Filter Entries" multiple icon='filter' onChange={this.handleDropChange}>
-//   <Dropdown.Menu>
-//     <Dropdown.Header icon='tags' content="tag" />
-//     <Dropdown.Menu scrolling>
-//       {tagOptions.map(option => <Dropdown.Item key={option.value} {...option} />)}
-//     </Dropdown.Menu>
-//   </Dropdown.Menu>
-// </Dropdown>
 class ThoughtEntriesContainer extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      current: 'All',
-    }
-  }
-
-  handleDropChange = (value, key) => {
-    console.log(value, key)
-    // this.setState({
-    //   [key]: value
-    // })
-  }
 
   render() {
     console.log('THOTS', this.props.thoughts)
@@ -38,28 +16,9 @@ class ThoughtEntriesContainer extends React.Component {
         New Entry
       </Button>)
 
-
-
     const thots = this.props.thoughts.slice().reverse().map((thot, index) => <ThoughtEntry key={index} thot={thot} />)
-    
-    const tagOptions = [
-      {
-        text: <i className="frown icon"></i>,
-        value: 'sad',
-        label: { color: 'red', empty: true, circular: true },
-      },
-        {
-        text: <i className="smile icon"></i>,
-        value: 'meh',
-        label: { color: 'blue', empty: true, circular: true },
-      },
-      {
-        text: <i className="meh icon"></i>,
-        value: 'happy',
-        label: { color: 'black', empty: true, circular: true },
-      },
-    ]
 
+    // count cognitive distortions used in thought entries    
     let distortions = {}
 
     this.props.thoughts.forEach(thought => {
@@ -72,10 +31,13 @@ class ThoughtEntriesContainer extends React.Component {
       })
     })
 
+    // sort by cogDistortions by count; then take top 8 and iterate to create popups
+    let keys = Object.keys(distortions)
 
+    keys.sort(function(a, b) { return distortions[b] - distortions[a]})
 
-    let index = -1
-    const topDistortions = Object.entries(distortions).map(arr => {
+    let index = 0
+    const topDistortions = keys.slice(0, 8).map( i => {
       index++
       return (<Popup
                 id="my-red"
@@ -84,13 +46,12 @@ class ThoughtEntriesContainer extends React.Component {
                 id="my-button" 
                 style={{"border-color": "#e7e7e7", color: "#6cja89"}}
                 className="ui label">
-                  <i className="comments">{arr[0]}</i> <div className="detail">{arr[1]}</div>
+                  <i className="comments">{i}</i> <div className="detail">{distortions[i]}</div>
                   </div>}
-                content={(this.props.cogDistortions.find( el => el.title === arr[0])).description}
-                />)
+                content={(this.props.cogDistortions.find( el => el.title === i)).description}
+                />
+      )
     })
-
-    console.log(Object.entries(distortions))
 
     return (
       <div className="ui container">
