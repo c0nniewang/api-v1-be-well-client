@@ -31,42 +31,59 @@ class Chart extends React.Component {
     })
   }
 
-  render() {
 
-    const thoughtData = this.props.thoughts.map(thought => {
+
+  render() {
+    const currentMonth = new Date().getMonth()
+    const today = new Date()
+    let oneWeekAgo = new Date()
+    oneWeekAgo.setDate(today.getDate() - 7)
+
+    let thoughts; 
+
+    {this.state.view === "week" ?
+    thoughts = this.currentWeek(this.props.thoughts) : 
+    thoughts = this.currentMonth(this.props.thoughts)    }
+
+    const thoughtData = thoughts.map(thought => {
       const date = new Date(thought.created_at)
       return ({x: date, y: thought.current_mood, symbol: "square"})
     })
 
-    const dailyEnergy = this.props.updates.map(update => {
+    let daily;
+
+    {this.state.view === "week" ? 
+    daily = this.currentWeek(this.props.updates) :
+    daily = this.currentMonth(this.props.updates)}
+
+    const dailyEnergy = daily.map(update => {
       const date = new Date(update.created_at)
       return ({x: date, y: update.energy_level})
     })
 
-    const dailyMood = this.props.updates.map(update => {
+    const dailyMood = daily.map(update => {
       const date = new Date(update.created_at)
       return ({ x: date, y: update.mood_num})
     })
 
-    const sleep = this.props.updates.map(update => {
+    const sleep = daily.map(update => {
       const date = new Date(update.created_at)
       return ({ x: date, y: update.sleep})
     })
 
-    const completedGoals = this.props.goals.completed.map(goal => {
+    let goals;
+    {this.state.view === "week" ? 
+    goals = this.props.goals.completed.filter(goal => oneWeekAgo <= new Date(goal.date_completed))
+     : goals = this.props.goals.completed.filter(goal => new Date(goal.date_completed).getMonth() === currentMonth)}
+
+    const completedGoals = goals.map(goal => {
       const date = new Date(goal.date_completed)
       return ({ x: date, y: 9, symbol: "star"})
     })
 
-    // refactor code for creating buttons
-
-    // console.log(Object.keys(this.state))
-    // const state = Object.keys(this.state)
-    // const toggles = state.map(state => {
-    //   return 
-    // })
     const tickValues = this.getTickValues();
-
+    console.log("CHECKING", goals, thoughts, currentMonth)
+    // if tickValues is empty, do not display graph 'you do not have enough data for this week / month'
     return (
   <div className="ui middle aligned stackable grid container">
     <div className="ui container center aligned">
@@ -77,7 +94,8 @@ class Chart extends React.Component {
         name="month"
         onClick={this.handleToggle}
         id="my-button" 
-        style={{"borderColor": "#e7e7e7"}}>Month</Button>
+        style={{"borderColor": "#e7e7e7"}}
+        >Month</Button>
       </div> :
       <div>
         <Button 
@@ -168,7 +186,7 @@ class Chart extends React.Component {
           <VictoryAxis
             fixLabelOverlap
             scale="time"
-            tickFormat={(x) => new Date(x).toDateString().slice(4, 10)}
+            tickFormat={(x) => new Date(x).toDateString().slice(8, 10)}
             tickValues={tickValues}
             // label="Date"
             />
@@ -225,9 +243,42 @@ class Chart extends React.Component {
     )
   }
 
+  currentWeek = (arr) => {
+    const today = new Date()
+    let oneWeek = new Date()
+    oneWeek.setDate(today.getDate() - 7)
+    console.log("FX", arr)
+    return arr.filter(el => oneWeek <= new Date(el.created_at))
+  }
+
+  currentMonth = (arr) => {
+    const currentMonth = new Date().getMonth()
+
+    return arr.filter(el => new Date(el.created_at).getMonth() === currentMonth
+    )
+  }
+
   getTickValues() {
-    const dates = this.props.updates.map(update => new Date(update.created_at))
-    return dates
+    const today = new Date()
+    if (this.state.view === "week") {
+      const week = []
+        for (var i = 0; i < 7; i++) {
+          let temp = new Date()
+          temp.setDate(today.getDate() - i)
+          week.push(temp)
+        }
+      return week
+    } else {
+      const month = new Date().getMonth()
+      const date = new Date(new Date().getFullYear(), new Date().getMonth(), 1)
+      const days = []
+
+      while (date.getMonth() === month) {
+        days.push(new Date(date));
+        date.setDate(date.getDate() + 1)
+      }
+      return days;
+    }
   }
 }
 

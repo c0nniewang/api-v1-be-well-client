@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 class MeditationCounter extends React.Component {
   render() {
-  // grab current month, render boxes for each day, color box if meditated on that day
+  // grab current week, render boxes for each day, color box if meditated on that day
   const today = new Date()
 
   const weekday = new Array(7)
