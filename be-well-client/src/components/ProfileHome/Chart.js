@@ -87,6 +87,8 @@ class Chart extends React.Component {
     return (
   <div className="ui middle aligned stackable grid container">
     <div className="ui container center aligned">
+    <h3>{this.month()}</h3>
+    <h4>{daily.length ? null : "You do not have enough user data at this moment. Please complete a daily update."}</h4>
     {this.state.view === "week" ?
       <div>
         <Button id="my-button">Week</Button>
@@ -124,21 +126,21 @@ class Chart extends React.Component {
               },
             }}
             >
-            {this.state.dailyEnergy ? <VictoryArea 
+            {this.state.dailyEnergy && dailyEnergy.length ? <VictoryArea 
               style={{data: { stroke: "orange", fill: "orange", fillOpacity: 0.4 }}}
               data={dailyEnergy}
               /> : null}
-            {this.state.dailyEnergy ? <VictoryScatter 
+            {this.state.dailyEnergy && dailyEnergy.length ? <VictoryScatter 
               style={{data: { stroke: "orange" }}}
               data={dailyEnergy}
               size={(datum, active) => active ? 5 : 3}
               labels={(d) => `energy level: ${d.y}`}
               labelComponent={<VictoryTooltip />}
               /> : null}
-            {this.state.dailyMood ? <VictoryArea 
+            {this.state.dailyMood && dailyMood.length ? <VictoryArea 
               style={{data: { stroke: "red", fill: "red", fillOpacity: 0.4 }}}
               data={dailyMood} /> : null}
-            {this.state.dailyMood ? <VictoryScatter
+            {this.state.dailyMood && dailyMood.length ? <VictoryScatter
               style={{
                 data: { stroke: "red" }
               }}
@@ -147,10 +149,10 @@ class Chart extends React.Component {
               labels={(d) => `mood: ${d.y}`}
               labelComponent={<VictoryTooltip />}
               /> : null}
-            {this.state.sleep ? <VictoryArea 
+            {this.state.sleep && sleep.length ? <VictoryArea 
               style={{data: { stroke: "gold", fill: "gold", fillOpacity: 0.4 }}}
               data={sleep} /> : null}
-            {this.state.sleep ?
+            {this.state.sleep && sleep.length ?
             <VictoryScatter 
               style={{
                 data: { stroke: "gold" },
@@ -197,7 +199,7 @@ class Chart extends React.Component {
         </VictoryChart>
       </div>
       <div className="six wide right floated column">
-          {this.state.dailyMood ? <button
+          {this.state.dailyMood && dailyMood.length ? <button
               style={{"borderColor": "#de7885"}}
               onClick={(name) => this.handleClick("dailyMood")}
               className="ui button" id="my-button"><Icon style={{"color": "#de7885"}} name="circle"/> Mood Level</button>  :
@@ -205,7 +207,7 @@ class Chart extends React.Component {
               style={{"borderColor": "#e7e7e7"}}
               onClick={(name) => this.handleClick("dailyMood")}
               className="ui button" id="my-button"><Icon style={{"color": "#de7885"}} name="circle thin"/> Mood Level</button>}<br /><br /> 
-          {this.state.dailyEnergy ? <button
+          {this.state.dailyEnergy && dailyEnergy.length ? <button
               style={{"borderColor": "#f6cd98"}}
               onClick={(name) => this.handleClick("dailyEnergy")}
               className="ui button" id="my-button"><Icon style={{"color": "#f6cd98"}} name="circle"/> Energy Level</button>  :
@@ -213,7 +215,7 @@ class Chart extends React.Component {
               style={{"borderColor": "#e7e7e7"}}
               onClick={(name) => this.handleClick("dailyEnergy")}
               className="ui button" id="my-button"><Icon style={{"color": "#f6cd98"}} name="circle thin"/> Energy Level</button>}<br /><br />
-          {this.state.sleep ? <button
+          {this.state.sleep && sleep.length ? <button
               style={{"borderColor": "#fde4a4"}}
               onClick={(name) => this.handleClick("sleep")}
               className="ui button" id="my-button"><Icon style={{"color": "#fde4a4"}} name="circle"/> Hours of Sleep</button>  :
@@ -241,6 +243,12 @@ class Chart extends React.Component {
         </div>
       </div>
     )
+  }
+
+  month = () => {
+    let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    let today = new Date();
+    return monthNames[today.getMonth()]
   }
 
   currentWeek = (arr) => {
