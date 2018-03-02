@@ -1,7 +1,7 @@
 import React from 'react'
 import { VictoryGroup, VictoryChart, VictoryScatter, VictoryAxis, VictoryArea, VictoryTooltip, VictoryZoomContainer } from 'victory'
 import { connect } from 'react-redux'
-import { Icon } from 'semantic-ui-react'
+import { Icon, Button } from 'semantic-ui-react'
 
 class Chart extends React.Component {
   constructor() {
@@ -12,7 +12,8 @@ class Chart extends React.Component {
       dailyEnergy: true,
       dailyMood: true,
       sleep: true,
-      completedGoals: true
+      completedGoals: true,
+      view: "week"
     }
   }
 
@@ -22,7 +23,16 @@ class Chart extends React.Component {
     })
   }
 
+  handleToggle = (ev) => {
+    console.log(ev.target.name)
+
+    this.setState({
+      view: ev.target.name
+    })
+  }
+
   render() {
+
     const thoughtData = this.props.thoughts.map(thought => {
       const date = new Date(thought.created_at)
       return ({x: date, y: thought.current_mood, symbol: "square"})
@@ -59,11 +69,31 @@ class Chart extends React.Component {
 
     return (
   <div className="ui middle aligned stackable grid container">
+    <div className="ui container center aligned">
+    {this.state.view === "week" ?
+      <div>
+        <Button id="my-button">Week</Button>
+        <Button
+        name="month"
+        onClick={this.handleToggle}
+        id="my-button" 
+        style={{"borderColor": "#e7e7e7"}}>Month</Button>
+      </div> :
+      <div>
+        <Button 
+        id="my-button"
+        style={{"borderColor": "#e7e7e7"}}
+        name="week"
+        onClick={this.handleToggle}
+        >Week</Button>
+        <Button id="my-button">Month</Button>
+      </div>
+    }
+      
+    </div>
     <div className="row">
       <div className="eight wide column">
         <VictoryChart
-          // domain={{y: [0, 11]}}
-          // containerComponent={<VictoryZoomContainer />}
           >
           <VictoryGroup
             scale={{x: 'time', y: 'linear'}}

@@ -60,7 +60,17 @@ class MainGoalCard extends React.Component {
             <b>Your target date for achieving this goal:</b><br />
             {new Date(formattedDate).toDateString()}<br />
             <p></p>
-            <Progress color="yellow" percent={percent} label={`${daysLeft} ${daysLeft === 1 ? "day" : "days"} until your target date for goal completion!`}/>
+            {daysLeft >= 0 ? 
+              <Progress 
+              color="yellow" 
+              percent={percent} 
+              label={`${daysLeft} ${daysLeft === 1 ? "day" : "days"} until your target date for goal completion!`}
+              /> : 
+              <Progress
+              color="orange"
+              percent={100}
+              label={`${Math.abs(daysLeft)} ${Math.abs(daysLeft) === 1 ? "day" : "days"} over your target date for goal completion`}
+              />}
           </div>
           <div className="extra content">
           <Button 
