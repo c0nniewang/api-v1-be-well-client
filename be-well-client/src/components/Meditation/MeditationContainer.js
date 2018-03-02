@@ -14,10 +14,12 @@ class MeditationContainer extends React.Component{
 
   // grab data statistics for the current month
   const currentMonth = new Date().getMonth()
+
+  const currentSessions = this.props.sessions.filter(sesh => new Date(sesh.created_at).getMonth() === currentMonth)
   // calculate how many sessions completed
-  const count = this.props.sessions.filter(sesh => new Date(sesh.created_at).getMonth() === currentMonth).length
+  const count = currentSessions.length
   // calculate total minutes of meditation sessions
-  const totalMin = this.props.sessions.map(session => {
+  const totalMin = currentSessions.map(session => {
     return parseInt(session.meditation.length.slice(0, 2).replace(/[: ]+/g, " ").trim())
   })
 

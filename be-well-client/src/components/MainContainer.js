@@ -19,9 +19,10 @@ class MainContainer extends React.Component {
 
   render() {
     return (
-      <div className="ui fluid container">
+      <div>
       <div className="mainbackground">
       </div>
+      <div className="ui fluid container">
         <Navbar />
         <div className="main">
         <Switch>
@@ -41,6 +42,7 @@ class MainContainer extends React.Component {
             return <ResourcesContainer />
           }} />
         </Switch>
+        </div>
         </div>
       </div>)
   }

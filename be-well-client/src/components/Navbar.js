@@ -36,6 +36,11 @@ class Navbar extends React.Component {
           height="30"
           src={require("../images/Logo.png")}
           active={activeItem==='home'}
+          style={{
+            background: "rgba(255, 255, 255, 0.9)",
+          }}
+          name="home"
+          onClick={this.handleItemClick}
         />
         <Menu.Item 
         name='home' 
