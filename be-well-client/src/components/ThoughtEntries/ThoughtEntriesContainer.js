@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ThoughtEntry from './ThoughtEntry'
 import ThoughtEntryForm from './ThoughtEntryForm'
-import { Button, Dropdown } from 'semantic-ui-react'
+import { Button, Dropdown, Popup } from 'semantic-ui-react'
 
 // <Dropdown text="Filter Entries" multiple icon='filter' onChange={this.handleDropChange}>
 //   <Dropdown.Menu>
@@ -29,7 +29,7 @@ class ThoughtEntriesContainer extends React.Component {
   }
 
   render() {
-    console.log('THOTS', this.props)
+    console.log('THOTS', this.props.thoughts)
     const pageButton = (<Button 
       id="my-button" 
       style={{"border-color": "#e7e7e7"}} 
@@ -60,7 +60,37 @@ class ThoughtEntriesContainer extends React.Component {
       },
     ]
 
-    this.props.thoughts.map(thought => thought.cognitive_distortions)
+    let distortions = {}
+
+    this.props.thoughts.forEach(thought => {
+      thought.cognitive_distortions.forEach(cog => {
+        if (distortions[cog.title]) {
+          distortions[cog.title] += 1
+        } else {
+          distortions[cog.title] = 1
+        }
+      })
+    })
+
+
+
+    let index = -1
+    const topDistortions = Object.entries(distortions).map(arr => {
+      index++
+      return (<Popup
+                id="my-red"
+                key={index}
+                trigger={<div key={index} 
+                id="my-button" 
+                style={{"border-color": "#e7e7e7", color: "#6cja89"}}
+                className="ui label">
+                  <i className="comments">{arr[0]}</i> <div className="detail">{arr[1]}</div>
+                  </div>}
+                content={(this.props.cogDistortions.find( el => el.title === arr[0])).description}
+                />)
+    })
+
+    console.log(Object.entries(distortions))
 
     return (
       <div className="ui container">
@@ -77,23 +107,30 @@ class ThoughtEntriesContainer extends React.Component {
             />
           </h3>
         </div>
+        <div className="ui stacked segment center aligned">
+          <h3 className="ui header center aligned">
+          Your most frequent cognitive distortions:
+          </h3>
+          {topDistortions}
+        </div>
         {thots.length ? thots : 
           <div className="ui stacked segment center aligned">
-          <div className="ui header">
-          You do not have any thought entries yet.
-          </div>
-          <div className="content">
-          Create a new one now!
-          </div>
+            <div className="ui header">
+            You do not have any thought entries yet.
+            </div>
+            <div className="content">
+            Create a new one now!
+            </div>
           </div>}
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ thoughts }) => {
+const mapStateToProps = ({ thoughts, cogDistortions }) => {
   return {
-    thoughts
+    thoughts,
+    cogDistortions
   }
 }
 

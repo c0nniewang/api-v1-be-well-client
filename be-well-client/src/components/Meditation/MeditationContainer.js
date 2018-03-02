@@ -41,7 +41,7 @@ class MeditationContainer extends React.Component{
           </Statistic>
           <Statistic>
             <Statistic.Value style={{"color": "#3fc380"}}>{streak === undefined ? 0 : streak}{streak === 1 ? "Day" : "Days"}</Statistic.Value>
-            <Statistic.Label>Longest Streak</Statistic.Label>
+            <Statistic.Label>Longest Streak (ever!)</Statistic.Label>
           </Statistic>
         </Statistic.Group>
       </div>
