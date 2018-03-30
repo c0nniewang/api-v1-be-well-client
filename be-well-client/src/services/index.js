@@ -1,4 +1,4 @@
-const API_ROOT = 'http://localhost:3001/api/v1'
+const API_ROOT = 'https://desolate-taiga-97597.herokuapp.com/'
 
 const headers = {
   'Content-Type': 'application/json',
