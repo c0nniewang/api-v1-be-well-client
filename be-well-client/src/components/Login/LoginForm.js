@@ -31,7 +31,7 @@ class LoginForm extends React.Component {
   const error = 
     <div className="ui negative message">
       <div className="header">
-      Your Log in information is incorrect.
+      Your log in information is incorrect.
       </div>
       <p>Please try again.</p>
     </div>
