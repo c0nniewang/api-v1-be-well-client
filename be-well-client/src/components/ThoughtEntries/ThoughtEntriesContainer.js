@@ -72,7 +72,8 @@ class ThoughtEntriesContainer extends React.Component {
           <h3 className="ui header center aligned">
           Your most frequent cognitive distortions:
           </h3>
-          {topDistortions}
+          {thots.length ? 
+          {topDistortions} : <div className="content">Enter a thought entry to start tracking your cognitive distortions.</div>}
         </div>
         {thots.length ? thots : 
           <div className="ui stacked segment center aligned">
