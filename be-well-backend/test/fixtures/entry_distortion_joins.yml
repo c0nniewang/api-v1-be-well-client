@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  thought_entry_id: MyString
-  cognitive_distortion_id: MyString
-
-two:
-  thought_entry_id: MyString
-  cognitive_distortion_id: MyString
