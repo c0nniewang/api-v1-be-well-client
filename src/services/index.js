@@ -1,4 +1,4 @@
-const API_ROOT = 'https://desolate-taiga-97597.herokuapp.com'
+const API_ROOT = 'https://be-well-api.herokuapp.com/api/v1/'
 
 const headers = {
   'Content-Type': 'application/json',

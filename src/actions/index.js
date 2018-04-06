@@ -31,7 +31,7 @@ export const logoutUser = () => {
 export function fetchUserInfo(id) {
   return (dispatch) => {
     dispatch({ type: ASYNC_START});
-    return fetch(`http://localhost:3001/api/v1/users/${id}`)
+    return fetch(`https://be-well-api.herokuapp.com/api/v1/users/${id}`)
     .then(resp => resp.json())
     .then(user => dispatch({ type: FETCH_USER_INFO, user}))
   }
