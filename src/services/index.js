@@ -1,4 +1,4 @@
-const API_ROOT = 'https://be-well-api.herokuapp.com/api/v1/'
+const API_ROOT = 'https://be-well-api.herokuapp.com/api/v1'
 
 const headers = {
   'Content-Type': 'application/json',
