@@ -252,7 +252,7 @@ class Chart extends React.Component {
     const today = new Date()
     let oneWeek = new Date()
     oneWeek.setDate(today.getDate() - 7)
-    console.log("FX", arr)
+
     return arr.filter(el => oneWeek <= new Date(el.created_at))
   }
 

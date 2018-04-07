@@ -44,6 +44,8 @@ class MeditationCounter extends React.Component {
     }
   })
 
+  console.log(sessionDates)
+
   const buttons = week.map((day, index) => {
     if (sessionDates[day] !== undefined) {
       return <div key={index} className="row"><div className="column right aligned">{weekday[index]}</div><div className="column left aligned"><Icon name="heart" id="my-red"/></div></div>

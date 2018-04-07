@@ -79,6 +79,7 @@ class ResourcesAccordion extends Component {
           <div className="ui container">
           <img src={Happy}/> <img src={Neutral}/><img src={Asleep}/><img src={Sad}/><img src={Dead}/>
           </div>
+          <p>These bunnies were drawn by a good friend of mine, Kevin Lie.</p>
         </Accordion.Content>
 
       </Accordion>

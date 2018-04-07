@@ -25,7 +25,6 @@ const userReducer = (state = defaultState, action) => {
     case ASYNC_START:
       return {...state, loading: true}
     case FETCH_USER_INFO:
-      console.log('FETCHING USER', action)
       return {
         ...state,
         profile: {
