@@ -7,7 +7,7 @@ import { Button, Dropdown, Popup } from 'semantic-ui-react'
 class ThoughtEntriesContainer extends React.Component {
 
   render() {
-    console.log('THOTS', this.props.thoughts)
+
     const pageButton = (<Button 
       id="my-button" 
       style={{"border-color": "#e7e7e7"}} 

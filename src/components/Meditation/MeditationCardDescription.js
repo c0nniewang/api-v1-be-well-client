@@ -7,7 +7,6 @@ import { Icon } from 'semantic-ui-react'
 
 class MeditationCardDescription extends React.Component {
   render() {
-    console.log(this.props.meditations.favorites)
   let star;
   if (this.props.meditations.favorites.find( el => el.meditation.id === this.props.session.id)) {
     star = (

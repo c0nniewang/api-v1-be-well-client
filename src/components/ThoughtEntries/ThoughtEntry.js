@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 
 class ThoughtEntry extends React.Component {
   render() {
-  console.log(this.props)
     const labels = this.props.thot.cognitive_distortions.map((cog, index) => {
       return (<Popup
                 id="my-red"

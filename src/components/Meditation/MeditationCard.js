@@ -19,11 +19,10 @@ class MeditationCard extends React.Component {
   }
 
   handleClose = (ev) => {
-    console.log(ev.target.name)
     if (ev.target.name === "done") {
       const meditationId = this.props.id
       const userId = this.props.userId
-      console.log(meditationId, userId)
+
       this.props.newSession({meditation_id: meditationId, user_id: userId})
     }
     this.setState({

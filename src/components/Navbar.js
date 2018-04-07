@@ -27,8 +27,6 @@ class Navbar extends React.Component {
       </Modal.Actions>
     </Modal>
 
-    console.log(this.props.match)
-
     return (<div>
       <Menu pointing secondary>
         <img

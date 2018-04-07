@@ -24,8 +24,6 @@ class Chart extends React.Component {
   }
 
   handleToggle = (ev) => {
-    console.log(ev.target.name)
-
     this.setState({
       view: ev.target.name
     })
